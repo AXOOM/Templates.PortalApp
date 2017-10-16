@@ -1,0 +1,9 @@
+# Builds and runs the services themselves. External dependencies, exposed ports, etc. are configured in docker-compose.override.yml.
+version: '3'
+
+services:
+  axoom-myapp:
+    image: ${DOCKER_REGISTRY-docker-ci.axoom.cloud}/apps/axoom-myapp:${VERSION-0.1-pre}
+    build:
+      context: ./Axoom.MyApp
+      dockerfile: Dockerfile

@@ -1,0 +1,15 @@
+feed_uri: http://assets.axoom.cloud/apps/axoom-myapp.xml
+name: My App
+summary: my description
+
+mixins:
+  - feed_uri: http://assets.axoom.cloud/mixins/axoom-portal-app.xml
+    parameters:
+      APPKEY: axoom-myapp
+      PORTAL_APP: <PORTAL_APP>
+      IDENTITY_CLIENT: <IDENTITY_CLIENT>
+      DOCKER_REGISTRY: <DOCKER_REGISTRY>
+      VERSION: <VERSION>  
+
+compose:
+  - version: 3.2

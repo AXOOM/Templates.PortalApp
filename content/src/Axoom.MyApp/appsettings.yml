@@ -1,0 +1,11 @@
+Logging:
+  ApplicationName: axoom-myapp
+  Filter:
+    # Reduce ASP.NET Core verbosity
+    Microsoft: Warning
+  LogTargets:
+    0:
+      Type: Console
+      Async: true
+      Format: Plain
+      Level: Debug

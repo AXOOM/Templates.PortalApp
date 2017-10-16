@@ -1,0 +1,10 @@
+# Specifies additional dependencies and exposes ports for local development/testing.
+version: '3'
+
+services:
+  axoom-myapp:
+    image: axoom-myapp
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "12345:80"

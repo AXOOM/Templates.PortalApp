@@ -1,0 +1,13 @@
+/release/*.xml
+/release/*.zip
+
+/src/**/obj/
+/src/**/bin/
+/src/**/node_modules/
+
+/src/.vs/
+/src/.idea/
+/src/_ReSharper.*/
+/src/**/*.user
+/src/**/launchSettings.json
+.vscode/

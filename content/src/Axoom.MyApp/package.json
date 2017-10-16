@@ -1,0 +1,47 @@
+{
+  "name": "axoom-myapp",
+  "description": "My App",
+  "main": "",
+  "scripts": {
+    "postinstall": "npm run bower && npm run grunt-publish",
+    "start": "npm run grunt-build && npm run grunt-watch",
+    "bower": "./node_modules/.bin/bower install",
+    "grunt-watch": "./node_modules/.bin/grunt watch",
+    "grunt-build": "./node_modules/.bin/grunt",
+    "grunt-publish": "./node_modules/.bin/grunt publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/Axoom.MyApp"
+  },
+  "keywords": [
+    "AXOOM"
+  ],
+  "author": "AXOOM <developers@axoom.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-cli": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-rename": "^0.2.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-karma": "^0.12.2",
+    "grunt-merge-json": "^0.9.5",
+    "grunt-ts": "^6.0.0-beta.16",
+    "grunt-typedoc": "^0.2.3",
+    "tslint": "^3.6.0",
+    "typedoc": "^0.3.12",
+    "typescript": "2.2"
+  },
+  "dependencies": {
+    "leaflet": "^1.0.0-rc.3",
+    "leaflet.markercluster": "^1.0.0-rc.1.0"
+  }
+}

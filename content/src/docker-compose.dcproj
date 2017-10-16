@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>b74301c8-0759-45fe-ba6c-e832babe08e5</ProjectGuid>
+    <DockerLaunchBrowser>True</DockerLaunchBrowser>
+    <DockerServiceUrl>http://localhost:{ServicePort}/</DockerServiceUrl>
+    <DockerServiceName>axoom-myapp</DockerServiceName>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <ProjectVersion>2.0</ProjectVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="docker-compose.override.yml" />
+    <None Include="docker-compose.yml" />
+  </ItemGroup>
+</Project>

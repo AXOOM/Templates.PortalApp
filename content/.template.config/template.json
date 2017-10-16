@@ -1,0 +1,38 @@
+{
+  "author": "Bastian Eicher",
+  "classifications": [ "AXOOM", "Web", "Docker" ],
+  "name": "AXOOM Portal App (ASP.NET Core, Docker)",
+  "shortName": "axoom-portal-app",
+  "identity": "Axoom.Templates.PortalApp",
+  "groupIdentity": "Axoom.Templates.PortalApp",
+  "tags": {
+    "language": "C#"
+  },
+  "sourceName": "Axoom.MyApp",
+  "preferNameDirectory": true,
+  "guids": [
+    "837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5",
+    "113F2D04-69F0-40C3-8797-BA3F356DD812",
+    "B74301C8-0759-45FE-BA6C-E832BABE08E5"
+  ],
+  "symbols": {
+    "appKey": {
+      "type": "parameter",
+      "dataType": "string",
+      "isRequired": true,
+      "replaces":"axoom-myapp"
+    },
+    "friendlyName": {
+      "type": "parameter",
+      "dataType": "string",
+      "isRequired": true,
+      "replaces":"My App"
+    },
+    "description": {
+      "type": "parameter",
+      "dataType": "string",
+      "isRequired": true,
+      "replaces":"my description"
+    }
+  }
+}

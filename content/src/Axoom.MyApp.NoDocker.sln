@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 15.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axoom.MyApp", "Axoom.MyApp\Axoom.MyApp.csproj", "{837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axoom.MyApp.UnitTests", "Axoom.MyApp.UnitTests\Axoom.MyApp.UnitTests.csproj", "{113F2D04-69F0-40C3-8797-BA3F356DD812}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{113F2D04-69F0-40C3-8797-BA3F356DD812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{113F2D04-69F0-40C3-8797-BA3F356DD812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{113F2D04-69F0-40C3-8797-BA3F356DD812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{113F2D04-69F0-40C3-8797-BA3F356DD812}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
