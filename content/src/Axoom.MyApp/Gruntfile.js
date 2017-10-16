@@ -143,8 +143,7 @@ module.exports = function (grunt) {
               files: [
                     {
                         src: 'dist/bower_components/axoom-web-framework/dist/locales/angular-locale_de-DE.js',
-                        dest: 'dist/bower_components/axoom-web-framework/dist/locales/angular-locale_de-DE.js',
-                        
+                        dest: 'dist/bower_components/axoom-web-framework/dist/locales/angular-locale_de-DE.js'
                     },
                     {
                         src: 'dist/bower_components/axoom-web-framework/dist/locales/angular-locale_en-US.js',
@@ -182,7 +181,7 @@ module.exports = function (grunt) {
                 force: true
             },
             dist: [
-                'dist/**',
+                'wwwroot/**',
             ]
         },
         concat: {
@@ -213,7 +212,7 @@ module.exports = function (grunt) {
                     'src/js/app.js',
                 ],
                 dest: 'src/js/app.js',
-                nonull: true, 
+                nonull: true,
             }
         }
     });
