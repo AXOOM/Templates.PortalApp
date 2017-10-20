@@ -10,7 +10,7 @@ mixins:
       PORTAL_APP: <PORTAL_APP>
       IDENTITY_CLIENT: <IDENTITY_CLIENT>
       DOCKER_REGISTRY: <DOCKER_REGISTRY>
-      VERSION: <VERSION>  
+      VERSION: <VERSION>
 
 compose:
   - version: '3.2'
