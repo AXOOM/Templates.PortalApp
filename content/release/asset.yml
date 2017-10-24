@@ -7,10 +7,10 @@ mixins:
   - feed_uri: http://assets.axoom.cloud/mixins/axoom-portal-app.xml
     parameters:
       APPKEY: axoom-myapp
-      PORTAL_APP: <PORTAL_APP>
-      IDENTITY_CLIENT: <IDENTITY_CLIENT>
       DOCKER_REGISTRY: <DOCKER_REGISTRY>
       VERSION: <VERSION>
+      PORTAL_APP: <PORTAL_APP>
+      IDENTITY_CLIENT: <IDENTITY_CLIENT>
 
 compose:
   - version: '3.2'
