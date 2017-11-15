@@ -13,4 +13,4 @@ mixins:
       IDENTITY_CLIENT: <IDENTITY_CLIENT>
 
 compose:
-  - version: '3.2'
+  - version: '3.3'
