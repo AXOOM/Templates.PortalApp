@@ -2,20 +2,23 @@
   "AppId": "axoom-myapp",
   "Version": "<VERSION>",
   "DisplayName": {
-    "en": "My App"
+    "en": "My App",
+    "de": "My App"
   },
   "Description": {
-    "en": "my description"
+    "en": "my description",
+    "de": "my description"
   },
   "NavigationEntries": [{
     "LinkText": {
-      "en": "My App"
+      "en": "My App",
+      "de": "My App"
     },
-    "TargetUrl": "${PROTOCOL}://myapp-${PUBLIC_DOMAIN}",
+    "TargetUrl": "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}",
     "Category": "service",
     "Icon": {
-      "Url_512x512px": "${PROTOCOL}://myapp-${PUBLIC_DOMAIN}/assets/icons/icon.svg",
-      "Url_32x32px": "${PROTOCOL}://myapp-${PUBLIC_DOMAIN}/assets/icons/icon.svg"
+      "Url_512x512px": "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/assets/icons/icon.svg",
+      "Url_32x32px": "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/assets/icons/icon.svg"
     }
   }],
   "Support": "apps@axoom.com",
