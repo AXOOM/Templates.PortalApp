@@ -3,4 +3,3 @@ Logging:
     Default: Debug
     Microsoft: Warning # Reduce ASP.NET Core verbosity
   Format: Plain
-  Async: false
