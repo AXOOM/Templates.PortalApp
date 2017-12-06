@@ -9,6 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Axoom.MyApp", "Axoom.MyApp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Axoom.MyApp.UnitTests", "Axoom.MyApp.UnitTests\Axoom.MyApp.UnitTests.csproj", "{113F2D04-69F0-40C3-8797-BA3F356DD812}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "release", "release", "{E7BF52C7-20B2-4671-B0C7-D63EB243C54A}"
+	ProjectSection(SolutionItems) = preProject
+		..\release\app.json = ..\release\app.json
+		..\release\asset.yml = ..\release\asset.yml
+		..\release\client.json = ..\release\client.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
