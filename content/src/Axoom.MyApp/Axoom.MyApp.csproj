@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="Axoom.Extensions.Configuration.Yaml" Version="1.2.2" />
-    <PackageReference Include="Axoom.Extensions.Logging.Console" Version="1.0.0-alpha0003" />
+    <PackageReference Include="Axoom.Extensions.Logging.Console" Version="1.0.0-alpha0011" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.0.1" />
