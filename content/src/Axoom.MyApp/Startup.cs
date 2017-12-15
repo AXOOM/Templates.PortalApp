@@ -38,16 +38,14 @@ namespace Axoom.MyApp
         /// Called by ASP.NET Core to register services.
         /// </summary>
         [UsedImplicitly]
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services
-                .AddRestApi()
-                .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
-                .AddOptions()
-                //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
-                //.AddScoped<IMyService, MyService>()
-                ;
-        }
+        public void ConfigureServices(IServiceCollection services) => services
+            .AddRestApi()
+            .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
+            .AddOptions()
+            //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
+            //.AddTransient<IMyService, MyService>()
+            //.AddSingleton<Worker>()
+            ;
 
         /// <summary>
         /// Called by ASP.NET Core to configure services after they have been registered.
