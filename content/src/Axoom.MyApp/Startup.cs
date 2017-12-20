@@ -36,7 +36,7 @@ namespace Axoom.MyApp
         /// </summary>
         [UsedImplicitly]
         public void ConfigureServices(IServiceCollection services) => services
-            .AddRestApi()
+            .AddRestApi(Configuration)
             .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
             .AddOptions()
             //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))

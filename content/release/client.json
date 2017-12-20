@@ -1,0 +1,48 @@
+{
+  "ClientId": "axoom-myapp",
+  "ClientName": "My App",
+  "RequireConsent": false,
+  "AllowedGrantTypes": [
+    "implicit"
+  ],
+  "AllowAccessTokensViaBrowser": true,
+  "RedirectUris": [
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}",
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/#!/Login",
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/#!/Login/",
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/silentRenew.html"
+  ],
+  "AllowedScopes": [
+    "openid",
+    "profile",
+    "email"
+  ],
+  "AllowedCorsOrigins": [
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}"
+  ]
+}, {
+  "ClientId": "axoom-myapp-swagger",
+  "ClientSecrets": [ "secret" ],
+  "ClientName": "Swagger",
+  "RequireConsent": false,
+  "AccessTokenType": "Jwt",
+  "AllowedGrantTypes": [
+    "implicit"
+  ],
+  "AllowAccessTokensViaBrowser": true,
+  "RedirectUris": [
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/swagger/o2c.html"
+  ],
+  "AllowedScopes": [
+    "openid",
+    "profile",
+    "email",
+    "axoom-connectioncenter.api"
+  ],
+  "PostLogoutRedirectUris": [
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}"
+  ],
+  "AllowedCorsOrigins": [
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}"
+  ]
+}

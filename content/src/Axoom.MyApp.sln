@@ -11,6 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Axoom.MyApp.UnitTests", "Ax
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "release", "release", "{E7BF52C7-20B2-4671-B0C7-D63EB243C54A}"
 	ProjectSection(SolutionItems) = preProject
+		..\release\apiresources.json = ..\release\apiresources.json
 		..\release\app.json = ..\release\app.json
 		..\release\asset.yml = ..\release\asset.yml
 		..\release\client.json = ..\release\client.json

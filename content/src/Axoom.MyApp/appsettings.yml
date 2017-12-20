@@ -3,3 +3,7 @@ Logging:
     Default: Debug
     Microsoft: Warning # Reduce ASP.NET Core verbosity
   Format: Plain
+
+Identity:
+  ApiName: axoom-myapp.api
+  ApiSecret: secret
