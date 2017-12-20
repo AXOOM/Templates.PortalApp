@@ -2,6 +2,7 @@
 using Axoom.MyApp.Pipeline;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Converters;
@@ -53,9 +54,20 @@ namespace Axoom.MyApp
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Service API v1"));
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {HotModuleReplacement = true});
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseMvc();
+            app.UseMvc(x => x
+                .MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}")
+                .MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new {controller = "Home", action = "Index"}));
             app.UseFileServer(enableDirectoryBrowsing: env.IsDevelopment());
 
             return app;

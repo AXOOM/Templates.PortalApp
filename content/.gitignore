@@ -4,6 +4,7 @@
 /src/**/obj/
 /src/**/bin/
 /src/**/node_modules/
+/src/**/dist/
 
 /src/.vs/
 /src/.idea/
