@@ -17,9 +17,9 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace Axoom.MyApp
 {
-    public static class RestApi
+    public static class WebConfig
     {
-        public static IServiceCollection AddRestApi(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration config)
         {
             string identityServerUri = GetIdentityServerUri(config, out string apiName, out string apiSecret);
 
@@ -93,7 +93,7 @@ namespace Axoom.MyApp
             return config.GetValue<string>("IDENTITY_SERVER_URI");
         }
 
-        public static IApplicationBuilder UseRestApi(this IApplicationBuilder app, IHostingEnvironment env)
+        public static IApplicationBuilder UseWeb(this IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {

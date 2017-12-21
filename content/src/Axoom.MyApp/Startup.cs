@@ -36,7 +36,7 @@ namespace Axoom.MyApp
         /// </summary>
         [UsedImplicitly]
         public void ConfigureServices(IServiceCollection services) => services
-            .AddRestApi(Configuration)
+            .AddWeb(Configuration)
             .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
             .AddOptions()
             //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
@@ -55,7 +55,7 @@ namespace Axoom.MyApp
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My App");
 
-            app.UseRestApi(env);
+            app.UseWeb(env);
         }
     }
 }
