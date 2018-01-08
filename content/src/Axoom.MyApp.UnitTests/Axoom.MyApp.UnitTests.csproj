@@ -5,13 +5,12 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <IsPackable>False</IsPackable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <NoWarn>$(NoWarn);NU1603</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="4.19.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
-    <PackageReference Include="Moq" Version="4.7.145" />
+    <PackageReference Include="Moq" Version="4.8.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
