@@ -7,10 +7,10 @@
   ],
   "AllowAccessTokensViaBrowser": true,
   "RedirectUris": [
-    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}",
-    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/#!/Login",
-    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/#!/Login/",
-    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/silentRenew.html"
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp-${PUBLIC_DOMAIN}",
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp-${PUBLIC_DOMAIN}/#!/Login",
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp-${PUBLIC_DOMAIN}/#!/Login/",
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp-${PUBLIC_DOMAIN}/silentRenew.html"
   ],
   "AllowedScopes": [
     "openid",
@@ -18,7 +18,7 @@
     "email"
   ],
   "AllowedCorsOrigins": [
-    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}"
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp-${PUBLIC_DOMAIN}"
   ]
 }, {
   "ClientId": "axoom-myapp-swagger",
@@ -31,7 +31,7 @@
   ],
   "AllowAccessTokensViaBrowser": true,
   "RedirectUris": [
-    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}/swagger/o2c.html"
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp-${PUBLIC_DOMAIN}/swagger/o2c.html"
   ],
   "AllowedScopes": [
     "openid",
@@ -40,9 +40,9 @@
     "axoom-connectioncenter.api"
   ],
   "PostLogoutRedirectUris": [
-    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}"
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp-${PUBLIC_DOMAIN}"
   ],
   "AllowedCorsOrigins": [
-    "${PUBLIC_PROTOCOL:--}://axoom-myapp${PUBLIC_SUBDOMAIN_SEPARATOR:--}${PUBLIC_DOMAIN}"
+    "${PUBLIC_PROTOCOL:--}://axoom-myapp-${PUBLIC_DOMAIN}"
   ]
 }
