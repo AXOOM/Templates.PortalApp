@@ -11,7 +11,6 @@ namespace Axoom.MyApp
             .UseKestrel()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseStartup<Startup>()
-            .Build()
-            .Run();
+            .Build();
     }
 }
