@@ -1,12 +1,14 @@
 using System;
 using Axoom.Extensions.Configuration.Yaml;
 using Axoom.Extensions.Logging.Console;
+using Axoom.MyApp.Pipeline;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Nexogen.Libraries.Metrics.Prometheus.AspCore;
 
 namespace Axoom.MyApp
 {
@@ -36,9 +38,10 @@ namespace Axoom.MyApp
         /// </summary>
         [UsedImplicitly]
         public void ConfigureServices(IServiceCollection services) => services
-            .AddWeb(Configuration)
             .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
             .AddOptions()
+            .AddPrometheus()
+            .AddWeb(Configuration)
             //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
             //.AddTransient<IMyService, MyService>()
             //.AddSingleton<Worker>()
@@ -55,7 +58,10 @@ namespace Axoom.MyApp
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My App");
 
-            app.UseWeb(env);
+            app
+                .UseMiddleware<MetricsPortSeperationMiddleware>()
+                .UsePrometheus(x => x.CollectHttpMetrics())
+                .UseWeb(env);
         }
     }
 }
