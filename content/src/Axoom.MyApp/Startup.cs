@@ -16,7 +16,7 @@ namespace Axoom.MyApp
     /// Startup class used by ASP.NET Core.
     /// </summary>
     [UsedImplicitly]
-    public class Startup
+    public class Startup : IStartup
     {
         public IConfigurationRoot Configuration { get; }
 
@@ -36,8 +36,7 @@ namespace Axoom.MyApp
         /// <summary>
         /// Called by ASP.NET Core to register services.
         /// </summary>
-        [UsedImplicitly]
-        public void ConfigureServices(IServiceCollection services) => services
+        public IServiceProvider ConfigureServices(IServiceCollection services) => services
             .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
             .AddOptions()
             .AddPrometheus()
@@ -45,15 +44,14 @@ namespace Axoom.MyApp
             //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
             //.AddTransient<IMyService, MyService>()
             //.AddSingleton<Worker>()
-            ;
+            .BuildServiceProvider();
 
         /// <summary>
         /// Called by ASP.NET Core to configure services after they have been registered.
         /// </summary>
-        [UsedImplicitly]
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider provider)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory
+            app.ApplicationServices.GetRequiredService<ILoggerFactory>()
                 .AddAxoomConsole(Configuration.GetSection("Logging"))
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My App");
@@ -61,7 +59,7 @@ namespace Axoom.MyApp
             app
                 .UseMiddleware<MetricsPortSeperationMiddleware>()
                 .UsePrometheus(x => x.CollectHttpMetrics())
-                .UseWeb(env);
+                .UseWeb();
         }
     }
 }

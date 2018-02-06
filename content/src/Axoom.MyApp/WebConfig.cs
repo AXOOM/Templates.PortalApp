@@ -93,14 +93,16 @@ namespace Axoom.MyApp
             return config.GetValue<string>("IDENTITY_SERVER_URI");
         }
 
-        public static IApplicationBuilder UseWeb(this IApplicationBuilder app, IHostingEnvironment env)
+        public static IApplicationBuilder UseWeb(this IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            bool devMode = app.ApplicationServices.GetRequiredService<IHostingEnvironment>().IsDevelopment();
+            if (devMode)
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Service API v1"));
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {HotModuleReplacement = true});
+                app
+                    .UseDeveloperExceptionPage()
+                    .UseSwagger()
+                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Service API v1"))
+                    .UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {HotModuleReplacement = true});
             }
             else
             {
@@ -114,7 +116,7 @@ namespace Axoom.MyApp
                 .MapSpaFallbackRoute(
                     name: "spa-fallback",
                     defaults: new {controller = "Home", action = "Index"}));
-            app.UseFileServer(enableDirectoryBrowsing: env.IsDevelopment());
+            app.UseFileServer(enableDirectoryBrowsing: devMode);
 
             return app;
         }
