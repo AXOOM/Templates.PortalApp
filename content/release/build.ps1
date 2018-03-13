@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 Push-Location $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 $dockerRegistry = $(if ($Version.Contains("-")) {"docker-ci.axoom.cloud"} else {"docker.axoom.cloud"})
-ax release asset.yml $Version `
+0install run http://assets.axoom.cloud/tools/ax.xml release --verbose --refresh asset.yml $Version `
 --arg DOCKER_REGISTRY=$dockerRegistry `
 --arg PORTAL_APP=@app.json `
 --arg IDENTITY_CLIENT=@client.json `
