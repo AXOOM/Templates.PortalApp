@@ -1,4 +1,4 @@
-Param ([Parameter(Mandatory=$True)][string]$Version)
+Param ([string]$Version = "0.1-pre")
 $ErrorActionPreference = "Stop"
 Push-Location $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
@@ -7,8 +7,6 @@ $dockerRegistry = $(if ($Version.Contains("-")) {"docker-ci.axoom.cloud"} else {
 --arg DOCKER_REGISTRY=$dockerRegistry `
 --arg PORTAL_APP=@app.json `
 --arg IDENTITY_CLIENT=@client.json `
---arg API_RESOURCES=@apiresources.json `
---verbose `
---refresh
+--arg API_RESOURCES=@apiresources.json
 
 Pop-Location
