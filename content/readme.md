@@ -25,8 +25,8 @@ To build and run locally with AX (requires [Infrastructure Stack](https://tfs.in
 
     ./build.ps1 -DeployLocal
 
- * My GUI GUI: http://myapp-myinstance.vcap.me/
- * My GUI API: http://myapp-myinstance.vcap.me/swagger/
+ * My GUI GUI: http://axooom-myapp-myinstance.vcap.me/
+ * My GUI API: http://axooom-myapp-myinstance.vcap.me/swagger/
 
 ## Deploying
 

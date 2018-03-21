@@ -1,6 +1,6 @@
 Param ([string]$Version = "0.1-pre")
 $ErrorActionPreference = "Stop"
-Push-Location $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+pushd $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 $dockerRegistry = $(if ($Version.Contains("-")) {"docker-ci.axoom.cloud"} else {"docker.axoom.cloud"})
 0install run http://assets.axoom.cloud/tools/ax.xml release --verbose --refresh asset.yml $Version `
@@ -9,4 +9,4 @@ $dockerRegistry = $(if ($Version.Contains("-")) {"docker-ci.axoom.cloud"} else {
 --arg IDENTITY_CLIENT=@client.json `
 --arg API_RESOURCES=@apiresources.json
 
-Pop-Location
+popd

@@ -11,6 +11,7 @@ if ($DeployLocal) {
     0install add-feed --batch release\asset-$Version.xml
     0install run http://assets.axoom.cloud/tools/ax.xml deploy --refresh -f deploy\local.yml --feed http://assets.axoom.cloud/apps/axoom-myapp.xml=$Version
     0install remove-feed --batch release\asset-$Version.xml
+    Start-Process "http://myinstance.vcap.me"
 }
 
 popd

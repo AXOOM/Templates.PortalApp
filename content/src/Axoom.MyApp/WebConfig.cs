@@ -101,7 +101,7 @@ namespace Axoom.MyApp
                 app
                     .UseDeveloperExceptionPage()
                     .UseSwagger()
-                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Service API v1"))
+                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"))
                     .UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {HotModuleReplacement = true});
             }
             else
