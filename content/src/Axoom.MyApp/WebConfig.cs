@@ -109,16 +109,15 @@ namespace Axoom.MyApp
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseMvc(x => x
-                .MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}")
-                .MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new {controller = "Home", action = "Index"}));
-            app.UseFileServer(enableDirectoryBrowsing: devMode);
-
-            return app;
+            return app
+                .UseMvc(x => x
+                    .MapRoute(
+                        name: "default",
+                        template: "{controller=Home}/{action=Index}/{id?}")
+                    .MapSpaFallbackRoute(
+                        name: "spa-fallback",
+                        defaults: new {controller = "Home", action = "Index"}))
+                .UseFileServer(enableDirectoryBrowsing: devMode);
         }
     }
 }

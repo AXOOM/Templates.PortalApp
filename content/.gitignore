@@ -5,6 +5,8 @@
 /src/**/bin/
 /src/**/node_modules/
 /src/**/dist/
+/src/**/ClientApp/**/*.js
+/src/**/ClientApp/**/*.js.map
 
 /src/.vs/
 /src/.idea/
