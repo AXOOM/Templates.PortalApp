@@ -12,6 +12,8 @@ environment:
   VOLUME_DRIVER: local # Use local storage instead of Amazon's EFS
   LOG_LEVEL: Debug # Override production default back to debugging-friendly value
   ASPNETCORE_ENVIRONMENT: Development # Enable Swagger interfaces and exception stack traces
+  INITIAL_USER: '{"userName":"dev", "password":"Password12",  "email":"dev@axoom.com", "firstName":"Dev", "lastName":"SuperAdmin", "company":"AXOOM GmbH"}'
+  SUPER_ADMIN: '{"email":"dummy","firstName":"dummy","lastName":"dummy","company":"dummy"}'
 
 target:
   swarm: true
