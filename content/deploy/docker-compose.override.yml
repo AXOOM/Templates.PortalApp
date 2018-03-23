@@ -1,0 +1,9 @@
+# Replaces the app with a forwarder that points to a debug instance of the app running outside of the stack
+version: '3.3'
+
+services:
+  axoom-myapp:
+    image: djfaze/port-forward
+    environment:
+      REMOTE_HOST: docker.for.win.localhost
+      REMOTE_PORT: 12345 # Keep in sync with ../src/docker-compose.override.yml

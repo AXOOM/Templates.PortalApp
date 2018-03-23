@@ -7,4 +7,4 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
     ports:
-      - 80
+      - "12345:80" # Keep in sync with ../deploy/docker-compose.override.yml
