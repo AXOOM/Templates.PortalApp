@@ -42,6 +42,7 @@
     <PackageReference Include="Nexogen.Libraries.Metrics.Prometheus.Standalone" Version="3.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.3.0" />
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
+    <PackageReference Include="Polly" Version="5.8.0" />
   </ItemGroup>
 
   <ItemGroup>

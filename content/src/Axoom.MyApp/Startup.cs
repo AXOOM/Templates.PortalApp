@@ -34,6 +34,7 @@ namespace Axoom.MyApp
         public IServiceProvider ConfigureServices(IServiceCollection services) => services
             .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
             .AddOptions()
+            .AddPolicies(Configuration.GetSection("Policies"))
             .AddMetrics()
             .AddWeb(Configuration)
             //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
@@ -52,6 +53,11 @@ namespace Axoom.MyApp
                 .AddAxoomConsole(Configuration.GetSection("Logging"))
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My App");
+
+            //provider.GetRequiredService<IPolicies>().Startup(async () =>
+            //{
+            //    await provider.GetRequiredService<Worker>().StartAsync();
+            //});
 
             provider.ExposeMetrics(port: 5000);
 
