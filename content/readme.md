@@ -19,9 +19,9 @@ To build and test with a debugger:
     .\build.ps1 -DeployLocal -DebugOverride
 	# Open src\Axoom.MyApp.sln in Visual Studio and run
 
- * Portal: http://myinstance.vcap.me/
- * My App: http://axoom-myapp-myinstance.vcap.me/
- * My App API: http://axoom-myapp-myinstance.vcap.me/swagger/
+ * Portal: http://myinstance.local.mayoom.eu/
+ * My App: http://axoom-myapp-myinstance.local.myaxoom.eu/
+ * My App API: http://axoom-myapp-myinstance.local.myaxoom.eu/swagger/
 
 ## Deploying
 
