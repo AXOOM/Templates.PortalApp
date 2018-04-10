@@ -6,12 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Axoom.MyApp.Infrastructure
@@ -28,12 +26,9 @@ namespace Axoom.MyApp.Infrastructure
                     options.Filters.Add(typeof(ApiExceptionFilterAttribute));
                     if (identityServerUri != null)
                         options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(apiName)));
-                })
-                .AddJsonOptions(options =>
-                {
-                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    options.SerializerSettings.Converters.Add(new StringEnumConverter {CamelCaseText = true});
                 });
+
+            services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/dist");
 
             if (identityServerUri != null)
             {
@@ -100,23 +95,32 @@ namespace Axoom.MyApp.Infrastructure
                 app
                     .UseDeveloperExceptionPage()
                     .UseSwagger()
-                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"))
-                    .UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {HotModuleReplacement = true});
+                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"));
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            return app
-                .UseMvc(x => x
-                    .MapRoute(
+            app
+                .UseStaticFiles()
+                .UseSpaStaticFiles();
+
+            app
+                .UseMvc(routes =>
+                {
+                    routes.MapRoute(
                         name: "default",
-                        template: "{controller=Home}/{action=Index}/{id?}")
-                    .MapSpaFallbackRoute(
-                        name: "spa-fallback",
-                        defaults: new {controller = "Home", action = "Index"}))
-                .UseFileServer(enableDirectoryBrowsing: devMode);
+                        template: "{controller}/{action=Index}/{id?}");
+                })
+                .UseSpa(spa =>
+                {
+                    spa.Options.SourcePath = "ClientApp";
+                    if (devMode)
+                        spa.UseAngularCliServer(npmScript: "start");
+                });
+
+            return app;
         }
     }
 }

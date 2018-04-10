@@ -4,7 +4,7 @@ version: '3'
 services:
   axoom-myapp:
     image: axoom-myapp
-    environment:
-      ASPNETCORE_ENVIRONMENT: Development
     ports:
       - "12345:80" # Keep in sync with ../deploy/local.docker-compose.override.yml
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
