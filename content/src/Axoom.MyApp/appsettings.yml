@@ -9,6 +9,9 @@ Policies:
     - 00:00:15
     - 00:00:30
 
+Database:
+  ConnectionString: Data Source=myservice.db
+
 Identity:
   ApiName: axoom-myapp.api
   ApiSecret: secret

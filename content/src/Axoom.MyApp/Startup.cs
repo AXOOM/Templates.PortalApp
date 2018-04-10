@@ -1,8 +1,10 @@
 using System;
+using Axoom.MyApp.Contacts;
 using Axoom.MyApp.Infrastructure;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,6 +33,8 @@ namespace Axoom.MyApp
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services) => services
             .AddInfrastructure(Configuration)
+            .AddDbContext<MyAppDbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
+            .AddContacts()
             .BuildServiceProvider();
 
         /// <summary>
@@ -40,11 +44,14 @@ namespace Axoom.MyApp
         {
             var provider = app.UseInfrastructure();
 
+            // Since SQLite is an in-process database resiliency against connectivity problems at startup is unnecessary.
+            // It is implemented here anyway as a sample in case you decide to use an external database such as PostgreSQL.
             provider.GetRequiredService<Policies>().Startup(() =>
             {
                 using (var scope = provider.CreateScope())
                 {
-                    // TODO: Connect to external services
+                    // Replace .EnsureCreated() with .Migrate() once you have generated an EF Migration
+                    scope.ServiceProvider.GetRequiredService<MyAppDbContext>().Database.EnsureCreated();
                 }
             });
         }

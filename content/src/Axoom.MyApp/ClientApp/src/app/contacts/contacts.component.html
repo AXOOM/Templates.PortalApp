@@ -1,0 +1,20 @@
+<h1>Contacts</h1>
+
+<p *ngIf="!contacts"><em>Loading...</em></p>
+
+<table class='table' *ngIf="contacts">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contacts">
+      <td>{{ contact.id }}</td>
+      <td>{{ contact.firstName }}</td>
+      <td>{{ contact.lastName }}</td>
+    </tr>
+  </tbody>
+</table>
