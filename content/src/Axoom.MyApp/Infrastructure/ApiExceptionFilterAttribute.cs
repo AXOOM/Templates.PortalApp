@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
+using System.Security.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Axoom.MyApp.Pipeline
+namespace Axoom.MyApp.Infrastructure
 {
     /// <summary>
     /// Reports exceptions with appropriate HTTP status codes.
@@ -29,12 +31,18 @@ namespace Axoom.MyApp.Pipeline
         {
             switch (exception)
             {
-                case ArgumentException _:
+                case InvalidDataException _:
                     return HttpStatusCode.BadRequest;
+                case AuthenticationException _:
+                    return HttpStatusCode.Unauthorized;
+                case UnauthorizedAccessException _:
+                    return HttpStatusCode.Forbidden;
                 case KeyNotFoundException _:
                     return HttpStatusCode.NotFound;
-                case UnauthorizedAccessException _:
-                    return HttpStatusCode.Unauthorized;
+                case InvalidOperationException _:
+                    return HttpStatusCode.Conflict;
+                case TimeoutException _:
+                    return HttpStatusCode.RequestTimeout;
                 default:
                     return HttpStatusCode.InternalServerError;
             }

@@ -1,11 +1,10 @@
 using System;
-using Axoom.Extensions.Logging.Console;
+using Axoom.MyApp.Infrastructure;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Axoom.MyApp
 {
@@ -31,14 +30,7 @@ namespace Axoom.MyApp
         /// Called by ASP.NET Core to register services.
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services) => services
-            .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
-            .AddOptions()
-            .AddPolicies(Configuration.GetSection("Policies"))
-            .AddMetrics()
-            .AddWeb(Configuration)
-            //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
-            //.AddTransient<IMyService, MyService>()
-            //.AddSingleton<Worker>()
+            .AddInfrastructure(Configuration)
             .BuildServiceProvider();
 
         /// <summary>
@@ -46,21 +38,15 @@ namespace Axoom.MyApp
         /// </summary>
         public void Configure(IApplicationBuilder app)
         {
-            var provider = app.ApplicationServices;
+            var provider = app.UseInfrastructure();
 
-            provider.GetRequiredService<ILoggerFactory>()
-                .AddAxoomConsole(Configuration.GetSection("Logging"))
-                .CreateLogger<Startup>()
-                .LogInformation("Starting My App");
-
-            //provider.GetRequiredService<IPolicies>().Startup(async () =>
-            //{
-            //    await provider.GetRequiredService<Worker>().StartAsync();
-            //});
-
-            provider.ExposeMetrics(port: 5000);
-
-            app.UseWeb();
+            provider.GetRequiredService<Policies>().Startup(() =>
+            {
+                using (var scope = provider.CreateScope())
+                {
+                    // TODO: Connect to external services
+                }
+            });
         }
     }
 }

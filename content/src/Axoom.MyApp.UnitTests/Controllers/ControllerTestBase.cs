@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using Axoom.MyApp.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;

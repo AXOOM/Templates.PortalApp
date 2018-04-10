@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Axoom.MyApp.Pipeline;
 using IdentityServer4.AccessTokenValidation;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Authorization;
@@ -15,7 +14,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Axoom.MyApp
+namespace Axoom.MyApp.Infrastructure
 {
     public static class WebConfig
     {
