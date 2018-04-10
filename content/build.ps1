@@ -14,7 +14,7 @@ if ($DeployLocal) {
     0install run http://assets.axoom.cloud/tools/ax.xml deploy --refresh -f deploy\local.yml --feed http://assets.axoom.cloud/apps/axoom-myapp.xml=$Version `
         $(if ($DebugOverride) {"--compose-override=deploy\local.docker-compose.override.yml"})
     0install remove-feed --batch release\asset-$Version.xml
-    if (!$DebugOverride) { Start-Process "http://myinstance.local.myaxoom.eu" }
+    Start-Process "http://myinstance.local.myaxoom.eu"
 }
 
 popd
