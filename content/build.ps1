@@ -1,4 +1,4 @@
-Param ([string]$Version = "0.1-pre", [Switch]$DeployLocal, [Switch]$DebugOverride)
+﻿Param ([string]$Version = "0.1-pre", [Switch]$DeployLocal, [Switch]$DebugOverride)
 $ErrorActionPreference = "Stop"
 pushd $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 

@@ -20,7 +20,8 @@
   "AllowedCorsOrigins": [
     "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}"
   ]
-}, {
+}
+, {
   "ClientId": "axoom-myapp-swagger",
   "ClientSecrets": [ "secret" ],
   "ClientName": "Swagger",

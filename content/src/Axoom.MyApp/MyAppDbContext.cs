@@ -10,7 +10,8 @@ namespace Axoom.MyApp
     {
         // NOTE: Other parts of this class are in separate slice-specific files
 
-        public MyAppDbContext(DbContextOptions options) : base(options)
+        public MyAppDbContext(DbContextOptions options)
+            : base(options)
         {}
     }
 }

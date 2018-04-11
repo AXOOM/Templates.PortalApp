@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Axoom.MyApp.Contacts;
 using Axoom.MyApp.Infrastructure;
 using JetBrains.Annotations;

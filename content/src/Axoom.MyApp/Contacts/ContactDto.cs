@@ -28,9 +28,9 @@ namespace Axoom.MyApp.Contacts
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             return (obj is ContactDto other)
-                   && Id == other.Id
-                   && FirstName == other.FirstName
-                   && LastName == other.LastName;
+                && Id == other.Id
+                && FirstName == other.FirstName
+                && LastName == other.LastName;
         }
 
         public override int GetHashCode()

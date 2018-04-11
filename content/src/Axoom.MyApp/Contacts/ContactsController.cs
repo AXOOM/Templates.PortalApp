@@ -14,7 +14,8 @@ namespace Axoom.MyApp.Contacts
     {
         private readonly IContactService _service;
 
-        public ContactsController(IContactService service) : base(service)
+        public ContactsController(IContactService service)
+            : base(service)
             => _service = service;
 
         /// <summary>
@@ -51,8 +52,8 @@ namespace Axoom.MyApp.Contacts
         /// </summary>
         /// <param name="id">The ID of the contact to poke.</param>
         [HttpPost, Route("{id}/poke")]
-        [SwaggerResponse((int) HttpStatusCode.Accepted)]
-        [SwaggerResponse((int) HttpStatusCode.NotFound, description: "Specified contact not found.")]
+        [SwaggerResponse((int)HttpStatusCode.Accepted)]
+        [SwaggerResponse((int)HttpStatusCode.NotFound, description: "Specified contact not found.")]
         public async Task<ActionResult> Poke([FromRoute] string id)
         {
             await _service.PokeAsync(id);

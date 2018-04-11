@@ -13,8 +13,8 @@ namespace Axoom.MyApp.Infrastructure
         {
             var metrics = new PrometheusMetrics();
             return services
-                   .AddSingleton<IMetrics>(metrics)
-                   .AddSingleton<IExposable>(metrics);
+                .AddSingleton<IMetrics>(metrics)
+                .AddSingleton<IExposable>(metrics);
         }
 
         public static IDisposable ExposeMetrics(this IServiceProvider provider, int port)
