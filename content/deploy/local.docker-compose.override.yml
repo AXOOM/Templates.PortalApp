@@ -6,4 +6,4 @@ services:
     image: djfaze/port-forward
     environment:
       REMOTE_HOST: docker.for.win.localhost
-      REMOTE_PORT: 12345 # Keep in sync with ../src/docker-compose.override.yml
+      REMOTE_PORT: '12345' # Keep in sync with ../src/docker-compose.override.yml
