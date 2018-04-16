@@ -5,5 +5,5 @@ services:
   axoom-myapp:
     image: ${DOCKER_REGISTRY-docker-ci.axoom.cloud}/apps/axoom-myapp:${VERSION-0.1-pre}
     build:
-      context: ./Axoom.MyApp
+      context: ./App
       dockerfile: Dockerfile
