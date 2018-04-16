@@ -4,7 +4,7 @@
 /src/**/obj/
 /src/**/bin/
 /src/**/node_modules/
-/src/**/npm-debug.log.*
+/src/**/npm-debug.log
 
 /src/.vs/
 /src/.idea/
