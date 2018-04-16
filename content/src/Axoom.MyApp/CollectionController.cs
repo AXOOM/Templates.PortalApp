@@ -95,7 +95,10 @@ namespace Axoom.MyApp
         // ReSharper disable once StaticMemberInGenericType
         private static readonly MethodInfo GetIdMethod;
 
-        static CollectionController() => GetIdMethod = typeof(T).GetTypeInfo().GetProperties(BindingFlags.Instance | BindingFlags.Public)
-            .First(x => x.GetMethod != null && x.GetCustomAttribute<KeyAttribute>(inherit: true) != null).GetMethod;
+        static CollectionController()
+            => GetIdMethod = typeof(T).GetTypeInfo()
+                                      .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                                      .First(x => x.GetMethod != null && x.GetCustomAttribute<KeyAttribute>(inherit: true) != null)
+                                      .GetMethod;
     }
 }

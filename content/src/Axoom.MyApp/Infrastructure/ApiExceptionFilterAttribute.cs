@@ -16,7 +16,8 @@ namespace Axoom.MyApp.Infrastructure
     {
         private readonly bool _returnStacktrace;
 
-        public ApiExceptionFilterAttribute(IHostingEnvironment env) => _returnStacktrace = env.IsDevelopment();
+        public ApiExceptionFilterAttribute(IHostingEnvironment env)
+            => _returnStacktrace = env.IsDevelopment();
 
         /// <inheritdoc />
         public override void OnException(ExceptionContext context)

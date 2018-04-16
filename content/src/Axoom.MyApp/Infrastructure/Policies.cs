@@ -36,8 +36,8 @@ namespace Axoom.MyApp.Infrastructure
                     .Handle<SocketException>()
                     .WaitAndRetry(
                         sleepDurations: _options.Value.StartupRetries,
-                        onRetry: (ex, timeSpan) =>
-                            _logger.LogWarning($"Problem connecting to external service; retrying in {timeSpan}.\n ({ex.GetType().Name}: {ex.Message})"))
+                        onRetry: (ex, timeSpan)
+                            => _logger.LogWarning($"Problem connecting to external service; retrying in {timeSpan}.\n ({ex.GetType().Name}: {ex.Message})"))
                     .Execute(action);
             }
             catch (Exception ex)
@@ -62,8 +62,8 @@ namespace Axoom.MyApp.Infrastructure
 
     public static class PoliciesExtensions
     {
-        public static IServiceCollection AddPolicies(this IServiceCollection services, IConfiguration config) => services
-            .Configure<PolicyOptions>(config)
-            .AddSingleton<Policies>();
+        public static IServiceCollection AddPolicies(this IServiceCollection services, IConfiguration config)
+            => services.AddSingleton<Policies>()
+                       .Configure<PolicyOptions>(config);
     }
 }

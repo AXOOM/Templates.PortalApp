@@ -21,21 +21,22 @@ namespace Axoom.MyApp
         /// <summary>
         /// Called by ASP.NET Core to set up an environment.
         /// </summary>
-        public Startup(IHostingEnvironment env) => Configuration = new ConfigurationBuilder()
-            .SetBasePath(env.ContentRootPath)
-            .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
-            .AddYamlFile($"appsettings.{env.EnvironmentName}.yml", optional: true, reloadOnChange: true)
-            .AddEnvironmentVariables()
-            .Build();
+        public Startup(IHostingEnvironment env)
+            => Configuration = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
+                .AddYamlFile($"appsettings.{env.EnvironmentName}.yml", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables()
+                .Build();
 
         /// <summary>
         /// Called by ASP.NET Core to register services.
         /// </summary>
-        public IServiceProvider ConfigureServices(IServiceCollection services) => services
-            .AddInfrastructure(Configuration)
-            .AddDbContext<MyAppDbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
-            .AddContacts()
-            .BuildServiceProvider();
+        public IServiceProvider ConfigureServices(IServiceCollection services)
+            => services.AddInfrastructure(Configuration)
+                       .AddDbContext<MyAppDbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
+                       .AddContacts()
+                       .BuildServiceProvider();
 
         /// <summary>
         /// Called by ASP.NET Core to configure services after they have been registered.

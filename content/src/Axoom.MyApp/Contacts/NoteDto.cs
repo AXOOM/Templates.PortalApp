@@ -17,6 +17,7 @@
             return (obj is NoteDto other) && Content == other.Content;
         }
 
-        public override int GetHashCode() => Content?.GetHashCode() ?? 0;
+        public override int GetHashCode()
+            => Content?.GetHashCode() ?? 0;
     }
 }
