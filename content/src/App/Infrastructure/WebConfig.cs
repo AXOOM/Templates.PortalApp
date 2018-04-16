@@ -20,27 +20,25 @@ namespace Axoom.MyApp.Infrastructure
         {
             string identityServerUri = GetIdentityServerUri(config, out string apiName, out string apiSecret);
 
-            services
-                .AddMvc(options =>
-                {
-                    options.Filters.Add(typeof(ApiExceptionFilterAttribute));
-                    if (identityServerUri != null)
-                        options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(apiName)));
-                });
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(ApiExceptionFilterAttribute));
+                if (identityServerUri != null)
+                    options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(apiName)));
+            });
 
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/dist");
 
             if (identityServerUri != null)
             {
-                services
-                    .AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                    .AddIdentityServerAuthentication(options =>
-                    {
-                        options.Authority = identityServerUri;
-                        options.ApiName = apiName;
-                        options.ApiSecret = apiSecret;
-                        options.RequireHttpsMetadata = false;
-                    });
+                services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                        .AddIdentityServerAuthentication(options =>
+                        {
+                            options.Authority = identityServerUri;
+                            options.ApiName = apiName;
+                            options.ApiSecret = apiSecret;
+                            options.RequireHttpsMetadata = false;
+                        });
             }
 
             services.AddSwaggerGen(options =>
@@ -92,19 +90,17 @@ namespace Axoom.MyApp.Infrastructure
             bool devMode = app.ApplicationServices.GetRequiredService<IHostingEnvironment>().IsDevelopment();
             if (devMode)
             {
-                app
-                    .UseDeveloperExceptionPage()
-                    .UseSwagger()
-                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"));
+                app.UseDeveloperExceptionPage()
+                   .UseSwagger()
+                   .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"));
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app
-                .UseStaticFiles()
-                .UseSpaStaticFiles();
+            app.UseStaticFiles()
+               .UseSpaStaticFiles();
 
             app
                 .UseMvc(routes =>

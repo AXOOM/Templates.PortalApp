@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Nexogen.Libraries.Metrics;
-using Nexogen.Libraries.Metrics.Extensions;
 using Nexogen.Libraries.Metrics.Prometheus;
 using Nexogen.Libraries.Metrics.Prometheus.Standalone;
 

@@ -46,7 +46,11 @@ csharp_indent_block_contents = true
 csharp_indent_braces = false
 csharp_indent_case_contents = true
 csharp_indent_switch_labels = true
+csharp_align_linq_query = true
+csharp_align_multiline_parameter = true
+csharp_align_multiline_calls_chain = true
 csharp_align_multiline_binary_expressions_chain = true
+csharp_align_multiline_array_and_object_initializer = false
 csharp_outdent_binary_ops = true
 
 # Line breaks
