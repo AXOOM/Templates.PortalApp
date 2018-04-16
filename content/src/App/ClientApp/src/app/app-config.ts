@@ -1,4 +1,4 @@
-﻿import { JsonConvert, OperationMode, ValueCheckingMode } from 'json2typescript';
+import { JsonConvert, OperationMode, ValueCheckingMode } from 'json2typescript';
 import { JsonObject, JsonProperty } from 'json2typescript';
 import { Injectable } from '@angular/core';
 import { AuthConfig } from 'angular-oauth2-oidc';
