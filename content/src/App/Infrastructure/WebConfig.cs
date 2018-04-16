@@ -106,6 +106,8 @@ namespace Axoom.MyApp.Infrastructure
                 .UseStaticFiles()
                 .UseSpaStaticFiles();
 
+            app.UseAuthentication();
+
             app
                 .UseMvc(routes =>
                 {

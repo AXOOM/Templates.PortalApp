@@ -15,3 +15,6 @@ Database:
 Identity:
   ApiName: axoom-myapp.api
   ApiSecret: secret
+
+# Uncomment below line to activate the API Authorization in backend
+#IDENTITY_SERVER_URI: 'http://identity-myinstance.local.myaxoom.eu'
