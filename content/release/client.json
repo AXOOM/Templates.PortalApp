@@ -8,14 +8,13 @@
   "AllowAccessTokensViaBrowser": true,
   "RedirectUris": [
     "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}",
-    "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}/#!/Login",
-    "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}/#!/Login/",
     "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}/silentRenew.html"
   ],
   "AllowedScopes": [
     "openid",
     "profile",
-    "email"
+    "email",
+    "axoom-myapp.api"
   ],
   "AllowedCorsOrigins": [
     "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}"
@@ -38,7 +37,7 @@
     "openid",
     "profile",
     "email",
-    "axoom-connectioncenter.api"
+    "axoom-myapp.api"
   ],
   "PostLogoutRedirectUris": [
     "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}"
