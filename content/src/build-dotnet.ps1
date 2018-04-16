@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 pushd $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
-dotnet clean Axoom.MyApp.NoDocker.sln
-dotnet msbuild /t:Restore /t:Build /t:Publish /p:PublishDir=./obj/Docker/publish /p:Configuration=Release /p:Version=$Version Axoom.MyApp.NoDocker.sln
+dotnet clean Axoom.MyApp.sln
+dotnet msbuild /t:Restore /t:Build /t:Publish /p:PublishDir=./obj/Docker/publish /p:Configuration=Release /p:Version=$Version Axoom.MyApp.sln
 
 popd
