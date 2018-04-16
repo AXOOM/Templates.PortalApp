@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using IdentityServer4.AccessTokenValidation;
-using JetBrains.Annotations;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
@@ -18,28 +13,23 @@ namespace Axoom.MyApp.Infrastructure
     {
         public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration config)
         {
-            string identityServerUri = GetIdentityServerUri(config, out string apiName, out string apiSecret);
+            var identityOptions = Identity.GetOptions(config);
+            bool identityEnabled = identityOptions.Authority != null;
+
+            if (identityEnabled)
+            {
+                services.AddSingleton(identityOptions)
+                        .AddAuthentication(config);
+            }
 
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(ApiExceptionFilterAttribute));
-                if (identityServerUri != null)
-                    options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(apiName)));
+                if (identityEnabled)
+                    options.AddAuthorizeFilter(identityOptions);
             });
 
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/dist");
-
-            if (identityServerUri != null)
-            {
-                services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                        .AddIdentityServerAuthentication(options =>
-                        {
-                            options.Authority = identityServerUri;
-                            options.ApiName = apiName;
-                            options.ApiSecret = apiSecret;
-                            options.RequireHttpsMetadata = false;
-                        });
-            }
 
             services.AddSwaggerGen(options =>
             {
@@ -57,32 +47,11 @@ namespace Axoom.MyApp.Infrastructure
                     });
                 options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "Axoom.MyApp.xml"));
                 options.DescribeAllEnumsAsStrings();
-                if (identityServerUri != null)
-                {
-                    options.AddSecurityDefinition("oauth2", new OAuth2Scheme
-                    {
-                        Type = "oauth2",
-                        Flow = "implicit",
-                        AuthorizationUrl = identityServerUri + "/connect/authorize",
-                        Scopes = new Dictionary<string, string>
-                        {
-                            [apiName] = "Query the app."
-                        }
-                    });
-                }
+                if (identityEnabled)
+                    options.AddOAuth(identityOptions);
             });
 
             return services;
-        }
-
-        [CanBeNull]
-        private static string GetIdentityServerUri(IConfiguration config, out string apiName, out string apiSecret)
-        {
-            var identityConfig = config.GetSection("Identity");
-            apiName = identityConfig["ApiName"];
-            apiSecret = identityConfig["ApiSecret"];
-
-            return config.GetValue<string>("IDENTITY_SERVER_URI");
         }
 
         public static IApplicationBuilder UseWeb(this IApplicationBuilder app)
@@ -99,10 +68,9 @@ namespace Axoom.MyApp.Infrastructure
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles()
+            app.UseAuthentication()
+               .UseStaticFiles()
                .UseSpaStaticFiles();
-
-            app.UseAuthentication();
 
             app
                 .UseMvc(routes =>
