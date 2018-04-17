@@ -13,33 +13,23 @@ max_line_length = off
 [*.{json,xml,yml,htm,html,js,ts,css,scss,less}]
 indent_size = 2
 
-[*.{txt,bat,cmd}]
-charset = latin1
-end_of_line = crlf
-
-[{*.ps1,*.psd1,*.manifest}]
-charset = utf-8-bom
-end_of_line = crlf
-
-[*.sln]
-charset = utf-8-bom
-end_of_line = crlf
-indent_style = tab
-
 [*.{*proj,resx,config,ruleset,cd,props,targets,nuspec}]
-charset = utf-8-bom
 end_of_line = crlf
 indent_size = 2
 
-[*.{ruleset,cd}]
-insert_final_newline = false
+[*.{txt,cs,ps1,psd1,manifest}]
+end_of_line = crlf
+
+[*.{bat,cmd}]
+charset = latin1
+end_of_line = crlf
+
+[*.sln]
+end_of_line = crlf
+indent_style = tab
 
 [*.{md,resx,Designer.*}]
 trim_trailing_whitespace = false
-
-[*.cs]
-charset = utf-8-bom
-end_of_line = crlf
 
 # Indentation
 csharp_indent_block_contents = true
@@ -77,7 +67,6 @@ csharp_wrap_parameters_style = chop_if_long
 csharp_preserve_single_line_blocks = true
 csharp_preserve_single_line_statements = false
 csharp_keep_existing_arrangement = true
-csharp_keep_existing_declaration_block_arrangement = false
 
 # Spacing
 csharp_space_after_cast = false
