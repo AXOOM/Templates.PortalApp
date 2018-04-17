@@ -32,12 +32,12 @@ export class AuthGuard implements CanActivate {
         return true;
 
       } else {
-        this.oauthService.initImplicitFlow(url.replace(';', '~semicolon~'));
+        this.oauthService.initImplicitFlow();
         return true;
       }
     }).catch((reason) => {
       console.error(reason);
-      this.oauthService.initImplicitFlow(url.replace(';', '~semicolon~'));
+      this.oauthService.initImplicitFlow();
       return true;
     });
   }
