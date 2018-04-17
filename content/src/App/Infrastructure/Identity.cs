@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -15,14 +15,20 @@ namespace Axoom.MyApp.Infrastructure
     {
         public static IdentityServerAuthenticationOptions GetOptions(IConfiguration config)
         {
-            var options = config.GetValue<IdentityServerAuthenticationOptions>("Identity");
-            options.Authority = options.Authority ?? config.GetValue<string>("IDENTITY_SERVER_URI");
+            var options = new IdentityServerAuthenticationOptions();
+            Bind(config, options);
             return options;
+        }
+
+        private static void Bind(IConfiguration config, IdentityServerAuthenticationOptions options)
+        {
+            options.Authority = config.GetValue<string>("IDENTITY_SERVER_URI");
+            config.Bind("Identity", options);
         }
 
         public static void AddAuthentication(this IServiceCollection services, IConfiguration config)
             => services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                       .AddIdentityServerAuthentication(options => config.Bind("Identity", options));
+                       .AddIdentityServerAuthentication(options => Bind(config, options));
 
         public static void AddAuthorizeFilter(this MvcOptions options, IdentityServerAuthenticationOptions identityOptions)
             => options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(identityOptions.ApiName)));

@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -14,13 +14,12 @@ namespace Axoom.MyApp.Infrastructure
         public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration config)
         {
             var identityOptions = Identity.GetOptions(config);
+            services.AddSingleton(identityOptions);
+
             bool identityEnabled = identityOptions.Authority != null;
 
             if (identityEnabled)
-            {
-                services.AddSingleton(identityOptions)
-                        .AddAuthentication(config);
-            }
+                services.AddAuthentication(config);
 
             services.AddMvc(options =>
             {
