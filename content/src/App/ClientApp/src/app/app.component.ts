@@ -26,7 +26,7 @@ export class AppComponent {
     if (authConfig.issuer) {
       console.log('Authentication is activated. User will be redirected to the IdentityServer for login.');
     } else {
-      console.log(`Authentication is not activated. Add identityServerUri in '/assets/config.js' file.`);
+      console.log(`Authentication is not activated.`);
       return;
     }
 
