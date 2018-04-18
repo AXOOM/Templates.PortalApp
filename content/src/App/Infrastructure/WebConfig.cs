@@ -63,22 +63,19 @@ namespace Axoom.MyApp.Infrastructure
                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"));
             }
             else
-            {
                 app.UseExceptionHandler("/Home/Error");
-            }
 
             app.UseAuthentication()
                .UseStaticFiles()
                .UseSpaStaticFiles();
 
-            app
-                .UseMvc(routes =>
+            app.UseMvc(routes =>
                 {
                     routes.MapRoute(
                         name: "default",
                         template: "{controller}/{action=Index}/{id?}");
                 })
-                .UseSpa(spa =>
+               .UseSpa(spa =>
                 {
                     spa.Options.SourcePath = "ClientApp";
                     if (devMode)

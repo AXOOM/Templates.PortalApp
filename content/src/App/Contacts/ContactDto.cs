@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Axoom.MyApp.Contacts
 {
@@ -27,7 +27,7 @@ namespace Axoom.MyApp.Contacts
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return (obj is ContactDto other)
+            return obj is ContactDto other
                 && Id == other.Id
                 && FirstName == other.FirstName
                 && LastName == other.LastName;
@@ -37,7 +37,7 @@ namespace Axoom.MyApp.Contacts
         {
             unchecked
             {
-                var hashCode = (Id != null ? Id.GetHashCode() : 0);
+                int hashCode = Id != null ? Id.GetHashCode() : 0;
                 hashCode = (hashCode * 397) ^ (FirstName != null ? FirstName.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (LastName != null ? LastName.GetHashCode() : 0);
                 return hashCode;

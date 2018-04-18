@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
@@ -19,7 +19,9 @@ namespace Axoom.MyApp
         private readonly ICrudService<T> _service;
 
         protected CollectionController(ICrudService<T> service)
-            => _service = service;
+        {
+            _service = service;
+        }
 
         /// <summary>
         /// Returns all elements.
@@ -96,9 +98,11 @@ namespace Axoom.MyApp
         private static readonly MethodInfo GetIdMethod;
 
         static CollectionController()
-            => GetIdMethod = typeof(T).GetTypeInfo()
-                                      .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                                      .First(x => x.GetMethod != null && x.GetCustomAttribute<KeyAttribute>(inherit: true) != null)
-                                      .GetMethod;
+        {
+            GetIdMethod = typeof(T).GetTypeInfo()
+                                   .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                                   .First(x => x.GetMethod != null && x.GetCustomAttribute<KeyAttribute>(inherit: true) != null)
+                                   .GetMethod;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Axoom.Extensions.Logging.Console;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

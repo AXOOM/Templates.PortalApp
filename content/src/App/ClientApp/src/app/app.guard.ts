@@ -1,7 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, CanLoad, Route } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { OAuthEvent } from 'angular-oauth2-oidc/events';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -12,13 +11,15 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const url: string = state.url;
+    const url = state.url;
     return this.checkLogin(url, state);
   }
 
   private checkLogin(url: string, routeState: RouterStateSnapshot): boolean | Promise<boolean> {
 
-    if (this.oauthService.hasValidIdToken() && this.oauthService.hasValidAccessToken()) { return true; }
+    if (this.oauthService.hasValidIdToken() && this.oauthService.hasValidAccessToken()) {
+      return true;
+    }
 
     return this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
 
@@ -26,7 +27,7 @@ export class AuthGuard implements CanActivate {
 
         this.oauthService.loadUserProfile().then(o => {
           const profile = (o as UserProfile);
-          console.log('logged-in-user: ' + profile.preferred_username);
+          console.log(`logged-in-user: ${profile.preferred_username}`);
         });
 
         return true;
@@ -43,6 +44,7 @@ export class AuthGuard implements CanActivate {
   }
 
 }
+
 export interface UserProfile {
   sid: string;
   email?: string;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using JetBrains.Annotations;
@@ -32,13 +32,12 @@ namespace Axoom.MyApp.Infrastructure
         {
             try
             {
-                Policy
-                    .Handle<SocketException>()
-                    .WaitAndRetry(
-                        sleepDurations: _options.Value.StartupRetries,
-                        onRetry: (ex, timeSpan)
-                            => _logger.LogWarning($"Problem connecting to external service; retrying in {timeSpan}.\n ({ex.GetType().Name}: {ex.Message})"))
-                    .Execute(action);
+                Policy.Handle<SocketException>()
+                      .WaitAndRetry(
+                           sleepDurations: _options.Value.StartupRetries,
+                           onRetry: (ex, timeSpan)
+                               => _logger.LogWarning($"Problem connecting to external service; retrying in {timeSpan}.\n ({ex.GetType().Name}: {ex.Message})"))
+                      .Execute(action);
             }
             catch (Exception ex)
             {

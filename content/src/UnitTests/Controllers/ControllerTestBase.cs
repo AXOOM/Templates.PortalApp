@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using Axoom.MyApp.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
@@ -17,9 +17,9 @@ namespace Axoom.MyApp.Controllers
         protected ControllerTestBase()
         {
             _server = new TestServer(new WebHostBuilder()
-                .ConfigureServices(x => x.AddWeb(new ConfigurationBuilder().Build()))
-                .ConfigureServices(ConfigureService)
-                .Configure(x => x.UseWeb()));
+                                    .ConfigureServices(x => x.AddWeb(new ConfigurationBuilder().Build()))
+                                    .ConfigureServices(ConfigureService)
+                                    .Configure(x => x.UseWeb()));
             Client = _server.CreateClient();
         }
 

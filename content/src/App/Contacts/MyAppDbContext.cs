@@ -1,4 +1,4 @@
-﻿using Axoom.MyApp.Contacts;
+using Axoom.MyApp.Contacts;
 using Microsoft.EntityFrameworkCore;
 
 // ReSharper disable once CheckNamespace

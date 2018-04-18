@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +16,9 @@ namespace Axoom.MyApp.Contacts
 
         public ContactsController(IContactService service)
             : base(service)
-            => _service = service;
+        {
+            _service = service;
+        }
 
         /// <summary>
         /// Returns the note for a specific contact.

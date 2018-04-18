@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthConfig, JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
+import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
 import { OAuthEvent } from 'angular-oauth2-oidc/events';
 
-import { AppConfigService, OAuthConfig } from './app-config';
+import { AppConfigService } from './app-config';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,7 @@ import { AppConfigService, OAuthConfig } from './app-config';
 export class AppComponent {
   title = 'app';
   private oAuthConfig: OAuthService;
+
   constructor(
     private oauthService: OAuthService,
     private configService: AppConfigService

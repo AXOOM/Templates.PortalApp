@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Axoom.MyApp.Contacts
 {

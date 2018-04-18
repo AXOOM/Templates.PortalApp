@@ -7,7 +7,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
   templateUrl: './contacts.component.html'
 })
 export class ContactsComponent {
-  public contacts: ContactDto[];
+  contacts: ContactDto[];
 
   constructor(
     http: HttpClient,
@@ -19,13 +19,14 @@ export class ContactsComponent {
     };
 
     http.get<ContactDto[]>(baseUrl + 'api/contacts/', getOptions).subscribe(result => {
-      this.contacts = result;
-    }, error => console.error(error));
+        this.contacts = result;
+      },
+      error => console.error(error));
   }
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
-      'Authorization': 'Bearer ' + this.oauthService.getAccessToken()
+      'Authorization': `Bearer ${this.oauthService.getAccessToken()}`
     });
   }
 }

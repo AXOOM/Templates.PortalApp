@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Axoom.MyApp
@@ -7,10 +7,10 @@ namespace Axoom.MyApp
     {
         public static void Main(string[] args) => BuildWebHost(args).Run();
 
-        public static IWebHost BuildWebHost(string[] args) => new WebHostBuilder()
-            .UseKestrel()
-            .UseContentRoot(Directory.GetCurrentDirectory())
-            .UseStartup<Startup>()
-            .Build();
+        public static IWebHost BuildWebHost(string[] args)
+            => new WebHostBuilder().UseKestrel()
+                                   .UseContentRoot(Directory.GetCurrentDirectory())
+                                   .UseStartup<Startup>()
+                                   .Build();
     }
 }
