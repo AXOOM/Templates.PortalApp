@@ -12,7 +12,7 @@ namespace Axoom.MyApp.Infrastructure
                        .AddOptions()
                        .AddAxoomLogging(configuration)
                        .AddPolicies(configuration.GetSection("Policies"))
-                       .AddMetrics()
+                       .AddMetrics(configuration)
                        .AddWeb(configuration);
 
         public static IServiceProvider UseInfrastructure(this IApplicationBuilder app)
@@ -20,7 +20,7 @@ namespace Axoom.MyApp.Infrastructure
             var provider = app.ApplicationServices;
 
             provider.UseAxoomLogging();
-            provider.ExposeMetrics(port: 5000);
+            provider.ExposeMetrics();
 
             app.UseWeb();
 
