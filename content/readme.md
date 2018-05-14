@@ -20,8 +20,8 @@ To build and test with a debugger:
     # Open src\Axoom.MyApp.sln in Visual Studio and run
 
  * Portal: http://myinstance.local.mayoom.eu/
- * My App: http://axoom-myapp-myinstance.local.myaxoom.eu/
- * My App API: http://axoom-myapp-myinstance.local.myaxoom.eu/swagger/
+ * My App: http://vendorname-appname-myinstance.local.myaxoom.eu/
+ * My App API: http://vendorname-appname-myinstance.local.myaxoom.eu/swagger/
 
 
 ### Add Authentication and Authorization
@@ -48,8 +48,8 @@ Just uncomment the line with identityServerUri in assets/config.js to activate i
 ```javascript
 AXOOM_APP.CONFIG = {
     OAUTH: {
-        clientId: 'axoom-myapp',
-        scope: 'openid profile email axoom-myapp.api',
+        clientId: 'vendorname-appname',
+        scope: 'openid profile email vendorname-appname.api',
         // Uncomment below line to activate Authentication in frontend.
         //identityServerUri: 'http://identity-myinstance.local.myaxoom.eu'
     }
@@ -89,7 +89,7 @@ You can use below authorization header to pass access_token for web api access.
 
 ### Feed URI
 
-http://assets.axoom.cloud/apps/axoom-myapp.xml
+http://assets.axoom.cloud/apps/vendorname-appname.xml
 
 ### External environment
 

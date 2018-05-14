@@ -23,8 +23,8 @@ namespace Axoom.MyApp.Infrastructure
         public IActionResult ReadOAuth() => Content(@"﻿var AXOOM_APP = AXOOM_APP || {};
 AXOOM_APP.CONFIG = {
     OAUTH: {
-        clientId: 'axoom-myapp',
-        scope: 'openid profile email axoom-myapp.api',
+        clientId: 'vendorname-appname',
+        scope: 'openid profile email vendorname-appname.api',
         identityServerUri: '" + (_identityOptions.Authority ?? "") + @"'
     }
 };", "application/javascript");

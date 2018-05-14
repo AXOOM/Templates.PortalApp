@@ -2,8 +2,8 @@
 version: '3'
 
 services:
-  axoom-myapp:
-    image: ${DOCKER_REGISTRY-docker-ci.axoom.cloud}/apps/axoom-myapp:${VERSION-0.1-pre}
+  vendorname-appname:
+    image: ${DOCKER_REGISTRY-docker-ci.axoom.cloud}/apps/vendorname-appname:${VERSION-0.1-pre}
     build:
       context: ./App
       dockerfile: Dockerfile

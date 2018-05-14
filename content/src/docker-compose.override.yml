@@ -2,8 +2,8 @@
 version: '3'
 
 services:
-  axoom-myapp:
-    image: axoom-myapp
+  vendorname-appname:
+    image: vendorname-appname
     ports:
       - "12345:80" # Keep in sync with ../deploy/local.docker-compose.override.yml
     environment:

@@ -1,10 +1,10 @@
 {
-  "name": "axoom-myapp.api",
+  "name": "vendorname-appname.api",
   "apiSecrets": ["secret"],
   "scopes": [
     {
-      "name": "axoom-myapp.api",
-      "claimTypes": ["axoom-myapp.api.role"]
+      "name": "vendorname-appname.api",
+      "claimTypes": ["vendorname-appname.api.role"]
     }
   ]
 }

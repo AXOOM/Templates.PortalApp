@@ -1,5 +1,5 @@
 {
-  "AppId": "axoom-myapp",
+  "AppId": "vendorname-appname",
   "Version": "<VERSION>",
   "DisplayName": {
     "en": "My App",
@@ -15,11 +15,11 @@
         "en": "My App",
         "de": "My App"
       },
-      "TargetUrl": "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}",
+      "TargetUrl": "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}",
       "Category": "service",
       "Icon": {
-        "Url_512x512px": "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}/assets/icons/icon.svg",
-        "Url_32x32px": "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}/assets/icons/icon.svg"
+        "Url_512x512px": "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}/assets/icons/icon.svg",
+        "Url_32x32px": "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}/assets/icons/icon.svg"
       }
     }
   ],

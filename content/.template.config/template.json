@@ -20,7 +20,7 @@
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"axoom-myapp"
+      "replaces":"vendorname-appname"
     },
     "friendlyName": {
       "type": "parameter",
