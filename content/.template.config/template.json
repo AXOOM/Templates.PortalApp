@@ -16,11 +16,17 @@
     "B74301C8-0759-45FE-BA6C-E832BABE08E5"
   ],
   "symbols": {
-    "appKey": {
+    "vendorName": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"vendorname-appname"
+      "replaces":"vendorname"
+    },
+    "appName": {
+      "type": "parameter",
+      "dataType": "string",
+      "isRequired": true,
+      "replaces":"appname"
     },
     "friendlyName": {
       "type": "parameter",
