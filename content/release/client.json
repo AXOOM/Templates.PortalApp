@@ -13,7 +13,6 @@
   "AllowedScopes": [
     "openid",
     "profile",
-    "email",
     "vendorname-appname.api"
   ]
 }
