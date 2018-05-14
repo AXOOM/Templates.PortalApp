@@ -22,7 +22,7 @@
 }
 , {
   "ClientId": "vendorname-appname-swagger",
-  "ClientSecrets": [ "secret" ],
+  "ClientSecrets": [ "${vendorname_appname_IDENTITY_CLIENT_SECRET:-vendorname-appname-identity-client-secret}" ],
   "ClientName": "Swagger",
   "RequireConsent": false,
   "AccessTokenType": "Jwt",

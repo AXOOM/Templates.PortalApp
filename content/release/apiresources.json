@@ -1,6 +1,6 @@
 {
   "name": "vendorname-appname.api",
-  "apiSecrets": ["secret"],
+  "apiSecrets": ["${vendorname_appname_IDENTITY_API_SECRET:-vendorname-appname-identity-api-secret}"],
   "scopes": [
     {
       "name": "vendorname-appname.api",
