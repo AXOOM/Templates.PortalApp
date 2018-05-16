@@ -9,7 +9,6 @@ exported_environment:
 external_environment:
   required:
   optional:
-    - TENANT_HTTP_HEADER_NAME
     - vendorname_appname_IDENTITY_CLIENT_SECRET
 
 
