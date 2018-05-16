@@ -9,7 +9,7 @@ exported_environment:
 external_environment:
   required:
   optional:
-    - vendorname_appname_IDENTITY_CLIENT_SECRET
+    - VENDORNAME_APPNAME_IDENTITY_CLIENT_SECRET
 
 
 mixins:
@@ -26,5 +26,5 @@ compose:
     services:
       vendorname-appname:
         environment:
-          IDENTITY__CLIENT_SECRET: ${vendorname_appname_IDENTITY_CLIENT_SECRET:-vendorname-appname-identity-client-secret}
-          IDENTITY__API_SECRET: ${vendorname_appname_IDENTITY_API_SECRET:-vendorname-appname-identity-api-secret}
+          IDENTITY__CLIENT_SECRET: ${VENDORNAME_APPNAME_IDENTITY_CLIENT_SECRET:-vendorname-appname-identity-client-secret}
+          IDENTITY__API_SECRET: ${VENDORNAME_APPNAME_IDENTITY_API_SECRET:-vendorname-appname-identity-api-secret}
