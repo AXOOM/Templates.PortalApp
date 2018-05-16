@@ -7,7 +7,7 @@
   ],
   "AllowAccessTokensViaBrowser": true,
   "RedirectUris": [
-    "/",
+    "",
     "/silentRenew.html"
   ],
   "AllowedScopes": [
@@ -20,7 +20,6 @@
   "ClientId": "vendorname-appname-swagger",
   "ClientSecrets": [ "${VENDORNAME_APPNAME_IDENTITY_CLIENT_SECRET:-vendorname-appname-identity-client-secret}" ],
   "ClientName": "Swagger",
-  "RequireConsent": false,
   "AccessTokenType": "Jwt",
   "AllowedGrantTypes": [
     "implicit"
