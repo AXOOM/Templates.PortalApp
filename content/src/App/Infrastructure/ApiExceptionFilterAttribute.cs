@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Axoom.MyApp.Infrastructure
+namespace VendorName.AppName.Infrastructure
 {
     /// <summary>
     /// Reports exceptions with appropriate HTTP status codes.

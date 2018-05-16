@@ -1,12 +1,12 @@
 using System;
 using System.Net.Http;
-using Axoom.MyApp.Infrastructure;
+using VendorName.AppName.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Axoom.MyApp.Controllers
+namespace VendorName.AppName.Controllers
 {
     public abstract class ControllerTestBase : IDisposable
     {

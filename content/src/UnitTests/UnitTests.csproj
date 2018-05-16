@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>Axoom.MyApp.UnitTests</AssemblyName>
-    <RootNamespace>Axoom.MyApp</RootNamespace>
+    <AssemblyName>VendorName.AppName.UnitTests</AssemblyName>
+    <RootNamespace>VendorName.AppName</RootNamespace>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <IsPackable>False</IsPackable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>

@@ -1,8 +1,8 @@
-using Axoom.MyApp.Contacts;
+using VendorName.AppName.Contacts;
 using Microsoft.EntityFrameworkCore;
 
 // ReSharper disable once CheckNamespace
-namespace Axoom.MyApp
+namespace VendorName.AppName
 {
     public partial class MyAppDbContext
     {

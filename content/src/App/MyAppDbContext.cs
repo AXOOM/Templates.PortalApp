@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Axoom.MyApp
+namespace VendorName.AppName
 {
     /// <summary>
     /// Describes the service's database model.

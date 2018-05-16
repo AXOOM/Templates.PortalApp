@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Axoom.MyApp.Contacts
+namespace VendorName.AppName.Contacts
 {
     /// <summary>
     /// Manages contacts in an address book.

@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Axoom.MyApp
+namespace VendorName.AppName
 {
     public static class Program
     {

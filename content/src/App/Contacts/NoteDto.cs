@@ -1,4 +1,4 @@
-namespace Axoom.MyApp.Contacts
+namespace VendorName.AppName.Contacts
 {
     /// <summary>
     /// A representation of a note for serialization.

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Axoom.MyApp.Contacts
+namespace VendorName.AppName.Contacts
 {
     /// <summary>
     /// Manages contacts in an address book.

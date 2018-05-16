@@ -1,6 +1,6 @@
 using System;
 
-namespace Axoom.MyApp.Contacts
+namespace VendorName.AppName.Contacts
 {
     /// <summary>
     /// Used to report metrics relating to contacts.

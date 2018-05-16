@@ -2,7 +2,7 @@ using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Axoom.MyApp.Infrastructure
+namespace VendorName.AppName.Infrastructure
 {
     /// <summary>
     /// Provides global configuration.
