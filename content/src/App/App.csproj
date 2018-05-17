@@ -17,9 +17,9 @@
 
   <PropertyGroup>
     <Description>My Service</Description>
-    <Authors>AXOOM GmbH</Authors>
-    <Company>AXOOM GmbH</Company>
-    <Copyright>Copyright (c) AXOOM GmbH</Copyright>
+    <Authors>MyVendorName</Authors>
+    <Company>MyVendorName</Company>
+    <Copyright>Copyright (c) MyVendorName</Copyright>
     <PackageIconUrl>https://nuget.inside-axoom.org/resources/axoom_logo.png</PackageIconUrl>
     <RepositoryUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/MyVendorName.MyAppName</RepositoryUrl>
     <PackageProjectUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/MyVendorName.MyAppName?_a=readme&amp;fullScreen=true</PackageProjectUrl>

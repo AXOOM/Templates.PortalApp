@@ -39,9 +39,9 @@ namespace MyVendorName.MyAppName.Infrastructure
                         Version = "v1",
                         Contact = new Contact
                         {
-                            Email = "developer@axoom.com",
-                            Name = "AXOOM GmbH",
-                            Url = "http://developer.axoom.com"
+                            Email = "developer@myvendorname.com",
+                            Name = "MyVendorName",
+                            Url = "http://www.myvendorname.com"
                         }
                     });
                 options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "MyVendorName.MyAppName.xml"));
