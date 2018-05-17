@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <AssemblyName>VendorName.AppName</AssemblyName>
-    <RootNamespace>VendorName.AppName</RootNamespace>
+    <AssemblyName>MyVendorName.MyAppName</AssemblyName>
+    <RootNamespace>MyVendorName.MyAppName</RootNamespace>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <IsPackable>False</IsPackable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -21,8 +21,8 @@
     <Company>AXOOM GmbH</Company>
     <Copyright>Copyright (c) AXOOM GmbH</Copyright>
     <PackageIconUrl>https://nuget.inside-axoom.org/resources/axoom_logo.png</PackageIconUrl>
-    <RepositoryUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/VendorName.AppName</RepositoryUrl>
-    <PackageProjectUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/VendorName.AppName?_a=readme&amp;fullScreen=true</PackageProjectUrl>
+    <RepositoryUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/MyVendorName.MyAppName</RepositoryUrl>
+    <PackageProjectUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/MyVendorName.MyAppName?_a=readme&amp;fullScreen=true</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

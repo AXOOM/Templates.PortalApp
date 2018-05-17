@@ -2,7 +2,7 @@ using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace VendorName.AppName.Infrastructure
+namespace MyVendorName.MyAppName.Infrastructure
 {
     /// <summary>
     /// Provides global configuration.
@@ -23,8 +23,8 @@ namespace VendorName.AppName.Infrastructure
         public IActionResult ReadOAuth() => Content(@"﻿var AXOOM_APP = AXOOM_APP || {};
 AXOOM_APP.CONFIG = {
     OAUTH: {
-        clientId: 'vendorname-appname',
-        scope: 'openid profile email vendorname-appname.api',
+        clientId: 'myvendorname-myappname',
+        scope: 'openid profile email myvendorname-myappname.api',
         identityServerUri: '" + (_identityOptions.Authority ?? "") + @"'
     }
 };", "application/javascript");

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 
-namespace VendorName.AppName
+namespace MyVendorName.MyAppName
 {
     public static class ServiceCollectionExtensions
     {

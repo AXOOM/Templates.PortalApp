@@ -1,12 +1,12 @@
 using System;
 using System.Net.Http;
-using VendorName.AppName.Infrastructure;
+using MyVendorName.MyAppName.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace VendorName.AppName.Controllers
+namespace MyVendorName.MyAppName.Controllers
 {
     public abstract class ControllerTestBase : IDisposable
     {

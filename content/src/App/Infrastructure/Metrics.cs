@@ -6,7 +6,7 @@ using Nexogen.Libraries.Metrics;
 using Nexogen.Libraries.Metrics.Prometheus;
 using Nexogen.Libraries.Metrics.Prometheus.Standalone;
 
-namespace VendorName.AppName.Infrastructure
+namespace MyVendorName.MyAppName.Infrastructure
 {
     public static class Metrics
     {

@@ -2,8 +2,8 @@
 version: '3'
 
 services:
-  vendorname-appname:
-    image: vendorname-appname
+  myvendorname-myappname:
+    image: myvendorname-myappname
     ports:
       - "12345:80" # Keep in sync with ../deploy/local.docker-compose.override.yml
     environment:

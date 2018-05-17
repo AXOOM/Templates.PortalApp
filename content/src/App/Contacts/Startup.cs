@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace VendorName.AppName.Contacts
+namespace MyVendorName.MyAppName.Contacts
 {
     public static class Startup
     {

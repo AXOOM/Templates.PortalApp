@@ -1,6 +1,6 @@
 using System;
-using VendorName.AppName.Contacts;
-using VendorName.AppName.Infrastructure;
+using MyVendorName.MyAppName.Contacts;
+using MyVendorName.MyAppName.Infrastructure;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace VendorName.AppName
+namespace MyVendorName.MyAppName
 {
     /// <summary>
     /// Startup class used by ASP.NET Core.

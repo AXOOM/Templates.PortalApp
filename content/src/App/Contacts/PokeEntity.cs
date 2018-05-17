@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
-namespace VendorName.AppName.Contacts
+namespace MyVendorName.MyAppName.Contacts
 {
     /// <summary>
     /// A representation of a poke for database storage.

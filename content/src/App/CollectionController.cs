@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace VendorName.AppName
+namespace MyVendorName.MyAppName
 {
     /// <summary>
     /// Common base class for controllers that conform to the "collection" REST pattern.

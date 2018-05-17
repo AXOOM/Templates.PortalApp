@@ -1,6 +1,6 @@
 using System;
 
-namespace VendorName.AppName.Contacts
+namespace MyVendorName.MyAppName.Contacts
 {
     /// <summary>
     /// Used to report metrics relating to contacts.

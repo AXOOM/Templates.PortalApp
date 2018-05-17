@@ -12,6 +12,6 @@ The `content` directory is what actually gets packaged into the template. The fi
 ## Using
 
 To install the template run `dotnet new --install Axoom.Templates.PortalApp::*`.
-To use the template run `dotnet new axoom-portal-app --vendorName MyCompany --appName MyApp --friendlyName "My App" --description "my description"`.
+To use the template run `dotnet new axoom-portal-app --myVendorName MyCompany --myAppName MyApp --friendlyName "My App" --description "my description"`.
 
-Note: `appName` and `vendorName` must only contain letters (`[a-zA-Z]`)
+Note: `myAppName` and `myVendorName` must only contain letters (`[a-zA-Z]`)

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace VendorName.AppName.Contacts
+namespace MyVendorName.MyAppName.Contacts
 {
     /// <summary>
     /// Provides access to contacts in an address book.

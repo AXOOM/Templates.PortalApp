@@ -8,7 +8,7 @@
   "tags": {
     "language": "C#"
   },
-  "sourceName": "VendorName.AppName",
+  "sourceName": "MyVendorName.MyAppName",
   "preferNameDirectory": true,
   "guids": [
     "837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5",
@@ -16,17 +16,17 @@
     "B74301C8-0759-45FE-BA6C-E832BABE08E5"
   ],
   "symbols": {
-    "vendorName": {
+    "myVendorName": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"vendorname"
+      "replaces":"myvendorname"
     },
-    "appName": {
+    "myAppName": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"appname"
+      "replaces":"myappname"
     },
     "friendlyName": {
       "type": "parameter",

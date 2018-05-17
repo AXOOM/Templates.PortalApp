@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace VendorName.AppName
+namespace MyVendorName.MyAppName
 {
     /// <summary>
     /// Describes the service's database model.

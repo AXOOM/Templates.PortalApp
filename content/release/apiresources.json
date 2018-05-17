@@ -1,10 +1,10 @@
 {
-  "name": "vendorname-appname.api",
-  "apiSecrets": ["${VENDORNAME_APPNAME_IDENTITY_API_SECRET:-vendorname-appname-identity-api-secret}"],
+  "name": "myvendorname-myappname.api",
+  "apiSecrets": ["${MYVENDORNAME_MYAPPNAME_IDENTITY_API_SECRET:-myvendorname-myappname-identity-api-secret}"],
   "scopes": [
     {
-      "name": "vendorname-appname.api",
-      "claimTypes": ["vendorname-appname.api.role"]
+      "name": "myvendorname-myappname.api",
+      "claimTypes": ["myvendorname-myappname.api.role"]
     }
   ]
 }

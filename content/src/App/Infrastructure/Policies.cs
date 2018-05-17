@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Polly;
 
-namespace VendorName.AppName.Infrastructure
+namespace MyVendorName.MyAppName.Infrastructure
 {
     /// <summary>
     /// Provides error handling and retry policies.

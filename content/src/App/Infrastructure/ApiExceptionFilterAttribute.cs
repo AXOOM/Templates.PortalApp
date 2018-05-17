@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace VendorName.AppName.Infrastructure
+namespace MyVendorName.MyAppName.Infrastructure
 {
     /// <summary>
     /// Reports exceptions with appropriate HTTP status codes.

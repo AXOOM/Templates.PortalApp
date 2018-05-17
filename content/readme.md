@@ -17,11 +17,11 @@ To build and test without a debugger:
 To build and test with a debugger:
 
     .\build.ps1 -DeployLocal -DebugOverride
-    # Open src\VendorName.AppName.sln in Visual Studio and run
+    # Open src\MyVendorName.MyAppName.sln in Visual Studio and run
 
  * Portal: http://myinstance.local.mayoom.eu/
- * My App: http://vendorname-appname-myinstance.local.myaxoom.eu/
- * My App API: http://vendorname-appname-myinstance.local.myaxoom.eu/swagger/
+ * My App: http://myvendorname-myappname-myinstance.local.myaxoom.eu/
+ * My App API: http://myvendorname-myappname-myinstance.local.myaxoom.eu/swagger/
 
 
 ### Add Authentication and Authorization
@@ -48,8 +48,8 @@ Just uncomment the line with identityServerUri in assets/config.js to activate i
 ```javascript
 AXOOM_APP.CONFIG = {
     OAUTH: {
-        clientId: 'vendorname-appname',
-        scope: 'openid profile email vendorname-appname.api',
+        clientId: 'myvendorname-myappname',
+        scope: 'openid profile email myvendorname-myappname.api',
         // Uncomment below line to activate Authentication in frontend.
         //identityServerUri: 'http://identity-myinstance.local.myaxoom.eu'
     }
@@ -89,7 +89,7 @@ You can use below authorization header to pass access_token for web api access.
 
 ### Feed URI
 
-http://assets.axoom.cloud/apps/vendorname-appname.xml
+http://assets.axoom.cloud/apps/myvendorname-myappname.xml
 
 ### External environment
 

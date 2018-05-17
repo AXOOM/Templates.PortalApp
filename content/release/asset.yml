@@ -1,7 +1,7 @@
-feed_uri: http://assets.axoom.cloud/apps/vendorname-appname.xml
+feed_uri: http://assets.axoom.cloud/apps/myvendorname-myappname.xml
 name: My App
 summary: my description
-homepage: https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/VendorName.AppName?_a=readme&fullScreen=true
+homepage: https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/MyVendorName.MyAppName?_a=readme&fullScreen=true
 
 exported_environment:
   API_RESOURCES: <API_RESOURCES>
@@ -9,13 +9,13 @@ exported_environment:
 external_environment:
   required:
   optional:
-    - VENDORNAME_APPNAME_IDENTITY_CLIENT_SECRET
+    - MYVENDORNAME_MYAPPNAME_IDENTITY_CLIENT_SECRET
 
 
 mixins:
   - feed_uri: http://assets.axoom.cloud/mixins/axoom-portal-app.xml
     parameters:
-      APPKEY: vendorname-appname
+      APPKEY: myvendorname-myappname
       DOCKER_REGISTRY: <DOCKER_REGISTRY>
       VERSION: <VERSION>
       PORTAL_APP: <PORTAL_APP>
@@ -24,7 +24,7 @@ mixins:
 compose:
   - version: '3.3'
     services:
-      vendorname-appname:
+      myvendorname-myappname:
         environment:
-          IDENTITY__CLIENT_SECRET: ${VENDORNAME_APPNAME_IDENTITY_CLIENT_SECRET:-vendorname-appname-identity-client-secret}
-          IDENTITY__API_SECRET: ${VENDORNAME_APPNAME_IDENTITY_API_SECRET:-vendorname-appname-identity-api-secret}
+          IDENTITY__CLIENT_SECRET: ${MYVENDORNAME_MYAPPNAME_IDENTITY_CLIENT_SECRET:-myvendorname-myappname-identity-client-secret}
+          IDENTITY__API_SECRET: ${MYVENDORNAME_MYAPPNAME_IDENTITY_API_SECRET:-myvendorname-myappname-identity-api-secret}

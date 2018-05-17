@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace VendorName.AppName.Contacts
+namespace MyVendorName.MyAppName.Contacts
 {
     /// <summary>
     /// A representation of a contact for serialization.

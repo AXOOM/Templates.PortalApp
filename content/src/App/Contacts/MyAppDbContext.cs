@@ -1,8 +1,8 @@
-using VendorName.AppName.Contacts;
+using MyVendorName.MyAppName.Contacts;
 using Microsoft.EntityFrameworkCore;
 
 // ReSharper disable once CheckNamespace
-namespace VendorName.AppName
+namespace MyVendorName.MyAppName
 {
     public partial class MyAppDbContext
     {
