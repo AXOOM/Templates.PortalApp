@@ -1,28 +1,15 @@
 {
   "AppId": "vendorname-appname",
-  "Version": "<VERSION>",
   "DisplayName": {
-    "en": "My App",
-    "de": "My App"
+    "en": "My App"
   },
   "Description": {
-    "en": "my description",
-    "de": "my description"
+    "en": "my description"
   },
-  "NavigationEntries": [
-    {
-      "LinkText": {
-        "en": "My App",
-        "de": "My App"
-      },
-      "TargetUrl": "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}",
-      "Category": "service",
-      "Icon": {
-        "Url_512x512px": "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}/assets/icons/icon.svg",
-        "Url_32x32px": "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}/assets/icons/icon.svg"
-      }
-    }
-  ],
+  "DefaultIcon": {
+    "Url_512x512px": "assets/icons/icon.svg"
+  },
+  "DefaultCategory": "service",
   "Support": "apps@axoom.com",
   "Website": "www.axoom.com"
 }

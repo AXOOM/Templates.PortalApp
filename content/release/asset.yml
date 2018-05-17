@@ -6,6 +6,12 @@ homepage: https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/VendorName.AppName?_
 exported_environment:
   API_RESOURCES: <API_RESOURCES>
 
+external_environment:
+  required:
+  optional:
+    - VENDORNAME_APPNAME_IDENTITY_CLIENT_SECRET
+
+
 mixins:
   - feed_uri: http://assets.axoom.cloud/mixins/axoom-portal-app.xml
     parameters:
@@ -17,3 +23,8 @@ mixins:
 
 compose:
   - version: '3.3'
+    services:
+      vendorname-appname:
+        environment:
+          IDENTITY__CLIENT_SECRET: ${VENDORNAME_APPNAME_IDENTITY_CLIENT_SECRET:-vendorname-appname-identity-client-secret}
+          IDENTITY__API_SECRET: ${VENDORNAME_APPNAME_IDENTITY_API_SECRET:-vendorname-appname-identity-api-secret}

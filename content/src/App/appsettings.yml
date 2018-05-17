@@ -17,6 +17,7 @@ Database:
 
 Identity:
   #Authority: http://identity-myinstance.local.myaxoom.eu
+  ClientSecret: vendorname-appname-identity-client-secret
   ApiName: vendorname-appname.api
-  ApiSecret: secret
+  ApiSecret: vendorname-appname-identity-api-secret
   RequireHttpsMetadata: false

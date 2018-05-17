@@ -7,42 +7,32 @@
   ],
   "AllowAccessTokensViaBrowser": true,
   "RedirectUris": [
-    "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}",
-    "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}/silentRenew.html"
+    "",
+    "/silentRenew.html"
   ],
   "AllowedScopes": [
     "openid",
     "profile",
-    "email",
     "vendorname-appname.api"
-  ],
-  "AllowedCorsOrigins": [
-    "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}"
   ]
 }
 , {
   "ClientId": "vendorname-appname-swagger",
-  "ClientSecrets": [ "secret" ],
+  "ServiceNameHostPart": "vendorname-appname",
+  "ClientSecrets": [ "${VENDORNAME_APPNAME_IDENTITY_CLIENT_SECRET:-vendorname-appname-identity-client-secret}" ],
   "ClientName": "Swagger",
-  "RequireConsent": false,
   "AccessTokenType": "Jwt",
   "AllowedGrantTypes": [
     "implicit"
   ],
   "AllowAccessTokensViaBrowser": true,
   "RedirectUris": [
-    "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}/swagger/o2c.html"
+    "/swagger/o2c.html"
   ],
   "AllowedScopes": [
     "openid",
     "profile",
     "email",
     "vendorname-appname.api"
-  ],
-  "PostLogoutRedirectUris": [
-    "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}"
-  ],
-  "AllowedCorsOrigins": [
-    "${PUBLIC_PROTOCOL:-https}://vendorname-appname-${PUBLIC_DOMAIN}"
   ]
 }
