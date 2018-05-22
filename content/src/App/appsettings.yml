@@ -1,3 +1,5 @@
+Port: 80 # Web traffic ingress
+
 Logging:
   LogLevel:
     Default: Debug
