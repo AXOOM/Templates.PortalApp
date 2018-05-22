@@ -7,10 +7,8 @@ exported_environment:
   API_RESOURCES: <API_RESOURCES>
 
 external_environment:
-  required:
   optional:
     - MYVENDORNAME_MYAPPNAME_IDENTITY_CLIENT_SECRET
-
 
 mixins:
   - feed_uri: http://assets.axoom.cloud/mixins/axoom-portal-app.xml

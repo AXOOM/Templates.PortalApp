@@ -10,6 +10,6 @@
     "Url_512x512px": "assets/icons/icon.svg"
   },
   "DefaultCategory": "service",
-  "Support": "support@myvendorname.com",
-  "Website": "www.myvendorname.com"
+  "Support": "support@example.com",
+  "Website": "www.example.com"
 }

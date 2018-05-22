@@ -16,23 +16,29 @@
     "B74301C8-0759-45FE-BA6C-E832BABE08E5"
   ],
   "symbols": {
-    "myVendorName": {
+    "appKey": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"myvendorname"
+      "replaces":"myvendorname-myappname"
     },
-    "myAppName": {
+    "envName": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"myappname"
+      "replaces":"MYVENDORNAME_MYAPPNAME"
     },
     "friendlyName": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
       "replaces":"My App"
+    },
+    "vendorDomain": {
+      "type": "parameter",
+      "dataType": "string",
+      "isRequired": true,
+      "replaces":"example.com"
     },
     "description": {
       "type": "parameter",

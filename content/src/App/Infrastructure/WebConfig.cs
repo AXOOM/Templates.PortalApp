@@ -39,9 +39,8 @@ namespace MyVendorName.MyAppName.Infrastructure
                         Version = "v1",
                         Contact = new Contact
                         {
-                            Email = "developer@myvendorname.com",
-                            Name = "MyVendorName",
-                            Url = "http://www.myvendorname.com"
+                            Email = "developer@example.com",
+                            Url = "http://www.example.com"
                         }
                     });
                 options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "MyVendorName.MyAppName.xml"));
