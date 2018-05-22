@@ -4,6 +4,7 @@
     <AssemblyName>MyVendor.MyApp</AssemblyName>
     <RootNamespace>MyVendor.MyApp</RootNamespace>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <OutputType>Exe</OutputType>
     <IsPackable>False</IsPackable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
