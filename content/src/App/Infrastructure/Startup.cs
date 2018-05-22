@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MyVendorName.MyAppName.Infrastructure
+namespace MyVendor.MyApp.Infrastructure
 {
     public static class Startup
     {

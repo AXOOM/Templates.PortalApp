@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Nexogen.Libraries.Metrics;
 using Nexogen.Libraries.Metrics.Extensions;
 
-namespace MyVendorName.MyAppName.Contacts
+namespace MyVendor.MyApp.Contacts
 {
     /// <summary>
     /// Used to report metrics relating to contacts.

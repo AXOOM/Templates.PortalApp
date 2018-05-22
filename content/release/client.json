@@ -1,5 +1,5 @@
 {
-  "ClientId": "myvendorname-myappname",
+  "ClientId": "myvendor-myapp",
   "ClientName": "My App",
   "RequireConsent": false,
   "AllowedGrantTypes": [
@@ -13,13 +13,13 @@
   "AllowedScopes": [
     "openid",
     "profile",
-    "myvendorname-myappname.api"
+    "myvendor-myapp.api"
   ]
 }
 , {
-  "ClientId": "myvendorname-myappname-swagger",
-  "ServiceNameHostPart": "myvendorname-myappname",
-  "ClientSecrets": [ "${MYVENDORNAME_MYAPPNAME_IDENTITY_CLIENT_SECRET:-myvendorname-myappname-identity-client-secret}" ],
+  "ClientId": "myvendor-myapp-swagger",
+  "ServiceNameHostPart": "myvendor-myapp",
+  "ClientSecrets": [ "${MYVENDOR_MYAPP_IDENTITY_CLIENT_SECRET:-myvendor-myapp-identity-client-secret}" ],
   "ClientName": "Swagger",
   "AccessTokenType": "Jwt",
   "AllowedGrantTypes": [
@@ -33,6 +33,6 @@
     "openid",
     "profile",
     "email",
-    "myvendorname-myappname.api"
+    "myvendor-myapp.api"
   ]
 }

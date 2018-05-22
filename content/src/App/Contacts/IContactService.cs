@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MyVendorName.MyAppName.Contacts
+namespace MyVendor.MyApp.Contacts
 {
     /// <summary>
     /// Manages contacts in an address book.

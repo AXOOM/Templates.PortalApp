@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>MyVendorName.MyAppName.UnitTests</AssemblyName>
-    <RootNamespace>MyVendorName.MyAppName</RootNamespace>
+    <AssemblyName>MyVendor.MyApp.UnitTests</AssemblyName>
+    <RootNamespace>MyVendor.MyApp</RootNamespace>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <IsPackable>False</IsPackable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>

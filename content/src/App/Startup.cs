@@ -1,14 +1,14 @@
 using System;
-using MyVendorName.MyAppName.Contacts;
-using MyVendorName.MyAppName.Infrastructure;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyVendor.MyApp.Contacts;
+using MyVendor.MyApp.Infrastructure;
 
-namespace MyVendorName.MyAppName
+namespace MyVendor.MyApp
 {
     /// <summary>
     /// Startup class used by ASP.NET Core.
@@ -36,7 +36,7 @@ namespace MyVendorName.MyAppName
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
             => services.AddInfrastructure(Configuration)
-                       .AddDbContext<MyAppDbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
+                       .AddDbContext<DbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
                        .AddContacts()
                        .BuildServiceProvider();
 
@@ -53,7 +53,7 @@ namespace MyVendorName.MyAppName
             {
                 using (var scope = provider.CreateScope())
                     // Replace .EnsureCreated() with .Migrate() once you have generated an EF Migration
-                    scope.ServiceProvider.GetRequiredService<MyAppDbContext>().Database.EnsureCreated();
+                    scope.ServiceProvider.GetRequiredService<DbContext>().Database.EnsureCreated();
             });
         }
     }

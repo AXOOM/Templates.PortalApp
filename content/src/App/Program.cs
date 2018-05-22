@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace MyVendorName.MyAppName
+namespace MyVendor.MyApp
 {
     public static class Program
     {

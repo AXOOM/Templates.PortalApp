@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace MyVendorName.MyAppName.Infrastructure
+namespace MyVendor.MyApp.Infrastructure
 {
     public static class WebConfig
     {
@@ -43,7 +43,7 @@ namespace MyVendorName.MyAppName.Infrastructure
                             Url = "http://www.example.com"
                         }
                     });
-                options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "MyVendorName.MyAppName.xml"));
+                options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "MyVendor.MyApp.xml"));
                 options.DescribeAllEnumsAsStrings();
                 if (identityEnabled)
                     options.AddOAuth(identityOptions);

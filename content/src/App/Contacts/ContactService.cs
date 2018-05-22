@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace MyVendorName.MyAppName.Contacts
+namespace MyVendor.MyApp.Contacts
 {
     /// <summary>
     /// Manages contacts in an address book.
     /// </summary>
     public class ContactService : IContactService
     {
-        private readonly MyAppDbContext _context;
+        private readonly DbContext _context;
         private readonly IContactMetrics _metrics;
         private readonly ILogger<ContactService> _logger;
 
-        public ContactService(MyAppDbContext context, IContactMetrics metrics, ILogger<ContactService> logger)
+        public ContactService(DbContext context, IContactMetrics metrics, ILogger<ContactService> logger)
         {
             _context = context;
             _metrics = metrics;

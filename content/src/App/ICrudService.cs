@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MyVendorName.MyAppName
+namespace MyVendor.MyApp
 {
     /// <summary>
     /// Common base interface for services that conform to the Create-Read-Update-Delete pattern.
