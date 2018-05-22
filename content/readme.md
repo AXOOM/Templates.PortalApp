@@ -17,7 +17,7 @@ To build and test without a debugger:
 To build and test with a debugger:
 
     .\build.ps1 -DeployLocal -DebugOverride
-    # Open src\MyVendor.MyApp.sln in Visual Studio and run
+    # Open src\MyVendor.MyApp.VisualStudio.sln in Visual Studio and run
 
  * Portal: http://myinstance.local.mayoom.eu/
  * My App: http://myvendor-myapp-myinstance.local.myaxoom.eu/
