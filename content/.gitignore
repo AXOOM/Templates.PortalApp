@@ -3,7 +3,8 @@
 
 /src/**/obj/
 /src/**/bin/
-/src/**/node_modules/
+/src/App/ClientApp/node_modules/
+/src/App/ClientApp/dist/
 /src/**/npm-debug.log
 
 /src/.vs/
