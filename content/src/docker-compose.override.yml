@@ -1,5 +1,5 @@
 # Specifies additional dependencies and exposes ports for local development/testing.
-version: '3'
+version: '3.4'
 
 services:
   myvendor-myapp:

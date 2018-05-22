@@ -1,5 +1,5 @@
 # Builds and runs the services themselves. External dependencies, exposed ports, etc. are configured in docker-compose.override.yml.
-version: '3'
+version: '3.4'
 
 services:
   myvendor-myapp:
