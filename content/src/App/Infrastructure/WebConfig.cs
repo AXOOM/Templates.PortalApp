@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Axoom.MyApp.Infrastructure
+namespace MyVendor.MyApp.Infrastructure
 {
     public static class WebConfig
     {
@@ -39,12 +39,11 @@ namespace Axoom.MyApp.Infrastructure
                         Version = "v1",
                         Contact = new Contact
                         {
-                            Email = "developer@axoom.com",
-                            Name = "AXOOM GmbH",
-                            Url = "http://developer.axoom.com"
+                            Email = "developer@example.com",
+                            Url = "http://www.example.com"
                         }
                     });
-                options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "Axoom.MyApp.xml"));
+                options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "MyVendor.MyApp.xml"));
                 options.DescribeAllEnumsAsStrings();
                 if (identityEnabled)
                     options.AddOAuth(identityOptions);

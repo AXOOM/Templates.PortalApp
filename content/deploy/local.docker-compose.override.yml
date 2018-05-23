@@ -2,7 +2,7 @@
 version: '3.3'
 
 services:
-  axoom-myapp:
+  myvendor-myapp:
     image: djfaze/port-forward
     environment:
       REMOTE_HOST: docker.for.win.localhost

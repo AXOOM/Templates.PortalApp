@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 
-namespace Axoom.MyApp
+namespace MyVendor.MyApp
 {
     public static class ServiceCollectionExtensions
     {

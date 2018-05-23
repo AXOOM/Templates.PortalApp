@@ -8,7 +8,7 @@
   "tags": {
     "language": "C#"
   },
-  "sourceName": "Axoom.MyApp",
+  "sourceName": "MyVendor.MyApp",
   "preferNameDirectory": true,
   "guids": [
     "837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5",
@@ -20,13 +20,25 @@
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"axoom-myapp"
+      "replaces":"myvendor-myapp"
+    },
+    "envName": {
+      "type": "parameter",
+      "dataType": "string",
+      "isRequired": true,
+      "replaces":"MYVENDOR_MYAPP"
     },
     "friendlyName": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
       "replaces":"My App"
+    },
+    "vendorDomain": {
+      "type": "parameter",
+      "dataType": "string",
+      "isRequired": true,
+      "replaces":"example.com"
     },
     "description": {
       "type": "parameter",

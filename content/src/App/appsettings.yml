@@ -1,3 +1,5 @@
+Port: 80 # Web traffic ingress
+
 Logging:
   LogLevel:
     Default: Debug
@@ -17,6 +19,7 @@ Database:
 
 Identity:
   #Authority: http://identity-myinstance.local.myaxoom.eu
-  ApiName: axoom-myapp.api
-  ApiSecret: secret
+  ClientSecret: myvendor-myapp-identity-client-secret
+  ApiName: myvendor-myapp.api
+  ApiSecret: myvendor-myapp-identity-api-secret
   RequireHttpsMetadata: false

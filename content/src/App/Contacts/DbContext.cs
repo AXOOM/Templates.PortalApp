@@ -1,10 +1,10 @@
-using Axoom.MyApp.Contacts;
 using Microsoft.EntityFrameworkCore;
+using MyVendor.MyApp.Contacts;
 
 // ReSharper disable once CheckNamespace
-namespace Axoom.MyApp
+namespace MyVendor.MyApp
 {
-    public partial class MyAppDbContext
+    public partial class DbContext
     {
         public DbSet<ContactEntity> Contacts { get; set; }
         public DbSet<PokeEntity> Pokes { get; set; }

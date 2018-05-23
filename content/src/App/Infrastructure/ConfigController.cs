@@ -1,8 +1,8 @@
-using IdentityServer4.AccessTokenValidation;
+﻿using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Axoom.MyApp.Infrastructure
+namespace MyVendor.MyApp.Infrastructure
 {
     /// <summary>
     /// Provides global configuration.
@@ -14,7 +14,9 @@ namespace Axoom.MyApp.Infrastructure
         private readonly IdentityServerAuthenticationOptions _identityOptions;
 
         public ConfigController(IdentityServerAuthenticationOptions identityOptions)
-            => _identityOptions = identityOptions;
+        {
+            _identityOptions = identityOptions;
+        }
 
         /// <summary>
         /// Returns configuration for the frontend.
@@ -23,8 +25,8 @@ namespace Axoom.MyApp.Infrastructure
         public IActionResult ReadOAuth() => Content(@"﻿var AXOOM_APP = AXOOM_APP || {};
 AXOOM_APP.CONFIG = {
     OAUTH: {
-        clientId: 'axoom-myapp',
-        scope: 'openid profile email axoom-myapp.api',
+        clientId: 'myvendor-myapp',
+        scope: 'openid profile email myvendor-myapp.api',
         identityServerUri: '" + (_identityOptions.Authority ?? "") + @"'
     }
 };", "application/javascript");

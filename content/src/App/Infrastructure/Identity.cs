@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Axoom.MyApp.Infrastructure
+namespace MyVendor.MyApp.Infrastructure
 {
     public static class Identity
     {

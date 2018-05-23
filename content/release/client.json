@@ -1,5 +1,5 @@
 {
-  "ClientId": "axoom-myapp",
+  "ClientId": "myvendor-myapp",
   "ClientName": "My App",
   "RequireConsent": false,
   "AllowedGrantTypes": [
@@ -7,42 +7,32 @@
   ],
   "AllowAccessTokensViaBrowser": true,
   "RedirectUris": [
-    "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}",
-    "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}/silentRenew.html"
+    "",
+    "/silentRenew.html"
   ],
   "AllowedScopes": [
     "openid",
     "profile",
-    "email",
-    "axoom-myapp.api"
-  ],
-  "AllowedCorsOrigins": [
-    "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}"
+    "myvendor-myapp.api"
   ]
 }
 , {
-  "ClientId": "axoom-myapp-swagger",
-  "ClientSecrets": [ "secret" ],
+  "ClientId": "myvendor-myapp-swagger",
+  "ServiceNameHostPart": "myvendor-myapp",
+  "ClientSecrets": [ "${MYVENDOR_MYAPP_IDENTITY_CLIENT_SECRET:-myvendor-myapp-identity-client-secret}" ],
   "ClientName": "Swagger",
-  "RequireConsent": false,
   "AccessTokenType": "Jwt",
   "AllowedGrantTypes": [
     "implicit"
   ],
   "AllowAccessTokensViaBrowser": true,
   "RedirectUris": [
-    "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}/swagger/o2c.html"
+    "/swagger/o2c.html"
   ],
   "AllowedScopes": [
     "openid",
     "profile",
     "email",
-    "axoom-myapp.api"
-  ],
-  "PostLogoutRedirectUris": [
-    "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}"
-  ],
-  "AllowedCorsOrigins": [
-    "${PUBLIC_PROTOCOL:-https}://axoom-myapp-${PUBLIC_DOMAIN}"
+    "myvendor-myapp.api"
   ]
 }

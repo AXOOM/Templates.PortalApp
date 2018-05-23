@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Axoom.MyApp.Contacts
+namespace MyVendor.MyApp.Contacts
 {
     public static class Startup
     {
