@@ -18,7 +18,8 @@
 
   <PropertyGroup>
     <Authors>example.com</Authors>
-    <Description>My App</Description>
+    <Title>My App</Title>
+    <Description>my description</Description>
   </PropertyGroup>
 
   <ItemGroup>
