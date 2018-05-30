@@ -1,0 +1,18 @@
+releases:
+  - name: '{{ requiredEnv "TENANT_ID" }}-myvendor-myservice'
+    namespace: '{{ requiredEnv "TENANT_ID" }}'
+    chart: ./
+
+    values:
+      - global:
+          tenant:
+            id: '{{ requiredEnv "TENANT_ID" }}'
+            domain: '{{ requiredEnv "PUBLIC_DOMAIN" }}'
+
+        app:
+          ingress:
+            domain: 'myvendor-myservice-{{ requiredEnv "PUBLIC_DOMAIN" }}'
+          env:
+            LOGGING__FORMAT: 'Gelf'
+            LOGGING__LOGLEVEL__DEFAULT: '{{ env "LOG_LEVEL" | default "Information" }}'
+            ASPNETCORE_ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'

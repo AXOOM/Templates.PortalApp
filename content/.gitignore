@@ -1,6 +1,9 @@
 /release/*.xml
 /release/*.zip
 
+/charts/*/requirements.lock
+/charts/*/charts/*
+
 /src/**/obj/
 /src/**/bin/
 /src/App/ClientApp/node_modules/

@@ -1,0 +1,7 @@
+app:
+  name: myvendor-myservice
+
+  image:
+    registry: docker.axoom.cloud
+    repository: services/myvendor-myservice
+    tag: latest
