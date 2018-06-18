@@ -18,7 +18,7 @@
 }, {
   "ClientId": "myvendor-myapp-swagger",
   "ServiceNameHostPart": "myvendor-myapp",
-  "ClientSecrets": ["${MYVENDOR_MYAPP_IDENTITY_CLIENT_SECRET:-myvendor-myapp-identity-client-secret}"],
+  "ClientSecrets": ["myvendor-myapp-identity-client-secret"],
   "ClientName": "Swagger",
   "AccessTokenType": "Jwt",
   "AllowedGrantTypes": [

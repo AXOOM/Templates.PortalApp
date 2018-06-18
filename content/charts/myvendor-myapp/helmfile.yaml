@@ -11,6 +11,7 @@ releases:
 
         app:
           ingress:
+            enabled: true
             domain: 'myvendor-myservice-{{ requiredEnv "PUBLIC_DOMAIN" }}'
           env:
             LOGGING__FORMAT: 'Gelf'
