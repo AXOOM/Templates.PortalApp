@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>MyVendor.MyApp.UnitTests</AssemblyName>
     <RootNamespace>MyVendor.MyApp</RootNamespace>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <OutputType>Library</OutputType>
     <IsPackable>False</IsPackable>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
