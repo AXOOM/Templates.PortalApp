@@ -62,7 +62,7 @@ namespace MyVendor.MyApp.Infrastructure
                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"));
             }
             else
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
 
             app.UseAuthentication()
                .UseStaticFiles()
