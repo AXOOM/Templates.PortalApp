@@ -1,0 +1,3 @@
+repositories:
+  - name: axoom-base
+    url: https://helm.axoom.cloud/base/
