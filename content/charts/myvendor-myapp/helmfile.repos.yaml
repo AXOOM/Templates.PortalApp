@@ -1,3 +1,4 @@
+# Used during build with "helmfile repos". Registers repos for use in requirements.yaml.
 repositories:
   - name: axoom-base
     url: https://helm.axoom.cloud/base/

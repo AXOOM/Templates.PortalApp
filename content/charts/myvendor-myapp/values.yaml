@@ -2,6 +2,12 @@ app:
   name: myvendor-myservice
 
   image:
-    registry: docker.axoom.cloud
-    repository: services/myvendor-myservice
-    tag: latest
+    registry: docker.axoom.cloud # Automatically replaced duing CI builds
+    repository: apps/myvendor-myapp
+    tag: latest # Automatically replaced duing builds
+
+  # resources:
+  #   requests:
+  #     memory: 256M
+  #   limits:
+  #     memory: 512M

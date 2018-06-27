@@ -1,3 +1,4 @@
+# Used during deployment with "helmfile charts". Maps environment variables to Helm options and values.
 releases:
   - name: '{{ requiredEnv "TENANT_ID" }}-myvendor-myservice'
     namespace: '{{ requiredEnv "TENANT_ID" }}'
