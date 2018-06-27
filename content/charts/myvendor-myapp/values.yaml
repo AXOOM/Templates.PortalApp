@@ -11,3 +11,15 @@ app:
   #     memory: 256M
   #   limits:
   #     memory: 512M
+
+  livenessProbe:
+    initialDelaySeconds: 10 # Allow for long startup
+    httpGet:
+      port: ingress
+      path: /health
+
+  readinessProbe:
+    initialDelaySeconds: 2 # Begin accepting traffic quickly
+    httpGet:
+      port: ingress
+      path: /health
