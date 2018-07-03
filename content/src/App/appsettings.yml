@@ -6,9 +6,6 @@ Logging:
     Microsoft: Warning # Reduce ASP.NET Core verbosity
   Format: Plain
 
-Metrics:
-  Port: 5000
-
 Policies:
   StartupRetries:
     - 00:00:15

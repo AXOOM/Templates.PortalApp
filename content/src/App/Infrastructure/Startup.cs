@@ -1,4 +1,5 @@
 using System;
+using Axoom.Extensions.Prometheus.Standalone;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,8 +12,8 @@ namespace MyVendor.MyApp.Infrastructure
             => services.AddSingleton(configuration)
                        .AddOptions()
                        .AddAxoomLogging(configuration)
+                       .AddPrometheusServer(configuration)
                        .AddPolicies(configuration.GetSection("Policies"))
-                       .AddMetrics(configuration)
                        .AddWeb(configuration);
 
         public static IServiceProvider UseInfrastructure(this IApplicationBuilder app)
@@ -20,7 +21,7 @@ namespace MyVendor.MyApp.Infrastructure
             var provider = app.ApplicationServices;
 
             provider.UseAxoomLogging();
-            provider.ExposeMetrics();
+            provider.UsePrometheusServer();
 
             app.UseWeb();
 
