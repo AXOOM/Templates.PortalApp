@@ -13,7 +13,7 @@ namespace MyVendor.MyApp.Infrastructure
                        .AddOptions()
                        .AddAxoomLogging(configuration)
                        .AddPrometheusServer(configuration)
-                       .AddPolicies(configuration.GetSection("Policies"))
+                       .AddPolicies(configuration)
                        .AddWeb(configuration);
 
         public static IServiceProvider UseInfrastructure(this IApplicationBuilder app)
