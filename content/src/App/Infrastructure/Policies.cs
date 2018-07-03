@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Sockets;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +34,7 @@ namespace MyVendor.MyApp.Infrastructure
             try
             {
                 Policy.Handle<SocketException>()
+                      .Or<IOException>()
                       .WaitAndRetry(
                            sleepDurations: _options.Value.StartupRetries,
                            onRetry: (ex, timeSpan)
@@ -41,9 +43,9 @@ namespace MyVendor.MyApp.Infrastructure
             }
             catch (Exception ex)
             {
-                // Print exception info in GELF instead of letting default handler take care of it
+                // Print exception info in JSON format
                 _logger.LogCritical(ex, "Startup failed.");
-                Environment.Exit(exitCode: 1);
+                throw;
             }
         }
     }
