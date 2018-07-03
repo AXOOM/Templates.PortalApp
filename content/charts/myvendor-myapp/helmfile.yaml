@@ -15,6 +15,6 @@ releases:
             enabled: true
             domain: 'myvendor-myservice-{{ requiredEnv "PUBLIC_DOMAIN" }}'
           env:
-            LOGGING__FORMAT: 'Gelf'
+            LOGGING__FORMAT: 'Json'
             LOGGING__LOGLEVEL__DEFAULT: '{{ env "LOG_LEVEL" | default "Information" }}'
             ASPNETCORE_ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'
