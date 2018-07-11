@@ -6,7 +6,6 @@ using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace MyVendor.MyApp
 {
@@ -26,8 +25,8 @@ namespace MyVendor.MyApp
         /// <summary>
         /// Returns all elements.
         /// </summary>
+        /// <response code="200">OK</response>
         [HttpGet, Route("")]
-        [SwaggerResponse((int)HttpStatusCode.OK)]
         public async Task<IEnumerable<T>> ReadAll()
             => await _service.ReadAllAsync();
 
@@ -35,9 +34,9 @@ namespace MyVendor.MyApp
         /// Returns a specific element.
         /// </summary>
         /// <param name="id">The ID of the element to look for.</param>
+        /// <response code="200">OK</response>
+        /// <response code="404">Specified element not found</response>
         [HttpGet, Route("{id}")]
-        [SwaggerResponse((int)HttpStatusCode.OK)]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, description: "Specified element not found.")]
         public async Task<T> Read([FromRoute] string id)
             => await _service.ReadAsync(id);
 
@@ -46,9 +45,9 @@ namespace MyVendor.MyApp
         /// </summary>
         /// <param name="element">The element to create (without an ID).</param>
         /// <returns>The element that was created (with the ID).</returns>
+        /// <response code="201">Created</response>
+        /// <response code="400">Missing or invalid request body</response>
         [HttpPost, Route("")]
-        [SwaggerResponse((int)HttpStatusCode.Created)]
-        [SwaggerResponse((int)HttpStatusCode.BadRequest, description: "Missing or invalid request body.")]
         public async Task<ActionResult> Create([FromBody] T element)
         {
             if (element == null) throw new InvalidDataException("Missing request body.");
@@ -67,10 +66,10 @@ namespace MyVendor.MyApp
         /// </summary>
         /// <param name="id">The ID of the element to update (must match the ID in <paramref name="element"/>).</param>
         /// <param name="element">The modified element.</param>
+        /// <response code="204">Success</response>
+        /// <response code="400">Missing or invalid request body</response>
+        /// <response code="404">Specified element not found</response>
         [HttpPut, Route("{id}")]
-        [SwaggerResponse((int)HttpStatusCode.OK)]
-        [SwaggerResponse((int)HttpStatusCode.BadRequest, description: "Missing or invalid request body.")]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, description: "Specified element not found.")]
         public async Task<ActionResult> Set([FromRoute] string id, [FromBody] T element)
         {
             if (element == null) throw new InvalidDataException("Missing request body.");
@@ -86,9 +85,9 @@ namespace MyVendor.MyApp
         /// Deletes an existing element.
         /// </summary>
         /// <param name="id">The ID of the element to delete.</param>
+        /// <response code="204">Success</response>
+        /// <response code="404">Specified element not found</response>
         [HttpDelete, Route("{id}")]
-        [SwaggerResponse((int)HttpStatusCode.NoContent)]
-        [SwaggerResponse((int)HttpStatusCode.NotFound, description: "Specified element not found.")]
         public async Task Delete([FromRoute] string id)
             => await _service.DeleteAsync(id);
 
