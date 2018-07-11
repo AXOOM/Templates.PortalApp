@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyVendor.MyApp.Infrastructure;
+using Xunit.Abstractions;
 
 namespace MyVendor.MyApp.Controllers
 {
@@ -14,10 +15,11 @@ namespace MyVendor.MyApp.Controllers
 
         protected readonly HttpClient Client;
 
-        protected ControllerTestBase()
+        protected ControllerTestBase(ITestOutputHelper output)
         {
             _server = new TestServer(new WebHostBuilder()
-                                    .ConfigureServices(x => x.AddWeb(new ConfigurationBuilder().Build()))
+                                    .ConfigureServices(x => x.AddLogging(builder => builder.AddXunit(output))
+                                                             .AddWeb(new ConfigurationBuilder().Build()))
                                     .ConfigureServices(ConfigureService)
                                     .Configure(x => x.UseWeb()));
             Client = _server.CreateClient();
