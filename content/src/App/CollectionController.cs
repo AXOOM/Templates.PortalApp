@@ -58,7 +58,7 @@ namespace MyVendor.MyApp
             return CreatedAtAction(
                 actionName: nameof(Read),
                 routeValues: new {id = GetId(result)},
-                value: result);
+                result);
         }
 
         /// <summary>

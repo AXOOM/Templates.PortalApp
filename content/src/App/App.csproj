@@ -3,6 +3,7 @@
   <PropertyGroup>
     <AssemblyName>MyVendor.MyApp</AssemblyName>
     <RootNamespace>MyVendor.MyApp</RootNamespace>
+    <LangVersion>7.2</LangVersion>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <OutputType>Exe</OutputType>
     <IsPackable>False</IsPackable>
