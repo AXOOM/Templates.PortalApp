@@ -48,7 +48,9 @@ namespace MyVendor.MyApp
         /// <response code="201">Created</response>
         /// <response code="400">Missing or invalid request body</response>
         [HttpPost, Route("")]
-        public async Task<ActionResult> Create([FromBody] T element)
+        // Note: If this were a concrete class we could use the following, subsituting T for a concrete type:
+        //[ProducesResponseType(typeof(T), statusCode: 201)]
+        public async Task<IActionResult> Create([FromBody] T element)
         {
             if (element == null) throw new InvalidDataException("Missing request body.");
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -70,7 +72,7 @@ namespace MyVendor.MyApp
         /// <response code="400">Missing or invalid request body</response>
         /// <response code="404">Specified element not found</response>
         [HttpPut, Route("{id}")]
-        public async Task<ActionResult> Set([FromRoute] string id, [FromBody] T element)
+        public async Task<IActionResult> Set([FromRoute] string id, [FromBody] T element)
         {
             if (element == null) throw new InvalidDataException("Missing request body.");
             if (!ModelState.IsValid) return BadRequest(ModelState);
