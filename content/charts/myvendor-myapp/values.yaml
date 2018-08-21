@@ -2,9 +2,9 @@ app:
   name: myvendor-myservice
 
   image:
-    registry: docker.axoom.cloud # This is automatically replaced with docker-ci.axoom.cloud for pre-release builds by TFS
+    registry: docker.axoom.cloud # replaced with docker-ci.axoom.cloud for pre-release builds by build server
     repository: apps/myvendor-myapp
-    tag: latest # This is automatically replaced with a specific version by TFS
+    tag: latest # replaced with specific version number by build server
 
   # resources:
   #   requests:

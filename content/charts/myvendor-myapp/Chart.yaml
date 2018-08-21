@@ -1,3 +1,4 @@
 apiVersion: v1
 name: myvendor-myapp
+version: 0 # replaced with auto-generated version number by build server
 description: my description
