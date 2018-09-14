@@ -1,6 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
@@ -22,11 +23,12 @@ namespace MyVendor.MyApp.Infrastructure
                 services.AddAuthentication(config);
 
             services.AddMvc(options =>
-            {
-                options.Filters.Add(typeof(ApiExceptionFilterAttribute));
-                if (identityEnabled)
-                    options.AddAuthorizeFilter(identityOptions);
-            });
+                     {
+                         options.Filters.Add(typeof(ApiExceptionFilterAttribute));
+                         if (identityEnabled)
+                             options.AddAuthorizeFilter(identityOptions);
+                     })
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/dist");
 
