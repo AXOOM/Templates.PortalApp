@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyVendor.MyApp.Contacts
@@ -5,7 +6,7 @@ namespace MyVendor.MyApp.Contacts
     /// <summary>
     /// A representation of a contact for serialization.
     /// </summary>
-    public class ContactDto
+    public class ContactDto : IEquatable<ContactDto>
     {
         /// <summary>
         /// The ID of the contact.
@@ -16,30 +17,33 @@ namespace MyVendor.MyApp.Contacts
         /// <summary>
         /// The first name of the contact.
         /// </summary>
+        [Required]
         public string FirstName { get; set; }
 
         /// <summary>
         /// The last name of the contact.
         /// </summary>
+        [Required]
         public string LastName { get; set; }
 
-        public override bool Equals(object obj)
+        public bool Equals(ContactDto other)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            return obj is ContactDto other
-                && Id == other.Id
+            if (other == null) return false;
+            return Id == other.Id
                 && FirstName == other.FirstName
                 && LastName == other.LastName;
         }
+
+        public override bool Equals(object obj)
+            => obj is ContactDto other && Equals(other);
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = Id != null ? Id.GetHashCode() : 0;
-                hashCode = (hashCode * 397) ^ (FirstName != null ? FirstName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (LastName != null ? LastName.GetHashCode() : 0);
+                int hashCode = Id?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (FirstName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (LastName?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }

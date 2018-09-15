@@ -17,11 +17,13 @@ namespace MyVendor.MyApp.Contacts
         /// <summary>
         /// The first name of the contact.
         /// </summary>
+        [Required]
         public string FirstName { get; set; }
 
         /// <summary>
         /// The last name of the contact.
         /// </summary>
+        [Required]
         public string LastName { get; set; }
 
         /// <summary>
