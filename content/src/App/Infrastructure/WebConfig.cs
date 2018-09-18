@@ -1,6 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.DotNet.PlatformAbstractions;
@@ -14,6 +15,8 @@ namespace MyVendor.MyApp.Infrastructure
     {
         public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration config)
         {
+            services.Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders = ForwardedHeaders.All);
+
             var identityOptions = Identity.GetOptions(config);
             services.AddSingleton(identityOptions);
 
@@ -56,6 +59,8 @@ namespace MyVendor.MyApp.Infrastructure
 
         public static IApplicationBuilder UseWeb(this IApplicationBuilder app)
         {
+			app.UseForwardedHeaders(); // must be first middleware in pipeline
+
             bool devMode = app.ApplicationServices.GetRequiredService<IHostingEnvironment>().IsDevelopment();
             if (devMode)
             {
