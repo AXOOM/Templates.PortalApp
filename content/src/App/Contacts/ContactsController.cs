@@ -8,6 +8,7 @@ namespace MyVendor.MyApp.Contacts
     /// <summary>
     /// Provides access to contacts in an address book.
     /// </summary>
+    [ApiController]
     [Route("api/contacts")]
     public class ContactsController : CollectionController<ContactDto>
     {
@@ -38,11 +39,8 @@ namespace MyVendor.MyApp.Contacts
         /// <response code="400">Missing or invalid request body</response>
         /// <response code="404">Specified contact not found</response>
         [HttpPut, Route("{id}/note")]
-        public async Task<ActionResult> SetNote([FromRoute] string id, [FromBody] NoteDto note)
+        public async Task<IActionResult> SetNote([FromRoute] string id, [FromBody] NoteDto note)
         {
-            if (note == null) throw new InvalidDataException("Missing request body.");
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
             await _service.SetNoteAsync(id, note);
 
             return StatusCode((int)HttpStatusCode.NoContent);
@@ -55,7 +53,8 @@ namespace MyVendor.MyApp.Contacts
         /// <response code="204">Success</response>
         /// <response code="404">Specified contact not found</response>
         [HttpPost, Route("{id}/poke")]
-        public async Task<ActionResult> Poke([FromRoute] string id)
+        [ProducesResponseType(204)]
+        public async Task<IActionResult> Poke([FromRoute] string id)
         {
             await _service.PokeAsync(id);
 

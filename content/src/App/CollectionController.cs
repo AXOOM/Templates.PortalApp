@@ -48,13 +48,9 @@ namespace MyVendor.MyApp
         /// <response code="201">Created</response>
         /// <response code="400">Missing or invalid request body</response>
         [HttpPost, Route("")]
-        // Note: If this were a concrete class we could use the following, subsituting T for a concrete type:
-        //[ProducesResponseType(typeof(T), statusCode: 201)]
-        public async Task<IActionResult> Create([FromBody] T element)
+        [ProducesResponseType(201)]
+        public async Task<ActionResult<T>> Create([FromBody] T element)
         {
-            if (element == null) throw new InvalidDataException("Missing request body.");
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
             var result = await _service.CreateAsync(element);
 
             return CreatedAtAction(
@@ -72,10 +68,9 @@ namespace MyVendor.MyApp
         /// <response code="400">Missing or invalid request body</response>
         /// <response code="404">Specified element not found</response>
         [HttpPut, Route("{id}")]
+        [ProducesResponseType(204)]
         public async Task<IActionResult> Set([FromRoute] string id, [FromBody] T element)
         {
-            if (element == null) throw new InvalidDataException("Missing request body.");
-            if (!ModelState.IsValid) return BadRequest(ModelState);
             if (GetId(element) != id) throw new InvalidDataException($"ID in URI ({id}) must match the ID in the body ({GetId(element)}).");
 
             await _service.UpdateAsync(element);
@@ -90,6 +85,7 @@ namespace MyVendor.MyApp
         /// <response code="204">Success</response>
         /// <response code="404">Specified element not found</response>
         [HttpDelete, Route("{id}")]
+        [ProducesResponseType(204)]
         public async Task Delete([FromRoute] string id)
             => await _service.DeleteAsync(id);
 

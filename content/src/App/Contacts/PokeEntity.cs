@@ -32,6 +32,7 @@ namespace MyVendor.MyApp.Contacts
         /// <summary>
         /// When the poke was performed.
         /// </summary>
+        [Required]
         public DateTime Timestamp { get; set; }
     }
 }
