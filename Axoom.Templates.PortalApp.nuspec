@@ -13,6 +13,6 @@
         </packageTypes>
     </metadata>
     <files>
-        <file src="content/**" exclude="content/release/*.xml;content/release/*.zip;content/charts/*/requirements.lock;content/charts/*/charts/*;content/src/**/obj/**;content/src/**/bin/**;content/src/**/node_modules/**;content/src/**/npm-debug.log;content/src/.vs/**;content/src/.idea/**;content/src/_ReSharper.*/**;content/src/**/*.user;content/src/**/*.db;**/.vscode/**" />
+        <file src="content/**" exclude="content/charts/*/requirements.lock;content/charts/*/charts/*;content/src/**/obj/**;content/src/**/bin/**;content/src/**/node_modules/**;content/src/**/npm-debug.log;content/src/.vs/**;content/src/.idea/**;content/src/_ReSharper.*/**;content/src/**/*.user;content/src/**/*.db;**/.vscode/**" />
     </files>
 </package>
