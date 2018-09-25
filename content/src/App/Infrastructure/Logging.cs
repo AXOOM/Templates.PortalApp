@@ -8,8 +8,8 @@ namespace MyVendor.MyApp.Infrastructure
 {
     public static class Logging
     {
-        public static IServiceCollection AddAxoomLogging(this IServiceCollection services, IConfiguration configration)
-            => services.AddLogging(builder => builder.AddConfiguration(configration.GetSection("Logging")));
+        public static IServiceCollection AddAxoomLogging(this IServiceCollection services, IConfiguration configuration)
+            => services.AddLogging(builder => builder.AddConfiguration(configuration.GetSection("Logging")));
 
         public static void UseAxoomLogging(this IServiceProvider provider)
             => provider.GetRequiredService<ILoggerFactory>()
