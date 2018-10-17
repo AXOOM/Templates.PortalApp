@@ -3,8 +3,10 @@ version: '3.4'
 
 services:
   myvendor-myapp:
-    ports:
-      - "12345:80" # Keep in sync with ../deploy/local.docker-compose.override.yml
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       #IDENTITY_SERVER_URI: 'http://identity-myinstance.local.myaxoom.eu'
+      Logging__Format: Plain
+    ports:
+      - "12345:80" # Keep in sync with ../deploy/local.docker-compose.override.yml
+    #   - "5000:5000"
