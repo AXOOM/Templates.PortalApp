@@ -2,11 +2,8 @@
 # For local development overrides: see launchSettings.json or docker-compose.override.yml
 # For production overrides: see helmfile.yaml
 
-Port: 80
-
 Logging:
   LogLevel:
-    Default: Debug
     Microsoft: Warning # Reduce ASP.NET Core verbosity
 
 Policies:

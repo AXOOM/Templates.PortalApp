@@ -65,6 +65,7 @@ namespace MyVendor.MyApp.Infrastructure
             if (devMode)
             {
                 app.UseDeveloperExceptionPage()
+                   .UseExceptionDemystifier()
                    .UseSwagger()
                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"));
             }

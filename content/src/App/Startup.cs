@@ -21,14 +21,16 @@ namespace MyVendor.MyApp
         /// <summary>
         /// Called by ASP.NET Core to set up an environment.
         /// </summary>
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env = null)
         {
-            Configuration = new ConfigurationBuilder()
-                           .SetBasePath(env.ContentRootPath)
-                           .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
-                           .AddYamlFile($"appsettings.{env.EnvironmentName}.yml", optional: true, reloadOnChange: true)
-                           .AddEnvironmentVariables()
-                           .Build();
+            var builder = new ConfigurationBuilder();
+            if (env != null)
+                builder.SetBasePath(env.ContentRootPath);
+            builder.AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true);
+            if (env != null)
+                builder.AddYamlFile($"appsettings.{env.EnvironmentName}.yml", optional: true, reloadOnChange: true);
+            builder.AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
         /// <summary>

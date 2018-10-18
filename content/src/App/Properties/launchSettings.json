@@ -1,15 +1,14 @@
 {
   "profiles": {
     "App": {
+      "applicationUrl": "http://localhost:12345/",
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "Logging__Format": "Plain",
-        "Logging__LogLevel__Default": "Debug",
-        "Port": "12345"
-      },
-      "applicationUrl": "http://localhost:12345/"
+        "Logging__LogLevel__Default": "Debug"
+      }
     }
   }
 }
