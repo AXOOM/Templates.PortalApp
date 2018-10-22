@@ -7,7 +7,7 @@ namespace MyVendor.MyApp.Infrastructure
     /// <summary>
     /// Provides global configuration.
     /// </summary>
-    [Route("config")]
+    [ApiController, Route("config")]
     [AllowAnonymous]
     public class ConfigController : Controller
     {
@@ -21,7 +21,7 @@ namespace MyVendor.MyApp.Infrastructure
         /// <summary>
         /// Returns configuration for the frontend.
         /// </summary>
-        [HttpGet, Route("app.js")]
+        [HttpGet("app.js")]
         public IActionResult ReadOAuth() => Content(@"﻿var AXOOM_APP = AXOOM_APP || {};
 AXOOM_APP.CONFIG = {
     OAUTH: {
