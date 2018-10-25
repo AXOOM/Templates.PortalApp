@@ -11,8 +11,7 @@ namespace MyVendor.MyApp.Infrastructure
     public static class Startup
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
-            => services.AddSingleton(configuration)
-                       .AddOptions()
+            => services.AddOptions()
                        .AddLogging(builder => builder.AddConfiguration(configuration.GetSection("Logging"))
                                                      .AddAxoomConsole(configuration.GetSection("Logging"))
                                                      .AddExceptionDemystifyer())

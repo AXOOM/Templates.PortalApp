@@ -16,21 +16,14 @@ namespace MyVendor.MyApp
     [UsedImplicitly]
     public class Startup : IStartup
     {
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         /// <summary>
         /// Called by ASP.NET Core to set up an environment.
         /// </summary>
-        public Startup(IHostingEnvironment env = null)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder();
-            if (env != null)
-                builder.SetBasePath(env.ContentRootPath);
-            builder.AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true);
-            if (env != null)
-                builder.AddYamlFile($"appsettings.{env.EnvironmentName}.yml", optional: true, reloadOnChange: true);
-            builder.AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
         /// <summary>
