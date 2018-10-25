@@ -1,3 +1,4 @@
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
 namespace MyVendor.MyApp
@@ -7,6 +8,7 @@ namespace MyVendor.MyApp
         public static void Main()
             => new WebHostBuilder()
               .UseKestrel()
+              .UseContentRoot(Directory.GetCurrentDirectory())
               .UseStartup<Startup>()
               .Build()
               .Run();
