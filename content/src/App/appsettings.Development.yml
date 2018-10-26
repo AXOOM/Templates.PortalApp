@@ -1,0 +1,5 @@
+# This file contains additional configuration for dev deployments.
+
+Logging:
+  LogLevel:
+    Default: Debug

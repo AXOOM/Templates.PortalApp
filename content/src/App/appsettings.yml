@@ -1,6 +1,10 @@
-# Default configuration values
-# For local development overrides: see launchSettings.json or docker-compose.override.yml
-# For production overrides: see helmfile.yaml
+# This file contains default configuration.
+#
+# Additional config files:
+#   dev:        appsettings.Development.yml
+#   live:       appsettings.Production.yml
+#   Kubernetes: helmfile.yaml
+#   local dev:  launchSettings.json
 
 Logging:
   LogLevel:

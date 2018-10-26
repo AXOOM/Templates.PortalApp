@@ -6,8 +6,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "Logging__Format": "Plain",
-        "Logging__LogLevel__Default": "Debug"
+        "Logging__Format": "Plain"
       }
     }
   }

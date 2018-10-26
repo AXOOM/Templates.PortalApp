@@ -1,0 +1,5 @@
+# This file contains additional configuration for live deployments.
+
+Logging:
+  LogLevel:
+    Default: Information

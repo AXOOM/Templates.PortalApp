@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="appsettings.yml">
+    <Content Include="appsettings*.yml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

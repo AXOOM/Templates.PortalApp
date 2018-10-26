@@ -16,4 +16,3 @@ releases:
             domain: 'myvendor-myservice-{{ requiredEnv "PUBLIC_DOMAIN" }}'
           env:
             ASPNETCORE_ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'
-            LOGGING__LOGLEVEL__DEFAULT: '{{ env "LOG_LEVEL" | default "Information" }}'
