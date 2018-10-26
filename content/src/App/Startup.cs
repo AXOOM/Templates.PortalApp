@@ -1,4 +1,5 @@
 using System;
+using Axoom.Extensions.Prometheus.Standalone;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,7 +12,7 @@ using MyVendor.MyApp.Infrastructure;
 namespace MyVendor.MyApp
 {
     /// <summary>
-    /// Startup class used by ASP.NET Core.
+    /// Configures dependency injection.
     /// </summary>
     [UsedImplicitly]
     public class Startup : IStartup
@@ -30,7 +31,10 @@ namespace MyVendor.MyApp
         /// Called by ASP.NET Core to register services.
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
-            => services.AddInfrastructure(Configuration)
+            => services.AddOptions()
+                       .AddWeb(Configuration)
+                       .AddPrometheusServer(Configuration.GetSection("Metrics"))
+                       .AddPolicies(Configuration.GetSection("Policies"))
                        .AddDbContext<DbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
                        .AddContacts()
                        .BuildServiceProvider();
@@ -40,7 +44,9 @@ namespace MyVendor.MyApp
         /// </summary>
         public void Configure(IApplicationBuilder app)
         {
-            var provider = app.UseInfrastructure();
+            app.UseWeb();
+
+            var provider = app.ApplicationServices;
 
             // Since SQLite is an in-process database resiliency against connectivity problems at startup is unnecessary.
             // It is implemented here anyway as a sample in case you decide to use an external database such as PostgreSQL.
