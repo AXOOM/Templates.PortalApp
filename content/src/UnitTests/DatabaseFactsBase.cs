@@ -4,7 +4,8 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace MyVendor.MyApp
 {
-    public class DatabaseFactsBase : IDisposable
+    public class DatabaseFactsBase<TSubject> : AutoMockingFactsBase<TSubject>
+        where TSubject : class
     {
         protected readonly DbContext Context;
 
@@ -16,12 +17,16 @@ namespace MyVendor.MyApp
                    .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
                    .EnableSensitiveDataLogging()
                    .Options);
+
+            Use(Context);
         }
 
-        public virtual void Dispose()
+        public override void Dispose()
         {
             Context.Database.EnsureDeleted();
             Context.Dispose();
+
+            base.Dispose();
         }
     }
 }
