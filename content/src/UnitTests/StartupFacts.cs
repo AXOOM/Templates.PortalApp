@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.ObjectPool;
 using Moq;
 using Xunit;
@@ -30,18 +31,16 @@ namespace MyVendor.MyApp
             _output = output;
 
             AddFrameworkServices();
-            _services.AddLogging();
+            _services.AddLogging(builder => builder.AddXUnit());
             new Startup(_configuration).ConfigureServices(_services);
 
             _provider = _services.BuildServiceProvider();
         }
 
         private void AddFrameworkServices()
-        {
-            _services.AddSingleton<IHostingEnvironment>(new HostingEnvironment {ContentRootPath = "dummy"});
-            _services.AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>();
-            _services.AddSingleton(new Mock<DiagnosticSource>().Object);
-        }
+            => _services.AddSingleton<IHostingEnvironment>(new HostingEnvironment {ContentRootPath = "dummy"})
+                        .AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>()
+                        .AddSingleton(new Mock<DiagnosticSource>().Object);
 
         [Fact]
         public void CanResolveAllRegisteredServices()

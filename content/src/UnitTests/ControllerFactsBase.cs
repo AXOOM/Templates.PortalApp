@@ -9,15 +9,16 @@ using Microsoft.Extensions.Logging;
 using MyVendor.MyApp.Infrastructure;
 using Xunit.Abstractions;
 
-namespace MyVendor.MyApp.Controllers
+namespace MyVendor.MyApp
 {
-    public abstract class ControllerTestBase : IDisposable
+    /// <summary>
+    /// Sets up an in-memory version of the ASP.NET MVC stack for decoupled testing of controllers.
+    /// </summary>
+    public abstract class ControllerFactsBase : IDisposable
     {
         private readonly TestServer _server;
 
-        protected readonly HttpClient Client;
-
-        protected ControllerTestBase(ITestOutputHelper output, IDictionary<string, string> configuration = null)
+        protected ControllerFactsBase(ITestOutputHelper output, IDictionary<string, string> configuration = null)
         {
             _server = new TestServer(
                 new WebHostBuilder()
@@ -30,15 +31,21 @@ namespace MyVendor.MyApp.Controllers
                    .ConfigureServices((context, services) => services.AddWeb(context.Configuration))
                    .ConfigureServices(ConfigureService)
                    .Configure(builder => builder.UseWeb()));
-
-            Client = _server.CreateClient();
         }
 
+        /// <summary>
+        /// Registers dependencies for controllers.
+        /// </summary>
         protected abstract void ConfigureService(IServiceCollection services);
+
+        /// <summary>
+        /// A client configured for in-memory communication with ASP.NET MVC controllers.
+        /// </summary>
+        protected HttpClient HttpClient => _server.CreateClient();
 
         public virtual void Dispose()
         {
-            Client.Dispose();
+            HttpClient.Dispose();
             _server.Dispose();
         }
     }
