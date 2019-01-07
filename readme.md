@@ -18,9 +18,8 @@ Download and install the [.NET Core SDK](https://www.microsoft.com/net/download)
 
 To use the template to create a new project:
 
-    mkdir MyVendor.MyApp
+    dotnet new axoom-portal-app --name "MyVendor.MyApp" --appKey myvendor-MyApp --envName MYVENDOR_MYAPP --friendlyName "My App" --vendorDomain example.com --description "my description"
     cd MyVendor.MyApp
-    dotnet new axoom-portal-app --appKey myvendor-MyApp --envName MYVENDOR_MYAPP --friendlyName "My App" --vendorDomain example.com --description "my description"
 
 In the commands above replace
 - `MyVendor.MyApp` with the .NET namespace you wish to use,
