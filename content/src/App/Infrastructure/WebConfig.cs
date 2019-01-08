@@ -15,8 +15,6 @@ namespace MyVendor.MyApp.Infrastructure
     {
         public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration config)
         {
-            services.Configure<ForwardedHeadersOptions>(options => options.ForwardedHeaders = ForwardedHeaders.All);
-
             var identityOptions = Identity.GetOptions(config);
             services.AddSingleton(identityOptions);
 
@@ -59,7 +57,7 @@ namespace MyVendor.MyApp.Infrastructure
 
         public static IApplicationBuilder UseWeb(this IApplicationBuilder app)
         {
-			app.UseForwardedHeaders(); // must be first middleware in pipeline
+			app.TrustProxyHeaders();
 
             bool devMode = app.ApplicationServices.GetRequiredService<IHostingEnvironment>().IsDevelopment();
             if (devMode)
@@ -88,6 +86,22 @@ namespace MyVendor.MyApp.Infrastructure
                     if (devMode)
                         spa.UseAngularCliServer(npmScript: "start");
                 });
+
+            return app;
+        }
+
+        private static IApplicationBuilder TrustProxyHeaders(this IApplicationBuilder app)
+        {
+            var options = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            };
+
+            // Trust all source IPs, instead of just loopback
+            options.KnownProxies.Clear();
+            options.KnownNetworks.Clear();
+
+            app.UseForwardedHeaders(options);
 
             return app;
         }
