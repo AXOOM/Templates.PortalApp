@@ -73,14 +73,6 @@ namespace MyVendor.MyApp.Contacts
         }
 
         [Fact]
-        public async Task RejectsCreateOnMissingBody()
-        {
-            var result = await HttpClient.SendAsync(new HttpRequestMessage(HttpMethod.Post, "http://localhost/api/contacts"));
-
-            result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-        }
-
-        [Fact]
         public async Task UpdatesInService()
         {
             var contact = new ContactDto {Id = "1", FirstName = "John", LastName = "Smith"};
