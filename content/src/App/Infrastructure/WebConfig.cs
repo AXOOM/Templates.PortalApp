@@ -31,7 +31,7 @@ namespace MyVendor.MyApp.Infrastructure
                          if (identityEnabled)
                              options.AddAuthorizeFilter(identityOptions);
                      })
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/dist");
 
