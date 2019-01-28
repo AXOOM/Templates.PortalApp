@@ -10,11 +10,18 @@ Configuration overrides for local development are specified in:
 - [launchSettings.json](src/App/Properties/launchSettings.json) for IDEs
 - [docker-compose.override.yml](src/docker-compose.override.yml) for Docker Compose
 
-To build and run locally with Docker Compose:
+To build and then run locally with Docker Compose:
+```powershell
+cd src
+./build-dotnet.ps1
+docker-compose up --build
+```
 
-    cd src
-    ./build-dotnet.ps1
-    docker-compose up --build
+To access Prometheus metrics locally without Docker Compose run:
+```powershell
+netsh http add urlacl http://*:5000/ user=$env:USERDOMAIN\$env:USERNAME
+```
+You can then access the metrics at: http://localhost:5000/
 
 ### Add Authentication and Authorization
 #### Backend

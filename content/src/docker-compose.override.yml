@@ -8,5 +8,5 @@ services:
       #IDENTITY_SERVER_URI: 'http://identity-myinstance.local.myaxoom.eu'
       Logging__Format: Plain
     ports:
-      - "12345:80" # Keep in sync with ../deploy/local.docker-compose.override.yml
+      - "12345:80"
     #   - "5000:5000"
