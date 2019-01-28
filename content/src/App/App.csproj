@@ -58,14 +58,6 @@
     </Content>
   </ItemGroup>
 
-  <!-- Include XML documentation in Publish Output to make it available for Swagger generation. -->
-  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
-    <ItemGroup>
-      <DocFile Include="$(OutputPath)\MyVendor.MyApp.xml" />
-    </ItemGroup>
-    <Copy SourceFiles="@(DocFile)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="false" />
-  </Target>
-
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
@@ -96,6 +88,22 @@
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </ResolvedFileToPublish>
     </ItemGroup>
+  </Target>
+
+  <!-- Include XML documentation in Publish Output to make it available for Swagger generation. -->
+  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
+    <ItemGroup>
+      <DocFile Include="$(OutputPath)\MyVendor.MyApp.xml" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DocFile)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="false" />
+  </Target>
+
+  <!-- Include full SemVer version in Publish Output to make it available at runtime. -->
+  <Target Name="GenerateVersionFile" AfterTargets="Build">
+    <WriteLinesToFile File="$(OutputPath)\VERSION" Lines="$(Version)" Overwrite="true" />
+  </Target>
+  <Target Name="PublishVersionFile" AfterTargets="Publish">
+    <Copy SourceFiles="$(OutputPath)\VERSION" DestinationFolder="$(PublishDir)" />
   </Target>
 
 </Project>
