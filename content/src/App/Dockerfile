@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.2.100-sdk
+FROM microsoft/dotnet:2.2.103-sdk
 
 # Add Node.js
 ARG NODE_VERSION=8.9.4
