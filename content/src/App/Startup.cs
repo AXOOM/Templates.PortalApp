@@ -32,9 +32,9 @@ namespace MyVendor.MyApp
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
             => services.AddOptions()
-                       .AddWeb(Configuration)
                        .AddPrometheusServer(Configuration.GetSection("Metrics"))
                        .AddPolicies(Configuration.GetSection("Policies"))
+                       .AddWeb(Configuration)
                        .AddDbContext<DbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
                        .AddContacts()
                        .BuildServiceProvider();

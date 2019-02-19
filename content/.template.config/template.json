@@ -20,32 +20,32 @@
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"myvendor-myapp"
+      "replaces": "myvendor-myapp",
       "fileRename": "myvendor-myapp"
     },
     "envName": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"MYVENDOR_MYAPP"
+      "replaces": "MYVENDOR_MYAPP"
     },
     "friendlyName": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"My App"
+      "replaces": "My App"
     },
     "vendorDomain": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"example.com"
+      "replaces": "example.com"
     },
     "description": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces":"my description"
+      "replaces": "my description"
     }
   }
 }

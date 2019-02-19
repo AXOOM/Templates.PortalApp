@@ -5,14 +5,11 @@ releases:
     chart: ./
 
     values:
-      - global:
-          tenant:
-            id: '{{ requiredEnv "TENANT_ID" }}'
-            domain: '{{ requiredEnv "PUBLIC_DOMAIN" }}'
-
-        app:
+      - app:
           ingress:
             enabled: true
             domain: 'myvendor-myservice-{{ requiredEnv "PUBLIC_DOMAIN" }}'
           env:
             ASPNETCORE_ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'
+            Authentication__Uri: 'https://account.{{ requiredEnv "PUBLIC_CLUSTER_DOMAIN" }}'
+            Authentication__ApiSecret: '{{ requiredEnv "MYSERVICE_APISECRET" }}'
