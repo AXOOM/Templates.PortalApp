@@ -21,6 +21,7 @@ namespace MyVendor.MyApp
                    builder.SetBasePath(env.ContentRootPath)
                           .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
                           .AddYamlFile($"appsettings.{env.EnvironmentName}.yml", optional: true, reloadOnChange: true)
+                          .AddUserSecrets<Startup>()
                           .AddEnvironmentVariables();
                })
               .ConfigureLogging((context, builder) =>
