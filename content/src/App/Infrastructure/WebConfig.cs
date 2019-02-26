@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.DotNet.PlatformAbstractions;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -13,21 +12,12 @@ namespace MyVendor.MyApp.Infrastructure
 {
     public static class WebConfig
     {
-        public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddWeb(this IServiceCollection services)
         {
-            var identityOptions = Identity.GetOptions(config);
-            services.AddSingleton(identityOptions);
-
-            bool identityEnabled = identityOptions.Authority != null;
-
-            if (identityEnabled)
-                services.AddAuthentication(config);
-
             services.AddMvc(options =>
                      {
                          options.Filters.Add(typeof(ApiExceptionFilterAttribute));
-                         if (identityEnabled)
-                             options.AddAuthorizeFilter(identityOptions);
+                         //options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create("TODO")));
                      })
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -48,8 +38,6 @@ namespace MyVendor.MyApp.Infrastructure
                     });
                 options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "MyVendor.MyApp.xml"));
                 options.DescribeAllEnumsAsStrings();
-                if (identityEnabled)
-                    options.AddOAuth(identityOptions);
             });
 
             return services;
@@ -70,8 +58,7 @@ namespace MyVendor.MyApp.Infrastructure
             else
                 app.UseExceptionHandler("/Error");
 
-            app.UseAuthentication()
-               .UseStaticFiles()
+            app.UseStaticFiles()
                .UseSpaStaticFiles();
 
             app.UseMvc(routes =>

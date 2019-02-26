@@ -26,7 +26,7 @@ namespace MyVendor.MyApp.Infrastructure
 AXOOM_APP.CONFIG = {
     OAUTH: {
         clientId: 'myvendor-myapp',
-        scope: 'openid profile email myvendor-myapp.api',
+        scope: 'openid profile email tenant myvendor-myapp.api',
         identityServerUri: '" + (_identityOptions.Authority ?? "") + @"'
     }
 };", "application/javascript");

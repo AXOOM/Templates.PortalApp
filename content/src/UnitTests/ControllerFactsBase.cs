@@ -21,7 +21,7 @@ namespace MyVendor.MyApp
             _server = new TestServer(
                 new WebHostBuilder()
                    .ConfigureLogging(builder => builder.AddXUnit(output))
-                   .ConfigureServices((context, services) => services.AddWeb(context.Configuration))
+                   .ConfigureServices((context, services) => services.AddWeb())
                    .ConfigureServices(ConfigureService)
                    .Configure(builder => builder.UseWeb()));
 

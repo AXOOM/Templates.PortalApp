@@ -50,7 +50,7 @@ Just uncomment the line with identityServerUri in assets/config.js to activate i
 AXOOM_APP.CONFIG = {
     OAUTH: {
         clientId: 'myvendor-myapp',
-        scope: 'openid profile email myvendor-myapp.api',
+        scope: 'openid profile email tenant myvendor-myapp.api',
         // Uncomment below line to activate Authentication in frontend.
         //identityServerUri: 'http://identity-myinstance.local.myaxoom.eu'
     }

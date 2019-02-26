@@ -1,6 +1,7 @@
 using System;
 using Axoom.Extensions.Prometheus.Standalone;
 using JetBrains.Annotations;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -34,7 +35,8 @@ namespace MyVendor.MyApp
             => services.AddOptions()
                        .AddPrometheusServer(Configuration.GetSection("Metrics"))
                        .AddPolicies(Configuration.GetSection("Policies"))
-                       .AddWeb(Configuration)
+                       .AddSecurity(Configuration.GetSection("Authentication"))
+                       .AddWeb()
                        .AddDbContext<DbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
                        .AddContacts()
                        .BuildServiceProvider();
@@ -44,7 +46,8 @@ namespace MyVendor.MyApp
         /// </summary>
         public void Configure(IApplicationBuilder app)
         {
-            app.UseWeb();
+            app.UseSecurity()
+               .UseWeb();
 
             var provider = app.ApplicationServices;
 

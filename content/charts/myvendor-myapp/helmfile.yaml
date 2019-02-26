@@ -11,5 +11,5 @@ releases:
             domain: 'myvendor-myservice-{{ requiredEnv "PUBLIC_DOMAIN" }}'
           env:
             ASPNETCORE_ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'
-            Authentication__Uri: 'https://account.{{ requiredEnv "PUBLIC_CLUSTER_DOMAIN" }}'
-            Authentication__ApiSecret: '{{ requiredEnv "MYSERVICE_APISECRET" }}'
+            Authentication__Authority: 'https://account.{{ requiredEnv "PUBLIC_CLUSTER_DOMAIN" }}'
+            Authentication__ApiSecret: '{{ randAlphaNum 16 }}'
