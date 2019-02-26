@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B74301C8-0759-45FE-BA6C-E832BABE08E5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helm", "Helm", "{077C126E-F1B7-4A8F-8BFB-F521A5F42B28}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helm", "Helm", "{DE708BBC-A1B7-4CD4-811F-01308B0E877C}"
 	ProjectSection(SolutionItems) = preProject
 		..\charts\myvendor-myapp\Chart.yaml = ..\charts\myvendor-myapp\Chart.yaml

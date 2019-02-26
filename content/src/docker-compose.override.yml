@@ -5,7 +5,6 @@ services:
   myvendor-myapp:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      #IDENTITY_SERVER_URI: 'http://identity-myinstance.local.myaxoom.eu'
       Logging__Format: Plain
     ports:
       - "12345:80"

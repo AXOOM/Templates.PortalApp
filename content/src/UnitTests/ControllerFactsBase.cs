@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MyVendor.MyApp.Infrastructure;
@@ -18,15 +16,10 @@ namespace MyVendor.MyApp
     {
         private readonly TestServer _server;
 
-        protected ControllerFactsBase(ITestOutputHelper output, IDictionary<string, string> configuration = null)
+        protected ControllerFactsBase(ITestOutputHelper output)
         {
             _server = new TestServer(
                 new WebHostBuilder()
-                   .ConfigureAppConfiguration(builder =>
-                    {
-                        if (configuration != null)
-                            builder.AddInMemoryCollection(configuration);
-                    })
                    .ConfigureLogging(builder => builder.AddXUnit(output))
                    .ConfigureServices((context, services) => services.AddWeb(context.Configuration))
                    .ConfigureServices(ConfigureService)
