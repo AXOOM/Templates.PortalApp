@@ -21,6 +21,7 @@
       "dataType": "string",
       "isRequired": true,
       "replaces":"myvendor-myapp"
+      "fileRename": "myvendor-myapp"
     },
     "envName": {
       "type": "parameter",
