@@ -1,0 +1,18 @@
+apiVersion: stable.axoom.com/v1
+kind: AppDefinition
+metadata:
+  name: myvendor-myapp
+  labels:
+    app: myvendor-myapp
+
+spec:
+  displayName:
+    en: My App
+  description:
+    en: my description
+  website: www.example.com
+  support: support@example.com
+  navigationEntries:
+    - icon:
+        url_32x32px: /icon.svg
+        url_512x512px: /icon.svg

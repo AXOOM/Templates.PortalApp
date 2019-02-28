@@ -1,0 +1,29 @@
+apiVersion: contrib.identityserver.io/v1
+kind: OauthClient
+metadata:
+  name: myvendor-myapp
+  labels:
+    app: myvendor-myapp
+
+spec:
+  clientId: myvendor-myapp # TODO: Remove this once Identity Server supports generating Client ID from meta.namespace+name
+  clientName: My App
+  accessTokenType: reference
+  allowAccessTokensViaBrowser: true
+  requireConsent: false
+  allowedCorsOrigins:
+    - '' # TODO: Check if this is default and can be removed
+  allowedGrantTypes:
+    - implicit
+  allowedScopes:
+    - openid
+    - profile
+    - email
+    - tenant
+    - myvendor-myapp.api
+  frontChannelLogoutUri: /logout
+  postLogoutRedirectUris:
+    - '' # TODO: Check if this is default and can be removed
+  redirectUris:
+    - '' # TODO: Check if this is default and can be removed
+    - /silentRenew.html
