@@ -36,7 +36,7 @@ namespace MyVendor.MyApp
                        .AddPrometheusServer(Configuration.GetSection("Metrics"))
                        .AddPolicies(Configuration.GetSection("Policies"))
                        .AddSecurity(Configuration.GetSection("Authentication"))
-                       .AddWeb()
+                       .AddWeb(authenticationConfiguration: Configuration.GetSection("Authentication"))
                        .AddDbContext<DbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
                        .AddContacts()
                        .BuildServiceProvider();
