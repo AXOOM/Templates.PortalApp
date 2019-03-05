@@ -13,6 +13,9 @@ spec:
   website: www.example.com
   support: support@example.com
   navigationEntries:
-    - icon:
-        url_32x32px: /icon.svg
-        url_512x512px: /icon.svg
+    - targetUrl: https://{{ .Values.app.ingress.domain }}/
+      icon:
+        url_32x32px: https://{{ .Values.app.ingress.domain }}/icon.svg
+        url_512x512px: https://{{ .Values.app.ingress.domain }}/icon.svg
+      linkText:
+        en: My App

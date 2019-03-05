@@ -7,12 +7,12 @@ metadata:
 
 spec:
   # TODO: Remove this once Identity Server supports generating Resource Names from meta.namespace+name
-  # TODO: Does this have to match Authentication.ApiName in appsettings.yaml?
-  name: myvendor-myapp
+  name: myvendor-myapp # Must match Authentication.ApiName in appsettings.yaml
+
   apiSecrets:
     - value: {{ .Values.app.env.Authentication__ApiSecret | quote }}
   scopes:
     - name: myvendor-myapp.api
       userClaims:
         - tenant
-        - access # TODO: Is this needed?
+        - access

@@ -6,13 +6,13 @@ metadata:
     app: myvendor-myapp
 
 spec:
-  clientId: myvendor-myapp # TODO: Remove this once Identity Server supports generating Client ID from meta.namespace+name
+  # TODO: Remove this once Identity Server supports generating Client ID from meta.namespace+name
+  clientId: myvendor-myapp # Must match clientId in ConfigController.ReadOAuth()
+
   clientName: My App
   accessTokenType: reference
   allowAccessTokensViaBrowser: true
   requireConsent: false
-  allowedCorsOrigins:
-    - '' # TODO: Check if this is default and can be removed
   allowedGrantTypes:
     - implicit
   allowedScopes:
@@ -21,9 +21,8 @@ spec:
     - email
     - tenant
     - myvendor-myapp.api
-  frontChannelLogoutUri: /logout
-  postLogoutRedirectUris:
-    - '' # TODO: Check if this is default and can be removed
-  redirectUris:
-    - '' # TODO: Check if this is default and can be removed
-    - /silentRenew.html
+  redirectUris: &redirectUris
+    - https://{{ .Values.app.ingress.domain }}/
+    {{ if eq .Values.app.env.ASPNETCORE_ENVIRONMENT "Development" }}- http://localhost:12345/{{ end }}
+  allowedCorsOrigins: *redirectUris
+  frontChannelLogoutUri: https://{{ .Values.app.ingress.domain }}/logout
