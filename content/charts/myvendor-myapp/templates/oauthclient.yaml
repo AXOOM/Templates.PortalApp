@@ -21,8 +21,16 @@ spec:
     - email
     - tenant
     - myvendor-myapp.api
-  redirectUris: &redirectUris
+  redirectUris:
+    - https://{{ .Values.app.ingress.domain }}
     - https://{{ .Values.app.ingress.domain }}/
-    {{ if eq .Values.app.env.ASPNETCORE_ENVIRONMENT "Development" }}- http://localhost:12345/{{ end }}
-  allowedCorsOrigins: *redirectUris
+{{- if eq .Values.app.env.ASPNETCORE_ENVIRONMENT "Development" }}
+    - http://localhost:12345
+    - http://localhost:12345/
+{{- end }}
+  allowedCorsOrigins:
+    - https://{{ .Values.app.ingress.domain }}
+{{- if eq .Values.app.env.ASPNETCORE_ENVIRONMENT "Development" }}
+    - http://localhost:12345
+{{- end }}
   frontChannelLogoutUri: https://{{ .Values.app.ingress.domain }}/logout

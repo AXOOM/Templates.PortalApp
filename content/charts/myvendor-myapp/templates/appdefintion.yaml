@@ -4,6 +4,9 @@ metadata:
   name: myvendor-myapp
   labels:
     app: myvendor-myapp
+  annotations:
+    # Implicitly gives users with access to this app the claim "access: myvendor-myapp"
+    accessClaimValue: myvendor-myapp
 
 spec:
   displayName:
