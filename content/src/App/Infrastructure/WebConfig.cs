@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.DotNet.PlatformAbstractions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -12,12 +13,12 @@ namespace MyVendor.MyApp.Infrastructure
 {
     public static class WebConfig
     {
-        public static IServiceCollection AddWeb(this IServiceCollection services)
+        public static IServiceCollection AddWeb(this IServiceCollection services, IConfiguration authenticationConfiguration = null)
         {
             services.AddMvc(options =>
                      {
                          options.Filters.Add(typeof(ApiExceptionFilterAttribute));
-                         //options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create("TODO")));
+                         options.AddAuthorizeFilter(authenticationConfiguration);
                      })
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

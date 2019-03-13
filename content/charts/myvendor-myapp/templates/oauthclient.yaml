@@ -1,0 +1,36 @@
+apiVersion: contrib.identityserver.io/v1
+kind: OauthClient
+metadata:
+  name: myvendor-myapp
+  labels:
+    app: myvendor-myapp
+
+spec:
+  # TODO: Remove this once Identity Server supports generating Client ID from meta.namespace+name
+  clientId: myvendor-myapp # Must match clientId in ConfigController.ReadOAuth()
+
+  clientName: My App
+  accessTokenType: reference
+  allowAccessTokensViaBrowser: true
+  requireConsent: false
+  allowedGrantTypes:
+    - implicit
+  allowedScopes:
+    - openid
+    - profile
+    - email
+    - tenant
+    - myvendor-myapp.api
+  redirectUris:
+    - https://{{ .Values.app.ingress.domain }}
+    - https://{{ .Values.app.ingress.domain }}/
+{{- if eq .Values.app.env.ASPNETCORE_ENVIRONMENT "Development" }}
+    - http://localhost:12345
+    - http://localhost:12345/
+{{- end }}
+  allowedCorsOrigins:
+    - https://{{ .Values.app.ingress.domain }}
+{{- if eq .Values.app.env.ASPNETCORE_ENVIRONMENT "Development" }}
+    - http://localhost:12345
+{{- end }}
+  frontChannelLogoutUri: https://{{ .Values.app.ingress.domain }}/logout

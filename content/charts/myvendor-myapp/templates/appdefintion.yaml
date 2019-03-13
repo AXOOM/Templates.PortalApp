@@ -1,0 +1,24 @@
+apiVersion: stable.axoom.com/v1
+kind: AppDefinition
+metadata:
+  name: myvendor-myapp
+  labels:
+    app: myvendor-myapp
+  annotations:
+    # Implicitly gives users with access to this app the claim "access: myvendor-myapp"
+    accessClaimValue: myvendor-myapp
+
+spec:
+  displayName:
+    en: My App
+  description:
+    en: my description
+  website: www.example.com
+  support: support@example.com
+  navigationEntries:
+    - targetUrl: https://{{ .Values.app.ingress.domain }}/
+      icon:
+        url_32x32px: https://{{ .Values.app.ingress.domain }}/icon.svg
+        url_512x512px: https://{{ .Values.app.ingress.domain }}/icon.svg
+      linkText:
+        en: My App
