@@ -8,7 +8,7 @@ releases:
       - app:
           ingress:
             enabled: true
-            domain: 'myvendor-myservice-{{ requiredEnv "PUBLIC_DOMAIN" }}'
+            domain: 'myvendor-myservice-{{ requiredEnv "PUBLIC_CLUSTER_DOMAIN" }}'
           env:
             ASPNETCORE_ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'
             Authentication__Authority: 'https://account.{{ requiredEnv "PUBLIC_CLUSTER_DOMAIN" }}'
