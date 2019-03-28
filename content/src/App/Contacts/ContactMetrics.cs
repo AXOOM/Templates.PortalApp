@@ -21,7 +21,7 @@ namespace MyVendor.MyApp.Contacts
                                      .Help("Average duration of persistence write operations for contacts")
                                      .Register();
             _pokes = metrics.Counter()
-                            .Name("myservice_contact_pokes")
+                            .Name("myservice_contact_pokes_total")
                             .Help("Number of times contacts were poked")
                             .Register();
         }
