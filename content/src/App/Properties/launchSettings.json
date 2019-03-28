@@ -1,7 +1,7 @@
 {
   "profiles": {
     "App": {
-      "applicationUrl": "http://localhost:12345/",
+      "applicationUrl": "http://localhost:12345",
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
