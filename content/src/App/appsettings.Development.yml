@@ -3,7 +3,3 @@
 Logging:
   LogLevel:
     Default: Debug
-
-# Uncomment this if you have registered your API with the Identity Server and want to test authentication locally.
-# Authentication:
-#   Authority: https://account.myaxoom.com
