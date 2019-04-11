@@ -1,7 +1,7 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2.105
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2.203
 
 # Add Node.js
-ARG NODE_VERSION=8.9.4
+ARG NODE_VERSION=10.15.3
 RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz" --output nodejs.tar.gz \
     && tar -xzf "nodejs.tar.gz" -C /usr/local --strip-components=1 \
     && rm nodejs.tar.gz \
