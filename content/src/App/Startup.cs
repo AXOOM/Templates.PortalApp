@@ -32,8 +32,7 @@ namespace MyVendor.MyApp
         /// Called by ASP.NET Core to register services.
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
-            => services.AddOptions()
-                       .AddPrometheusServer(Configuration.GetSection("Metrics"))
+            => services.AddPrometheusServer(Configuration.GetSection("Metrics"))
                        .AddPolicies(Configuration.GetSection("Policies"))
                        .AddSecurity(Configuration.GetSection("Authentication"))
                        .AddWeb(authenticationConfiguration: Configuration.GetSection("Authentication"))
