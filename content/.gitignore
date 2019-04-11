@@ -1,3 +1,5 @@
+/artifacts/
+
 /charts/*/requirements.lock
 /charts/*/charts/*
 
