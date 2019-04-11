@@ -10,11 +10,6 @@ Logging:
   LogLevel:
     Microsoft: Warning # Reduce ASP.NET Core verbosity
 
-Policies:
-  StartupRetries:
-    - 00:00:15
-    - 00:00:30
-
 Authentication:
   ApiName: myvendor-myapp
 

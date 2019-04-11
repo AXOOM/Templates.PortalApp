@@ -1,7 +1,6 @@
 using System;
 using Axoom.Extensions.Prometheus.Standalone;
 using JetBrains.Annotations;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +32,6 @@ namespace MyVendor.MyApp
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
             => services.AddPrometheusServer(Configuration.GetSection("Metrics"))
-                       .AddPolicies(Configuration.GetSection("Policies"))
                        .AddSecurity(Configuration.GetSection("Authentication"))
                        .AddWeb(authenticationConfiguration: Configuration.GetSection("Authentication"))
                        .AddDbContext<DbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")))
@@ -44,20 +42,16 @@ namespace MyVendor.MyApp
         /// Called by ASP.NET Core to configure services after they have been registered.
         /// </summary>
         public void Configure(IApplicationBuilder app)
+            => app.UseSecurity()
+                  .UseWeb();
+
+        /// <summary>
+        /// Called after services have been configured but before web hosting started.
+        /// </summary>
+        public static void Init(IServiceProvider provider)
         {
-            app.UseSecurity()
-               .UseWeb();
-
-            var provider = app.ApplicationServices;
-
-            // Since SQLite is an in-process database resiliency against connectivity problems at startup is unnecessary.
-            // It is implemented here anyway as a sample in case you decide to use an external database such as PostgreSQL.
-            provider.GetRequiredService<Policies>().Startup(() =>
-            {
-                using (var scope = provider.CreateScope())
-                    // Replace .EnsureCreated() with .Migrate() once you have generated an EF Migration
-                    scope.ServiceProvider.GetRequiredService<DbContext>().Database.EnsureCreated();
-            });
+            // Replace .EnsureCreated() with .Migrate() once you have generated an EF Migration
+            provider.GetRequiredService<DbContext>().Database.EnsureCreated();
         }
     }
 }
