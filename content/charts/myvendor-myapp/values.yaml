@@ -16,10 +16,10 @@ app:
     initialDelaySeconds: 10 # Allow for long startup
     httpGet:
       port: ingress
-      path: /health
+      path: / # Only check the service is reachable
 
   readinessProbe:
     initialDelaySeconds: 2 # Begin accepting traffic quickly
     httpGet:
       port: ingress
-      path: /health
+      path: /health # Check the service and all its dependencies are ready
