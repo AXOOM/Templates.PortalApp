@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
@@ -33,6 +34,18 @@ namespace MyVendor.MyApp
             Context.Dispose();
 
             base.Dispose();
+        }
+
+        /// <summary>
+        /// Adds one or more entity to the database and then detaches them from the <see cref="Context"/>.
+        /// This is useful to prefill the database with seed data while keeping the <see cref="Context"/> in a pristine state for the actual test.
+        /// </summary>
+        protected void AddDetached<T>(params T[] entities)
+        {
+            var entries = entities.Select(entity => Context.Add(entity)).ToList();
+            Context.SaveChanges();
+            foreach (var entry in entries)
+                entry.State = EntityState.Detached;
         }
     }
 }
