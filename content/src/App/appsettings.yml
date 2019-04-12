@@ -14,4 +14,4 @@ Authentication:
   ApiName: myvendor-myapp
 
 Database:
-  ConnectionString: Data Source=myservice.db
+  ConnectionString: Data Source=myvendor-myapp.db
