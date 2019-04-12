@@ -47,7 +47,7 @@ namespace MyVendor.MyApp
                 }
                 catch (Exception ex)
                 {
-                    provider.GetRequiredService<ILogger<Startup>>().LogCritical(0, ex, "Startup failed.");
+                    provider.GetRequiredService<ILogger<Startup>>().LogCritical(ex, "Startup failed.");
                     throw;
                 }
             }
