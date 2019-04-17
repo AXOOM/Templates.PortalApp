@@ -1,6 +1,6 @@
 ﻿Param ([string]$Version = "0.1-dev")
 $ErrorActionPreference = "Stop"
-pushd $(Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
+pushd $PSScriptRoot
 
 src\build-dotnet.ps1 $Version
 src\test-dotnet.ps1
