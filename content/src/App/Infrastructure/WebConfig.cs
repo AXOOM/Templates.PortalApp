@@ -46,14 +46,13 @@ namespace MyVendor.MyApp.Infrastructure
 
         public static IApplicationBuilder UseWeb(this IApplicationBuilder app)
         {
-            app.UseForwardedHeaders(TrustExternalProxy());
+            app.UseForwardedHeaders(TrustExternalProxy())
+               .UseStatusCodePages();
 
             bool devMode = app.ApplicationServices.GetRequiredService<IHostingEnvironment>().IsDevelopment();
             if (devMode)
             {
-                app.UseDeveloperExceptionPage()
-                   .UseExceptionDemystifier()
-                   .UseSwagger()
+                app.UseSwagger()
                    .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"));
             }
             else

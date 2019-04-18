@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Security.Authentication;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Logging;
 
 namespace MyVendor.MyApp.Infrastructure
 {
@@ -14,46 +17,57 @@ namespace MyVendor.MyApp.Infrastructure
     /// </summary>
     public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {
-        private readonly bool _returnStacktrace;
+        private readonly bool _isDevelopment;
+        private readonly ILogger<ApiExceptionFilterAttribute> _logger;
 
-        public ApiExceptionFilterAttribute(IHostingEnvironment env)
+        public ApiExceptionFilterAttribute(IHostingEnvironment env, ILogger<ApiExceptionFilterAttribute> logger)
         {
-            _returnStacktrace = env.IsDevelopment();
+            _isDevelopment = env.IsDevelopment();
+            _logger = logger;
         }
 
         /// <inheritdoc />
         public override void OnException(ExceptionContext context)
         {
-            context.HttpContext.Response.StatusCode = (int)GetStatusCode(context.Exception);
-            context.Result = GetResult(context.Exception);
+            var (statusCode, logLevel) = GetStatusCodeAndLogLevel(context.Exception);
+            var request = context.HttpContext.Request;
+
+            context.HttpContext.Response.StatusCode = (int)statusCode;
+            context.Result = BuildResult(context.Exception);
+
+            _logger.Log(logLevel, context.Exception, "Responded to HTTP {0} {1} with {2} due to exception.",
+                request.Method, request.GetEncodedPathAndQuery(), statusCode);
 
             base.OnException(context);
         }
 
-        private static HttpStatusCode GetStatusCode(Exception exception)
+        private static (HttpStatusCode, LogLevel) GetStatusCodeAndLogLevel(Exception exception)
         {
             switch (exception)
             {
-                case InvalidDataException _:
-                    return HttpStatusCode.BadRequest;
                 case AuthenticationException _:
-                    return HttpStatusCode.Unauthorized;
+                    return (HttpStatusCode.Unauthorized, LogLevel.Debug);
                 case UnauthorizedAccessException _:
-                    return HttpStatusCode.Forbidden;
+                    return (HttpStatusCode.Forbidden, LogLevel.Debug);
+                case InvalidDataException _:
+                    return (HttpStatusCode.BadRequest, LogLevel.Information);
                 case KeyNotFoundException _:
-                    return HttpStatusCode.NotFound;
+                    return (HttpStatusCode.NotFound, LogLevel.Information);
                 case InvalidOperationException _:
-                    return HttpStatusCode.Conflict;
+                    return (HttpStatusCode.Conflict, LogLevel.Warning);
                 case TimeoutException _:
-                    return HttpStatusCode.RequestTimeout;
+                    return (HttpStatusCode.RequestTimeout, LogLevel.Warning);
                 default:
-                    return HttpStatusCode.InternalServerError;
+                    return (HttpStatusCode.InternalServerError, LogLevel.Error);
             }
         }
 
-        private ContentResult GetResult(Exception exception) => new ContentResult
-        {
-            Content = _returnStacktrace ? exception.ToString() : exception.Message
-        };
+        private ObjectResult BuildResult(Exception exception)
+            => new ObjectResult(new
+            {
+                message = exception.Message,
+                type = exception.GetType().Name,
+                stackTrace = _isDevelopment ? exception.Demystify().StackTrace : null
+            });
     }
 }
