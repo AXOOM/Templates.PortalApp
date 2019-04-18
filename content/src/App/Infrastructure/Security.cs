@@ -16,15 +16,15 @@ namespace MyVendor.MyApp.Infrastructure
     {
         public static IServiceCollection AddSecurity(this IServiceCollection services, IConfiguration configuration)
         {
-            var authenticationOptions = configuration.ToAuthenticationOptions();
-            services.AddSingleton(authenticationOptions);
-            if (string.IsNullOrEmpty(authenticationOptions.Authority))
+            var identityOptions = configuration.ToIdentityOptions();
+            services.AddSingleton(identityOptions);
+            if (string.IsNullOrEmpty(identityOptions.Authority))
                 return services;
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                     .AddIdentityServerAuthentication(configuration.Bind);
 
-            services.Configure<MvcOptions>(x => x.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(authenticationOptions.ApiName))));
+            services.Configure<MvcOptions>(x => x.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(identityOptions.ApiName))));
 
             services.ConfigureSwaggerGen(options =>
             {
@@ -32,10 +32,10 @@ namespace MyVendor.MyApp.Infrastructure
                 {
                     Type = "oauth2",
                     Flow = "implicit",
-                    AuthorizationUrl = authenticationOptions.Authority + "/connect/authorize",
+                    AuthorizationUrl = $"{identityOptions.Authority}/connect/authorize",
                     Scopes = new Dictionary<string, string>
                     {
-                        [authenticationOptions.ApiName] = "Query the app."
+                        [identityOptions.ApiName] = "Use the app."
                     }
                 });
                 options.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
@@ -62,14 +62,14 @@ namespace MyVendor.MyApp.Infrastructure
 
         public static void AddAuthorizeFilter(this MvcOptions options, [CanBeNull] IConfiguration authenticationConfiguration)
         {
-            var authenticationOptions = authenticationConfiguration?.ToAuthenticationOptions();
-            if (string.IsNullOrEmpty(authenticationOptions?.Authority))
+            var identityOptions = authenticationConfiguration?.ToIdentityOptions();
+            if (string.IsNullOrEmpty(identityOptions?.Authority))
                 return;
 
-            options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(authenticationOptions.ApiName + ".api")));
+            options.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(identityOptions.ApiName + ".api")));
         }
 
-        private static IdentityServerAuthenticationOptions ToAuthenticationOptions(this IConfiguration configuration)
+        private static IdentityServerAuthenticationOptions ToIdentityOptions(this IConfiguration configuration)
         {
             var identityOptions = new IdentityServerAuthenticationOptions();
             configuration.Bind(identityOptions);

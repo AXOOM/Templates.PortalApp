@@ -49,14 +49,13 @@ namespace MyVendor.MyApp.Infrastructure
             app.UseForwardedHeaders(TrustExternalProxy())
                .UseStatusCodePages();
 
-            bool devMode = app.ApplicationServices.GetRequiredService<IHostingEnvironment>().IsDevelopment();
-            if (devMode)
-            {
-                app.UseSwagger()
-                   .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1"));
-            }
-            else
-                app.UseExceptionHandler("/Error");
+            app.UseSwagger()
+               .UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "My App API v1");
+                    options.OAuthAppName("My App");
+                    options.OAuthClientId("myvendor-myapp");
+                });
 
             app.UseStaticFiles()
                .UseSpaStaticFiles();
@@ -70,7 +69,7 @@ namespace MyVendor.MyApp.Infrastructure
                .UseSpa(spa =>
                 {
                     spa.Options.SourcePath = "ClientApp";
-                    if (devMode)
+                    if (app.ApplicationServices.GetRequiredService<IHostingEnvironment>().IsDevelopment())
                         spa.UseAngularCliServer(npmScript: "start");
                 });
 
