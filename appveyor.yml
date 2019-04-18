@@ -8,7 +8,8 @@ build_script:
 
 test_script:
   # Ensure template project itself builds correctly
-  - ps: content\build.ps1
+  - ps: content\src\build-dotnet.ps1
+  - ps: content\src\test-dotnet.ps1
 
 artifacts:
   - path: artifacts\*.nupkg
