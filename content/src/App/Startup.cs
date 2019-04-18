@@ -34,13 +34,14 @@ namespace MyVendor.MyApp
         {
             services.AddPrometheusServer(Configuration.GetSection("Metrics"))
                     .AddSecurity(Configuration.GetSection("Authentication"))
-                    .AddWeb()
-                    .AddContacts();
+                    .AddWeb();
 
             services.AddDbContext<DbContext>(options => options.UseSqlite(Configuration.GetSection("Database").GetValue<string>("ConnectionString")));
 
             services.AddHealthChecks()
                     .AddDbContextCheck<DbContext>();
+
+            services.AddContacts();
 
             return services.BuildServiceProvider();
         }
