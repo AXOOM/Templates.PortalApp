@@ -1,13 +1,16 @@
 # AXOOM Portal App Template
 
+[![NuGet package](https://img.shields.io/nuget/v/Axoom.Templates.PortalApp.svg)](https://www.nuget.org/packages/Axoom.Templates.PortalApp/)
+[![Build status](https://img.shields.io/appveyor/ci/AXOOM/templates-portalapp.svg)](https://ci.appveyor.com/project/AXOOM/templates-portalapp)
+
 This template helps you create Portal Apps for the [AXOOM](http://www.axoom.com/) Platform. In addition to its role as a template this repository also serves as a reference implementation and living documentation for infrastructure concerns such as configuration, logging and monitoring.
 
 The template creates a C# .NET Core project packaged to run in a [Docker](https://www.docker.com/) container.
 
 This template focuses on creating graphical frontends that integrate with the AXOOM Portal. If this is not your goal one of our other templates may be a better match:
-- [AXOOM Library Template](https://github.com/AXOOM/Axoom.Templates.Library)
-- [AXOOM Service Template](https://github.com/AXOOM/Axoom.Templates.Service)
-- [AXOOM WebService Template](https://github.com/AXOOM/Axoom.Templates.WebService)
+- [AXOOM Library Template](https://github.com/AXOOM/Templates.Library)
+- [AXOOM Service Template](https://github.com/AXOOM/Templates.Service)
+- [AXOOM WebService Template](https://github.com/AXOOM/Templates.WebService)
 
 
 # Using the template

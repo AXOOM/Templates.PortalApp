@@ -4,10 +4,12 @@
         <id>Axoom.Templates.PortalApp</id>
         <title>AXOOM Portal App Template</title>
         <version>0.1</version>
-        <description>A dotnet-new template for AXOOM Portal Apps using ASP.NET Core and Docker.</description>
+        <description>dotnet-new template for AXOOM Portal Apps using ASP.NET Core and Kubernetes</description>
         <authors>Bastian Eicher</authors>
-        <projectUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/Axoom.Templates.PortalAppe?path=%2Freadme.md</projectUrl>
-        <iconUrl>https://nuget.inside-axoom.org/resources/axoom_logo.png</iconUrl>
+        <copyright>Copyright AXOOM GmbH</copyright>
+        <license type="expression">MIT</license>
+        <projectUrl>https://github.com/AXOOM/Templates.PortalApp</projectUrl>
+        <iconUrl>https://github.com/AXOOM/Templates.PortalApp/raw/develop/axoom.png</iconUrl>
         <packageTypes>
             <packageType name="Template" />
         </packageTypes>
