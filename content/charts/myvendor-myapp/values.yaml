@@ -6,6 +6,14 @@ app:
     repository: apps/myvendor-myapp
     tag: latest # replaced with specific version number by build server
 
+  # Used for SQLite
+  persistence:
+    enabled: true
+    size: 1G
+    mountPath: /data
+  env:
+    Database__ConnectionString: Data Source=/data/myvendor-servicebroker.db
+
   resources:
     requests:
       memory: 256M
