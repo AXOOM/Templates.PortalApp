@@ -1,0 +1,22 @@
+# Registers repos for use in requirements.yaml
+repositories:
+  - name: axoom-github
+    url: https://axoom.github.io/charts/
+
+# Maps environment variables to Helm options and values
+releases:
+  - name: 'myvendor-myapp{{ env "NAME_SUFFIX" }}'
+    namespace: 'myteam{{ env "NAME_SUFFIX" }}'
+    chart: ./charts/myvendor-myapp
+
+    values:
+      - app:
+          image:
+            tag: '{{ requiredEnv "GitVersion_NuGetVersion" }}'
+          ingress:
+            enabled: true
+            domain: 'myvendor-myapp{{ env "NAME_SUFFIX" }}.{{ requiredEnv "PUBLIC_CLUSTER_DOMAIN" }}'
+          env:
+            ASPNETCORE_ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'
+            Authentication__Authority: 'https://account.{{ requiredEnv "PUBLIC_CLUSTER_DOMAIN" }}'
+            Authentication__ApiSecret: '{{ randAlphaNum 16 }}'

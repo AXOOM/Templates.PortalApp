@@ -1,4 +1,4 @@
 apiVersion: v1
 name: myvendor-myapp
-version: 0 # replaced with auto-generated version number by build server
+version: 1 # replaced with real version by CI script
 description: my description

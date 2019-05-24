@@ -13,8 +13,6 @@ spec:
     en: My App
   description:
     en: my description
-  website: www.example.com
-  support: support@example.com
   navigationEntries:
     - targetUrl: https://{{ .Values.app.ingress.domain }}/
       icon:

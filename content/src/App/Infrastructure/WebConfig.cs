@@ -30,12 +30,7 @@ namespace MyVendor.MyApp.Infrastructure
                     new Info
                     {
                         Title = "My App",
-                        Version = "v1",
-                        Contact = new Contact
-                        {
-                            Email = "developer@example.com",
-                            Url = "http://www.example.com"
-                        }
+                        Version = "v1"
                     });
                 options.IncludeXmlComments(Path.Combine(ApplicationEnvironment.ApplicationBasePath, "MyVendor.MyApp.xml"));
                 options.DescribeAllEnumsAsStrings();

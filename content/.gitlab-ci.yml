@@ -1,0 +1,92 @@
+stages:
+  - version
+  - build
+  - publish
+  - deploy:dev
+  - deploy:test
+  - deploy:live
+
+before_script: # Expose version variable in all jobs
+  - source $CI_PROJECT_DIR/gitversion.properties && export GitVersion_NuGetVersion
+
+gitversion:
+  stage: version
+  image:
+    name: gittools/gitversion:5.0.0-linux-debian-9-netcoreapp2.1
+    entrypoint: []
+  before_script: [] # Prevent top-level before_script from running here
+  script:
+    - dotnet /app/GitVersion.dll /output buildserver
+  artifacts:
+    paths: [gitversion.properties]
+
+dotnet:
+  stage: build
+  image:
+    name: mcr.microsoft.com/dotnet/core/sdk:2.2
+  script:
+    - ./build.sh $GitVersion_NuGetVersion
+  artifacts:
+    paths:
+      - src/App/obj/Docker/publish
+
+docker:
+  stage: publish
+  image:
+    name: gcr.io/kaniko-project/executor:debug # Only "debug" works because it contains a shell
+    entrypoint: []
+  script:
+    - /kaniko/executor --cache=true
+      --context dir://$CI_PROJECT_DIR/src/App
+      --destination eu.gcr.io/axoom-image/myteam/myvendor-myapp:$GitVersion_NuGetVersion
+
+.deploy: &deploy
+  when: manual
+  image:
+    name: axoom/gcloud-helmfile
+  script:
+    - /entrypoint.sh
+
+deploy:dev: &deploy_dev
+  <<: *deploy
+  stage: deploy:dev
+  environment:
+    name: dev
+  variables:
+    # gcloud
+    GCP_PROJECT: axoom-platform-devstages
+    CLUSTER_NAME: dev
+    # helmfile
+    PUBLIC_CLUSTER_DOMAIN: dev.myaxoom.com
+    ASPNETCORE_ENVIRONMENT: Development
+
+deploy:dev:auto:
+  <<: *deploy_dev
+  only: [master]
+  when: on_success
+
+deploy:test:
+  <<: *deploy
+  stage: deploy:test
+  environment:
+    name: test
+  variables:
+    # gcloud
+    GCP_PROJECT: axoom-platform-devstages
+    CLUSTER_NAME: test
+    # helmfile
+    PUBLIC_CLUSTER_DOMAIN: test.myaxoom.com
+    ASPNETCORE_ENVIRONMENT: Production
+
+deploy:live:
+  <<: *deploy
+  stage: deploy:live
+  environment:
+    name: live
+  variables:
+    # gcloud
+    GCP_PROJECT: axoom-platform-production
+    CLUSTER_NAME: live
+    # helmfile
+    PUBLIC_CLUSTER_DOMAIN: myaxoom.com
+    ASPNETCORE_ENVIRONMENT: Production

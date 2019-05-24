@@ -1,10 +1,11 @@
+# Config for "generic-service" chart
 app:
   name: myvendor-myservice
 
   image:
-    registry: docker.axoom.cloud # replaced with docker-ci.axoom.cloud for pre-release builds by build server
-    repository: apps/myvendor-myapp
-    tag: latest # replaced with specific version number by build server
+    registry: eu.gcr.io
+    authenticated: false
+    repository: axoom-image/myteam/myvendor-myapp
 
   # Used for SQLite
   persistence:
@@ -22,8 +23,8 @@ app:
 
   alerting:
     enabled: true
-    #labels:
-    #  team: myteam
+    labels:
+      team: myteam
 
   livenessProbe:
     initialDelaySeconds: 10 # Allow for long startup

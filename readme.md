@@ -21,15 +21,16 @@ Download and install the [.NET Core SDK](https://www.microsoft.com/net/download)
 
 To use the template to create a new project:
 
-    dotnet new axoom-portal-app --name "MyVendor.MyApp" --appKey myvendor-MyApp --envName MYVENDOR_MYAPP --friendlyName "My App" --vendorDomain example.com --description "my description"
+    dotnet new axoom-portal-app --name "MyVendor.MyApp" --appKey myvendor-myapp --team "myteam" --friendlyName "My App" --description "my description"
     cd MyVendor.MyApp
+    git init
+    git update-index --add --chmod=+x build.sh src/build.sh src/test.sh
 
 In the commands above replace
 - `MyVendor.MyApp` with the .NET namespace you wish to use,
 - `myvendor-myapp` with the name of your company and app using only lowercase letters and hyphens,
-- `MYVENDOR_MYAPP` with the name of your company and app using only uppercase letters and underscores,
-- `My App` with the full name of your app,
-- `example.com` with the public domain of your company and
+- `myteam` with the name of your team within the company using only lowercase letters and hyphens,
+- `My App` with the full name of your app and
 - `my description` with a brief (single sentence) description of the app.
 
 You can now open the generated project using your favorite IDE. We recommend [Visual Studio](https://www.visualstudio.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/Download) or [Rider](https://www.jetbrains.com/rider/).

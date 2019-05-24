@@ -1,6 +1,6 @@
 {
-  "author": "Bastian Eicher",
-  "classifications": [ "AXOOM", "Web", "Docker" ],
+  "author": "AXOOM GmbH",
+  "classifications": [ "AXOOM", "Web", "Kubernetes" ],
   "name": "AXOOM Portal App (ASP.NET Core, Docker)",
   "shortName": "axoom-portal-app",
   "identity": "Axoom.Templates.PortalApp",
@@ -23,11 +23,11 @@
       "replaces": "myvendor-myapp",
       "fileRename": "myvendor-myapp"
     },
-    "envName": {
+    "team": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
-      "replaces": "MYVENDOR_MYAPP"
+      "replaces": "myteam"
     },
     "friendlyName": {
       "type": "parameter",
@@ -35,17 +35,19 @@
       "isRequired": true,
       "replaces": "My App"
     },
-    "vendorDomain": {
-      "type": "parameter",
-      "dataType": "string",
-      "isRequired": true,
-      "replaces": "example.com"
-    },
     "description": {
       "type": "parameter",
       "dataType": "string",
       "isRequired": true,
       "replaces": "my description"
     }
-  }
+  },
+  "postActions": [{
+    "condition": "(OS != \"Windows_NT\")",
+    "description": "Make scripts executable",
+    "manualInstructions": [ { "text": "Run 'chmod +x *.sh src/*.sh'" } ],
+    "actionId": "cb9a6cf3-4f5c-4860-b9d2-03a574959774",
+    "args": { "+x": ["*.sh", "src/*.sh"] },
+    "continueOnError": true
+  }]
 }

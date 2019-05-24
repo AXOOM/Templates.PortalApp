@@ -21,7 +21,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Authors>example.com</Authors>
     <Title>My App</Title>
     <Description>my description</Description>
   </PropertyGroup>
@@ -97,14 +96,6 @@
       <DocFile Include="$(OutputPath)\MyVendor.MyApp.xml" />
     </ItemGroup>
     <Copy SourceFiles="@(DocFile)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="false" />
-  </Target>
-
-  <!-- Include full SemVer version in Publish Output to make it available at runtime. -->
-  <Target Name="GenerateVersionFile" AfterTargets="Build">
-    <WriteLinesToFile File="$(OutputPath)\VERSION" Lines="$(Version)" Overwrite="true" />
-  </Target>
-  <Target Name="PublishVersionFile" AfterTargets="Publish">
-    <Copy SourceFiles="$(OutputPath)\VERSION" DestinationFolder="$(PublishDir)" />
   </Target>
 
 </Project>
