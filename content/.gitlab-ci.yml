@@ -44,14 +44,15 @@ docker:
   when: manual
   image:
     name: axoom/gcloud-helmfile
+  environment:
+    name: $CLUSTER_NAME
+    url: myvendor-myapp.$PUBLIC_CLUSTER_DOMAIN
   script:
     - /entrypoint.sh
 
 deploy:dev: &deploy_dev
   <<: *deploy
   stage: deploy:dev
-  environment:
-    name: dev
   variables:
     # gcloud
     GCP_PROJECT: axoom-platform-devstages
@@ -68,8 +69,6 @@ deploy:dev:auto:
 deploy:test:
   <<: *deploy
   stage: deploy:test
-  environment:
-    name: test
   variables:
     # gcloud
     GCP_PROJECT: axoom-platform-devstages
@@ -81,8 +80,6 @@ deploy:test:
 deploy:live:
   <<: *deploy
   stage: deploy:live
-  environment:
-    name: live
   variables:
     # gcloud
     GCP_PROJECT: axoom-platform-production
