@@ -4,7 +4,7 @@ cd `dirname $0`
 
 # Inject NuGet pull credentials for CI builds
 if [ -n "$ARTIFACTORY_API_KEY" ]; then
-  sed "s/ARTIFACTORY_USER/$ARTIFACTORY_USER/g; s/ARTIFACTORY_API_KEY/$ARTIFACTORY_API_KEY/g" NuGet.Template.Config > NuGet.Config
+  sed -i "s/<!--<packageSourceCredentials>/<packageSourceCredentials>/g; s/ARTIFACTORY_USER/$ARTIFACTORY_USER/g; s/ARTIFACTORY_API_KEY/$ARTIFACTORY_API_KEY/g; s/<\/packageSourceCredentials>-->/<\/packageSourceCredentials>/g" NuGet.Config
 fi
 
 dotnet clean MyVendor.MyApp.sln
