@@ -9,7 +9,7 @@
         <copyright>Copyright AXOOM GmbH</copyright>
         <license type="expression">MIT</license>
         <projectUrl>https://github.com/AXOOM/Templates.PortalApp</projectUrl>
-        <iconUrl>https://github.com/AXOOM/Templates.PortalApp/raw/develop/axoom.png</iconUrl>
+        <iconUrl>https://github.com/AXOOM/Templates.PortalApp/raw/master/axoom.png</iconUrl>
         <packageTypes>
             <packageType name="Template" />
         </packageTypes>
