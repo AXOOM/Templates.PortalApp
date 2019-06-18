@@ -46,7 +46,7 @@ docker:
   image: axoom/gcloud-helmfile
   environment:
     name: $CLUSTER_NAME
-    url: https://myvendor-myapp.$PUBLIC_CLUSTER_DOMAIN
+    url: https://myvendor-myapp.$PUBLIC_CLUSTER_DOMAIN/
   script:
     - /entrypoint.sh
 
