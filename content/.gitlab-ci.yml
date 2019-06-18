@@ -12,7 +12,7 @@ before_script: # Expose version variable in all jobs
 gitversion:
   stage: version
   image:
-    name: gittools/gitversion:5.0.0-linux-debian-9-netcoreapp2.1
+    name: gittools/gitversion:5.0.0-linux-debian-9-netcoreapp2.2
     entrypoint: []
   before_script: [] # Prevent top-level before_script from running here
   script:
