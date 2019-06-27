@@ -24,7 +24,7 @@ To use the template to create a new project:
     dotnet new axoom-portal-app --name "MyVendor.MyApp" --appKey myvendor-myapp --team "myteam" --friendlyName "My App" --description "my description"
     cd MyVendor.MyApp
     git init
-    git update-index --add --chmod=+x build.sh src/build.sh src/test.sh
+    git update-index --add --chmod=+x build.sh
 
 In the commands above replace
 - `MyVendor.MyApp` with the .NET namespace you wish to use,
