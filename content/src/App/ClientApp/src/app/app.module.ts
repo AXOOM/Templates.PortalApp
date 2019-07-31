@@ -1,39 +1,44 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModalModule, NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { OAuthModule } from 'angular-oauth2-oidc';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppConfigService } from './app.config';
+import { AuthGuard } from './auth.guard';
+import { HttpInterceptorProviders } from './http-interceptors/index';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { AuthGuard } from './app.guard';
-import { AppConfigService } from './app-config';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
+    LogoutComponent,
     HomeComponent,
     ContactsComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
+    BrowserModule,
     FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
     OAuthModule.forRoot(),
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard] },
-      { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
-    ])
+    NgbModalModule,
+    NgbProgressbarModule
   ],
   providers: [
+    AppConfigService,
     AuthGuard,
-    AppConfigService
+    HttpInterceptorProviders
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {
-}
+export class AppModule { }

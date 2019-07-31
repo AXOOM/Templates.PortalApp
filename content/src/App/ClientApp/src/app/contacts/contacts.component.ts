@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contacts',
@@ -10,24 +9,12 @@ export class ContactsComponent {
   contacts: ContactDto[];
 
   constructor(
-    http: HttpClient,
-    private oauthService: OAuthService,
-    @Inject('BASE_URL') baseUrl: string
+    http: HttpClient
   ) {
-    const getOptions = {
-      headers: this.getHeaders()
-    };
-
-    http.get<ContactDto[]>(baseUrl + 'api/contacts/', getOptions).subscribe(result => {
+    http.get<ContactDto[]>('/api/contacts/').subscribe(result => {
         this.contacts = result;
       },
       error => console.error(error));
-  }
-
-  private getHeaders(): HttpHeaders {
-    return new HttpHeaders({
-      'Authorization': `Bearer ${this.oauthService.getAccessToken()}`
-    });
   }
 }
 

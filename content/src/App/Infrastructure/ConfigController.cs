@@ -22,8 +22,8 @@ namespace MyVendor.MyApp.Infrastructure
         /// Returns configuration for the frontend.
         /// </summary>
         [HttpGet("app.js")]
-        public IActionResult ReadOAuth() => Content(@"﻿var AXOOM_APP = AXOOM_APP || {};
-AXOOM_APP.CONFIG = {
+        public IActionResult ReadOAuth() => Content(@"﻿var AXOOM = AXOOM || {};
+AXOOM.CONFIG = {
     OAUTH: {
         clientId: 'myvendor-myapp',
         scope: 'openid profile email tenant myvendor-myapp.api',

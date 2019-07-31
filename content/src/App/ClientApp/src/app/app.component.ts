@@ -1,50 +1,50 @@
 import { Component } from '@angular/core';
-import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
-import { OAuthEvent } from 'angular-oauth2-oidc/events';
+import { AuthConfig, JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
+import { environment } from 'src/environments/environment';
 
-import { AppConfigService } from './app-config';
+import { OAuthConfig } from './app.config';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app';
-  private oAuthConfig: OAuthService;
+
+  oAuthConfig: OAuthConfig;
 
   constructor(
-    private oauthService: OAuthService,
-    private configService: AppConfigService
+    private oAuthService: OAuthService,
   ) {
-    this.configureAuthenticationService();
-  }
+    this.oAuthConfig = Object.assign({}, (<any>window).AXOOM.CONFIG.OAUTH);
+    const config: AuthConfig = {
+      // Url of the Identity Provider
+      issuer: this.oAuthConfig.identityServerUri,
 
-  private configureAuthenticationService() {
+      // URL of the SPA to redirect the user to after login
+      redirectUri: window.location.protocol + '//' + window.location.host,
 
-    const authConfig = this.configService.getAuthConfig();
-    if (authConfig.issuer) {
-      console.log('Authentication is activated. User will be redirected to the IdentityServer for login.');
-    } else {
-      console.log(`Authentication is not activated.`);
-      return;
-    }
+      // URL of the SPA to redirect the user after silent refresh
+      silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
 
-    this.oauthService.configure(authConfig);
-    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    this.oauthService.events.subscribe((event: OAuthEvent) => {
-      switch (event.type) {
-        case 'token_received':
-          break;
-        case 'token_error':
-          break;
-        case 'session_terminated':
-          this.oauthService.logOut();
-          break;
-        case 'session_changed':
-          break;
-      }
-    });
-    this.oauthService.setupAutomaticSilentRefresh();
+      postLogoutRedirectUri: window.location.protocol + '//' + window.location.host,
+
+      // The SPA's id. The SPA is registerd with this id at the auth-server
+      clientId: this.oAuthConfig.clientId,
+
+      // set the scope for the permissions the client should request
+      // The first three are defined by OIDC. The 4th is a usecase-specific one
+      scope: this.oAuthConfig.scope,
+
+      // Demands using https as OIDC and OAuth2 relay on it.
+      // This rule can be relaxed using the property requireHttps, e. g. for local testing.
+      requireHttps: false,
+
+      // Activate Session Checks:
+      sessionChecksEnabled: environment.production, // set to false for local deployment to facilitate calls to remote CIS API
+
+      clearHashAfterLogin: false
+    };
+    this.oAuthService.configure(config);
+    this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
   }
 }
