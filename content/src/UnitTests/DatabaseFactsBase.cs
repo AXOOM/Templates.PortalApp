@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
@@ -11,6 +12,8 @@ namespace MyVendor.MyApp
     public class DatabaseFactsBase<TSubject> : AutoMockingFactsBase<TSubject>
         where TSubject : class
     {
+        private readonly SqliteConnection _connection;
+
         /// <summary>
         /// An in-memory database that is reset after every test.
         /// </summary>
@@ -18,20 +21,23 @@ namespace MyVendor.MyApp
 
         protected DatabaseFactsBase()
         {
+            _connection = new SqliteConnection("Data Source=:memory:");
+            _connection.Open();
+
             Context = new DbContext(
                 new DbContextOptionsBuilder()
-                   .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) // Use GUID so every test has its own DB
-                   .ConfigureWarnings(x => x.Ignore(InMemoryEventId.TransactionIgnoredWarning))
+                   .UseSqlite(_connection)
                    .EnableSensitiveDataLogging()
                    .Options);
+            Context.Database.EnsureCreated();
 
             Use(Context);
         }
 
         public override void Dispose()
         {
-            Context.Database.EnsureDeleted();
             Context.Dispose();
+            _connection.Dispose();
 
             base.Dispose();
         }

@@ -56,7 +56,7 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task DeletesFromDatabase()
         {
-            string id = Context.Contacts.Add(new ContactEntity()).Entity.Id;
+            string id = Context.Contacts.Add(new ContactEntity {FirstName = "John", LastName = "Smith"}).Entity.Id;
             Context.SaveChanges();
 
             await Subject.DeleteAsync(id);
