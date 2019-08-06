@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 namespace MyVendor.MyApp.Contacts
 {
     /// <summary>
-    /// A representation of a note for serialization.
+    /// A note about a specific <see cref="Contact"/>.
     /// </summary>
-    public class NoteDto : IEquatable<NoteDto>
+    public class Note : IEquatable<Note>
     {
         /// <summary>
         /// The content of the note
@@ -14,14 +14,14 @@ namespace MyVendor.MyApp.Contacts
         [Required]
         public string Content { get; set; }
 
-        public bool Equals(NoteDto other)
+        public bool Equals(Note other)
         {
             if (other == null) return false;
             return Content == other.Content;
         }
 
         public override bool Equals(object obj)
-            => obj is NoteDto other && Equals(other);
+            => obj is Note other && Equals(other);
 
         public override int GetHashCode()
             => Content?.GetHashCode() ?? 0;

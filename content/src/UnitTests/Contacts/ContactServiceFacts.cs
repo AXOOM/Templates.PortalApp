@@ -16,8 +16,8 @@ namespace MyVendor.MyApp.Contacts
 
             var result = await Subject.ReadAllAsync();
             result.Should().Equal(
-                new ContactDto {Id = id1, FirstName = "John", LastName = "Smith"},
-                new ContactDto {Id = id2, FirstName = "Jane", LastName = "Doe"});
+                new Contact {Id = id1, FirstName = "John", LastName = "Smith"},
+                new Contact {Id = id2, FirstName = "Jane", LastName = "Doe"});
         }
 
         [Fact]
@@ -27,13 +27,13 @@ namespace MyVendor.MyApp.Contacts
             Context.SaveChanges();
 
             var result = await Subject.ReadAsync(id);
-            result.Should().Be(new ContactDto {Id = id, FirstName = "John", LastName = "Smith"});
+            result.Should().Be(new Contact {Id = id, FirstName = "John", LastName = "Smith"});
         }
 
         [Fact]
         public async Task CreatesInDatabase()
         {
-            var result = await Subject.CreateAsync(new ContactDto {FirstName = "John", LastName = "Smith"});
+            var result = await Subject.CreateAsync(new Contact {FirstName = "John", LastName = "Smith"});
 
             Context.Contacts.Single().Should().BeEquivalentTo(new ContactEntity {Id = result.Id, FirstName = "John", LastName = "Smith"});
             GetMock<IContactMetrics>().Verify(x => x.Write());
@@ -45,7 +45,7 @@ namespace MyVendor.MyApp.Contacts
             string id = Context.Contacts.Add(new ContactEntity {FirstName = "John", LastName = "Smith"}).Entity.Id;
             Context.SaveChanges();
 
-            await Subject.UpdateAsync(new ContactDto {Id = id, FirstName = "Jane", LastName = "Doe"});
+            await Subject.UpdateAsync(new Contact {Id = id, FirstName = "Jane", LastName = "Doe"});
 
             var entity = Context.Contacts.Find(id);
             entity.FirstName.Should().Be("Jane");
@@ -71,7 +71,7 @@ namespace MyVendor.MyApp.Contacts
             Context.SaveChanges();
 
             var note = await Subject.ReadNoteAsync(id);
-            note.Should().Be(new NoteDto {Content = "my note"});
+            note.Should().Be(new Note {Content = "my note"});
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace MyVendor.MyApp.Contacts
             string id = Context.Contacts.Add(new ContactEntity {FirstName = "John", LastName = "Smith"}).Entity.Id;
             Context.SaveChanges();
 
-            await Subject.SetNoteAsync(id, new NoteDto {Content = "my note"});
+            await Subject.SetNoteAsync(id, new Note {Content = "my note"});
 
             Context.Contacts.Find(id).Note.Should().Be("my note");
             GetMock<IContactMetrics>().Verify(x => x.Write());

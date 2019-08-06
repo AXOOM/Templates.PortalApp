@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 namespace MyVendor.MyApp.Contacts
 {
     /// <summary>
-    /// A representation of a contact for serialization.
+    /// A contact in an address book.
     /// </summary>
-    public class ContactDto : IEquatable<ContactDto>
+    public class Contact : IEquatable<Contact>
     {
         /// <summary>
         /// The ID of the contact.
@@ -26,7 +26,7 @@ namespace MyVendor.MyApp.Contacts
         [Required]
         public string LastName { get; set; }
 
-        public bool Equals(ContactDto other)
+        public bool Equals(Contact other)
         {
             if (other == null) return false;
             return Id == other.Id
@@ -35,7 +35,7 @@ namespace MyVendor.MyApp.Contacts
         }
 
         public override bool Equals(object obj)
-            => obj is ContactDto other && Equals(other);
+            => obj is Contact other && Equals(other);
 
         public override int GetHashCode()
         {

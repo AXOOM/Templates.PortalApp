@@ -25,15 +25,15 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task ReadsAllFromService()
         {
-            var contacts = new List<ContactDto>
+            var contacts = new List<Contact>
             {
-                new ContactDto {Id = "1", FirstName = "John", LastName = "Smith"},
-                new ContactDto {Id = "2", FirstName = "Jane", LastName = "Doe"}
+                new Contact {Id = "1", FirstName = "John", LastName = "Smith"},
+                new Contact {Id = "2", FirstName = "Jane", LastName = "Doe"}
             };
             _serviceMock.Setup(x => x.ReadAllAsync()).ReturnsAsync(contacts);
 
             var result = await HttpClient.GetAsync("http://localhost/api/contacts/");
-            var body = await result.Content.ReadAsAsync<List<ContactDto>>();
+            var body = await result.Content.ReadAsAsync<List<Contact>>();
 
             body.Should().Equal(contacts);
         }
@@ -41,11 +41,11 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task ReadsFromService()
         {
-            var contact = new ContactDto {Id = "1", FirstName = "John", LastName = "Smith"};
+            var contact = new Contact {Id = "1", FirstName = "John", LastName = "Smith"};
             _serviceMock.Setup(x => x.ReadAsync("1")).ReturnsAsync(contact);
 
             var result = await HttpClient.GetAsync("http://localhost/api/contacts/1");
-            var body = await result.Content.ReadAsAsync<ContactDto>();
+            var body = await result.Content.ReadAsAsync<Contact>();
 
             body.Should().Be(contact);
         }
@@ -53,12 +53,12 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task CreatesInService()
         {
-            var contactWithoutId = new ContactDto {FirstName = "John", LastName = "Smith"};
-            var contactWithId = new ContactDto {Id = "1", FirstName = "John", LastName = "Smith"};
+            var contactWithoutId = new Contact {FirstName = "John", LastName = "Smith"};
+            var contactWithId = new Contact {Id = "1", FirstName = "John", LastName = "Smith"};
             _serviceMock.Setup(x => x.CreateAsync(contactWithoutId)).ReturnsAsync(contactWithId);
 
             var result = await HttpClient.PostAsync("http://localhost/api/contacts", contactWithoutId, new JsonMediaTypeFormatter());
-            var body = await result.Content.ReadAsAsync<ContactDto>();
+            var body = await result.Content.ReadAsAsync<Contact>();
 
             result.Headers.Location.Should().Be("http://localhost/api/contacts/1");
             body.Should().Be(contactWithId);
@@ -67,7 +67,7 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task RejectsCreateOnIncompleteBody()
         {
-            var result = await HttpClient.PostAsync("http://localhost/api/contacts", new ContactDto(), new JsonMediaTypeFormatter());
+            var result = await HttpClient.PostAsync("http://localhost/api/contacts", new Contact(), new JsonMediaTypeFormatter());
 
             result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         }
@@ -75,7 +75,7 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task UpdatesInService()
         {
-            var contact = new ContactDto {Id = "1", FirstName = "John", LastName = "Smith"};
+            var contact = new Contact {Id = "1", FirstName = "John", LastName = "Smith"};
 
             var result = await HttpClient.PutAsync("http://localhost/api/contacts/1", contact, new JsonMediaTypeFormatter());
 
@@ -86,7 +86,7 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task RejectsUpdateOnIdMismatch()
         {
-            var contact = new ContactDto {Id = "1", FirstName = "John", LastName = "Smith"};
+            var contact = new Contact {Id = "1", FirstName = "John", LastName = "Smith"};
 
             var result = await HttpClient.PutAsync("http://localhost/api/contacts/2", contact, new JsonMediaTypeFormatter());
 
@@ -105,11 +105,11 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task ReadsNoteFromService()
         {
-            var note = new NoteDto {Content = "my note"};
+            var note = new Note {Content = "my note"};
             _serviceMock.Setup(x => x.ReadNoteAsync("1")).ReturnsAsync(note);
 
             var result = await HttpClient.GetAsync("http://localhost/api/contacts/1/note");
-            var body = await result.Content.ReadAsAsync<NoteDto>();
+            var body = await result.Content.ReadAsAsync<Note>();
 
             body.Should().Be(note);
         }
@@ -117,7 +117,7 @@ namespace MyVendor.MyApp.Contacts
         [Fact]
         public async Task SetsNoteInService()
         {
-            var note = new NoteDto {Content = "my note"};
+            var note = new Note {Content = "my note"};
 
             await HttpClient.PutAsync("http://localhost/api/contacts/1/note", note, new JsonMediaTypeFormatter());
 

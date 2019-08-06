@@ -6,14 +6,14 @@ namespace MyVendor.MyApp.Contacts
     /// <summary>
     /// Manages contacts in an address book.
     /// </summary>
-    public interface IContactService : ICrudService<ContactDto>
+    public interface IContactService : ICrudService<Contact>
     {
         /// <summary>
         /// Returns the note for a specific contact.
         /// </summary>
         /// <param name="id">The ID of the contact to get the note for.</param>
         /// <exception cref="KeyNotFoundException">Specified contact not found.</exception>
-        Task<NoteDto> ReadNoteAsync(string id);
+        Task<Note> ReadNoteAsync(string id);
 
         /// <summary>
         /// Sets a note for a specific contact.
@@ -21,7 +21,7 @@ namespace MyVendor.MyApp.Contacts
         /// <param name="id">The ID of the contact to set the note for.</param>
         /// <param name="note">The note to set</param>
         /// <exception cref="KeyNotFoundException">Specified contact not found.</exception>
-        Task SetNoteAsync(string id, NoteDto note);
+        Task SetNoteAsync(string id, Note note);
 
         /// <summary>
         /// Pokes a contact.
