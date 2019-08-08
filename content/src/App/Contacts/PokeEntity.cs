@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Newtonsoft.Json;
 
 namespace MyVendor.MyApp.Contacts
 {
@@ -25,7 +24,6 @@ namespace MyVendor.MyApp.Contacts
         /// <summary>
         /// The contact that was poked.
         /// </summary>
-        [JsonIgnore]
         [ForeignKey(nameof(ContactId))]
         public ContactEntity Contact { get; set; }
 
