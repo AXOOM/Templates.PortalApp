@@ -13,7 +13,7 @@ app:
     size: 1G
     mountPath: /data
   env:
-    Database__ConnectionString: Data Source=/data/myvendor-servicebroker.db
+    ConnectionStrings__Database: Data Source=/data/myvendor-servicebroker.db
 
   resources:
     requests:

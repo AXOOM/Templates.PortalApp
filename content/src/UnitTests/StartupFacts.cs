@@ -20,7 +20,7 @@ namespace MyVendor.MyApp
 
         private readonly IConfiguration _configuration = new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string>
         {
-            ["Database:ConnectionString"] = ":memory:"
+            ["ConnectionStrings:Database"] = ":memory:"
         }).Build();
 
         private readonly ServiceCollection _services = new ServiceCollection();
