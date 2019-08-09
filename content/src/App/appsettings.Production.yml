@@ -1,4 +1,4 @@
-# This file contains additional configuration for live deployments.
+# This file contains additional configuration for production deployments.
 
 Logging:
   LogLevel:

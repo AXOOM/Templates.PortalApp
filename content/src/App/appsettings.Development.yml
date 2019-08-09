@@ -1,4 +1,4 @@
-# This file contains additional configuration for dev deployments.
+# This file contains additional configuration for development deployments.
 
 Logging:
   LogLevel:

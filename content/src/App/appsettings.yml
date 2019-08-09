@@ -1,10 +1,10 @@
 # This file contains default configuration.
 #
 # Additional config files:
-#   dev:        appsettings.Development.yml
-#   live:       appsettings.Production.yml
-#   Kubernetes: helmfile.yaml
-#   local dev:  launchSettings.json
+#   Development: appsettings.Development.yml
+#   Production:  appsettings.Production.yml
+#   Kubernetes:  values.yaml + helmfile.yaml
+#   Local IDE:   launchSettings.json
 
 Logging:
   LogLevel:
