@@ -15,9 +15,9 @@ namespace MyVendor.MyApp
     /// <typeparam name="T">The DTO type used to represent elements of the collection.</typeparam>
     public abstract class CollectionController<T> : Controller
     {
-        private readonly ICrudService<T> _service;
+        private readonly ICollectionService<T> _service;
 
-        protected CollectionController(ICrudService<T> service)
+        protected CollectionController(ICollectionService<T> service)
         {
             _service = service;
         }

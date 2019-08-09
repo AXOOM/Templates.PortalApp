@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 namespace MyVendor.MyApp
 {
     /// <summary>
-    /// Common base interface for services that conform to the Create-Read-Update-Delete pattern.
+    /// Common base interface for services that provide a collection/CRUD-like interface.
     /// </summary>
     /// <typeparam name="T">The DTO type used to represent elements of the service.</typeparam>
-    public interface ICrudService<T>
+    public interface ICollectionService<T>
     {
         /// <summary>
         /// Returns all elements.

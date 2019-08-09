@@ -6,7 +6,7 @@ namespace MyVendor.MyApp.Contacts
     /// <summary>
     /// Manages contacts in an address book.
     /// </summary>
-    public interface IContactService : ICrudService<Contact>
+    public interface IContactService : ICollectionService<Contact>
     {
         /// <summary>
         /// Returns the note for a specific contact.
