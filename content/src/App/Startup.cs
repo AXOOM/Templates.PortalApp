@@ -37,6 +37,7 @@ namespace MyVendor.MyApp
                     .AddWeb();
 
             services.AddDbContext<DbContext>(options => options
+                // TODO: Replace SQLite with external database for scalability
                .UseSqlite(Configuration.GetConnectionString("Database")));
 
             services.AddHealthChecks()
@@ -60,7 +61,7 @@ namespace MyVendor.MyApp
         /// </summary>
         public static void Init(IServiceProvider provider)
         {
-            // Replace .EnsureCreated() with .Migrate() once you have generated an EF Migration
+            // TODO: Replace .EnsureCreated() with .Migrate() once you start using EF Migrations
             provider.GetRequiredService<DbContext>().Database.EnsureCreated();
         }
     }
