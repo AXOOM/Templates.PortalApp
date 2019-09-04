@@ -12,6 +12,3 @@ Logging:
 
 Authentication:
   ApiName: myvendor-myapp
-
-ConnectionStrings:
-  Database: Data Source=myvendor-myapp.db

@@ -6,7 +6,8 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "Logging__Format": "Plain"
+        "Logging__Format": "Plain",
+        "ConnectionStrings__Database": "Data Source=myvendor-myapp.db"
       }
     }
   }

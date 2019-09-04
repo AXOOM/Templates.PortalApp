@@ -24,3 +24,4 @@ releases:
             ASPNETCORE_ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'
             Authentication__Authority: 'https://account.{{ requiredEnv "PUBLIC_CLUSTER_DOMAIN" }}'
             Authentication__ApiSecret: '{{ randAlphaNum 16 }}'
+            ConnectionStrings__Database: 'Host=cloud-sql.cloud-sql.svc.cluster.local;User ID={{ requiredEnv "DATABASE_NAME" }};Password={{ requiredEnv "DATABASE_PASSWORD" }};Database={{ requiredEnv "DATABASE_NAME" }};Integrated Security=true;Pooling=true'

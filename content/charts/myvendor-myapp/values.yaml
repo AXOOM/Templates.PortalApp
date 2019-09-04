@@ -7,14 +7,6 @@ app:
     authenticated: false
     repository: axoom-image/myteam/myvendor-myapp
 
-  # TODO: Replace SQLite with external database for scalability
-  env:
-    ConnectionStrings__Database: Data Source=/data/myvendor-servicebroker.db
-  persistence:
-    enabled: true
-    size: 1G
-    mountPath: /data
-
   resources:
     requests:
       memory: 256M
