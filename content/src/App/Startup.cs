@@ -31,8 +31,8 @@ namespace MyVendor.MyApp
             string dbConnectionString = _configuration.GetConnectionString("Database");
             services.AddDbContext<DbContext>(options =>
             {
-                if (dbConnectionString.StartsWith("Data Source=")) options.UseSqlite(dbConnectionString);
-                else options.UseNpgsql(dbConnectionString);
+                if (dbConnectionString.Contains("Host=")) options.UseNpgsql(dbConnectionString);
+                else options.UseSqlite(dbConnectionString);
             });
 
             services.AddHealthChecks()
