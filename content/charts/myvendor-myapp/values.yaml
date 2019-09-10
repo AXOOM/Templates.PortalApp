@@ -4,8 +4,9 @@ app:
 
   image:
     registry: eu.gcr.io
-    authenticated: false
     repository: axoom-image/myteam/myvendor-myapp
+
+  replicas: 2
 
   resources:
     requests:
