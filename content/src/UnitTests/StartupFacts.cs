@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -31,6 +33,7 @@ namespace MyVendor.MyApp
             _output = output;
 
             AddFrameworkServices();
+            AddMvcControllers();
             _services.AddLogging(builder => builder.AddXUnit());
             new Startup(_configuration).ConfigureServices(_services);
 
@@ -41,6 +44,14 @@ namespace MyVendor.MyApp
             => _services.AddSingleton<IHostingEnvironment>(new HostingEnvironment {ContentRootPath = "dummy"})
                         .AddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>()
                         .AddSingleton(new Mock<DiagnosticSource>().Object);
+
+        private void AddMvcControllers()
+        {
+            var feature = new ControllerFeature();
+            new ControllerFeatureProvider().PopulateFeature(new [] {new AssemblyPart(typeof(Startup).Assembly)}, feature);
+            foreach (var controller in feature.Controllers)
+                _services.AddTransient(controller);
+        }
 
         [Fact]
         public void CanResolveAllRegisteredServices()
