@@ -6,6 +6,7 @@
     <UserSecretsId>MyVendor.MyApp</UserSecretsId>
     <LangVersion>latest</LangVersion>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ServerGarbageCollection>False</ServerGarbageCollection>
     <OutputType>Exe</OutputType>
     <IsPackable>False</IsPackable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
