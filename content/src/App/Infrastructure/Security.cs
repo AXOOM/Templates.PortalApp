@@ -28,7 +28,7 @@ namespace MyVendor.MyApp.Infrastructure
 
             services.ConfigureSwaggerGen(options =>
             {
-                options.AddSecurityDefinition("oauth2", new OAuth2Scheme
+                options.AddSecurityDefinition("oauth2-implicit", new OAuth2Scheme
                 {
                     Type = "oauth2",
                     Flow = "implicit",
