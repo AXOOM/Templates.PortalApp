@@ -1,5 +1,1 @@
 # This file contains additional configuration for production deployments.
-
-Logging:
-  LogLevel:
-    Default: Information

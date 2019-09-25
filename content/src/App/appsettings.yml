@@ -7,7 +7,8 @@
 #   Local IDE:   launchSettings.json
 
 Logging:
-  LogLevel:
+  LogLevel: 
+    Default: Information
     Microsoft: Warning # Reduce ASP.NET Core verbosity
 
 Authentication:

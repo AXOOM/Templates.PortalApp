@@ -2,4 +2,4 @@
 
 Logging:
   LogLevel:
-    Default: Debug
+    MyVendor.MyApp: Debug
