@@ -23,6 +23,9 @@ dotnet:
   image: mcr.microsoft.com/dotnet/core/sdk:2.2
   script:
     - ./build.sh $GitVersion_NuGetVersion
+  cache:
+    paths:
+      - src/App/ClientApp/node_modules
   artifacts:
     paths:
       - src/App/obj/Docker/publish
