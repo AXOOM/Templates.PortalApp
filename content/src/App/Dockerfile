@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2.401
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2.402
 
 # Add Node.js
 ARG NODE_VERSION=10.15.3
