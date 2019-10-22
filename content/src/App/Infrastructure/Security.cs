@@ -26,23 +26,23 @@ namespace MyVendor.MyApp.Infrastructure
 
             services.Configure<MvcOptions>(x => x.Filters.Add(new AuthorizeFilter(ScopePolicy.Create(identityOptions.ApiName))));
 
-            services.ConfigureSwaggerGen(options =>
-            {
-                options.AddSecurityDefinition("oauth2-implicit", new OAuth2Scheme
-                {
-                    Type = "oauth2",
-                    Flow = "implicit",
-                    AuthorizationUrl = $"{identityOptions.Authority}/connect/authorize",
-                    Scopes = new Dictionary<string, string>
-                    {
-                        [identityOptions.ApiName] = "Use the app."
-                    }
-                });
-                options.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
-                {
-                    ["oauth2-implicit"] = new string[0]
-                });
-            });
+//            services.ConfigureSwaggerGen(options =>
+//            {
+//                options.AddSecurityDefinition("oauth2-implicit", new OAuth2Scheme
+//                {
+//                    Type = "oauth2",
+//                    Flow = "implicit",
+//                    AuthorizationUrl = $"{identityOptions.Authority}/connect/authorize",
+//                    Scopes = new Dictionary<string, string>
+//                    {
+//                        [identityOptions.ApiName] = "Use the app."
+//                    }
+//                });
+//                options.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+//                {
+//                    ["oauth2-implicit"] = new string[0]
+//                });
+//            });
 
             return services;
         }

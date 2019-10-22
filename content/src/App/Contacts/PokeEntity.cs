@@ -13,7 +13,7 @@ namespace MyVendor.MyApp.Contacts
         /// The ID of the poke.
         /// </summary>
         [Key]
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         /// <summary>
         /// The ID of the contact that was poked.

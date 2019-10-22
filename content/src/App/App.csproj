@@ -4,8 +4,8 @@
     <AssemblyName>MyVendor.MyApp</AssemblyName>
     <RootNamespace>MyVendor.MyApp</RootNamespace>
     <UserSecretsId>MyVendor.MyApp</UserSecretsId>
-    <LangVersion>latest</LangVersion>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>8</LangVersion>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <ServerGarbageCollection>False</ServerGarbageCollection>
     <OutputType>Exe</OutputType>
     <IsPackable>False</IsPackable>
@@ -28,14 +28,14 @@
     <PackageReference Include="Axoom.Extensions.Prometheus.Standalone" Version="2.1.0" />
     <PackageReference Include="codeessentials.Extensions.Logging.Demystifier" Version="1.0.58" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.6" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="NetEscapades.Configuration.Yaml" Version="1.6.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Nexogen.Libraries.Metrics.Extensions" Version="3.0.1" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
     <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
   </ItemGroup>
 

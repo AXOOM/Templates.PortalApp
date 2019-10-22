@@ -1,8 +1,10 @@
 using System;
 using System.Net.Http;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyVendor.MyApp.Infrastructure;
 using Xunit.Abstractions;
@@ -14,19 +16,24 @@ namespace MyVendor.MyApp
     /// </summary>
     public abstract class ControllerFactsBase : IDisposable
     {
+        private readonly IHost _host;
         private readonly TestServer _server;
 
         protected ControllerFactsBase(ITestOutputHelper output)
         {
-            _server = new TestServer(
-                new WebHostBuilder()
-                   .ConfigureLogging(builder => builder.AddXUnit(output))
-                   .ConfigureServices((context, services) => services.AddWeb())
-                   .ConfigureServices(ConfigureService)
-                   .Configure(builder => builder.UseWeb()));
-
+            _host = CreateHostBuilder(output).Start();
+            _server = _host.GetTestServer();
             HttpClient = _server.CreateClient();
         }
+
+        private IHostBuilder CreateHostBuilder(ITestOutputHelper output)
+            => new HostBuilder().ConfigureWebHost(x =>
+                x.UseTestServer()
+                 .ConfigureLogging(builder => builder.AddXUnit(output))
+                 .ConfigureServices((context, services) => services.AddWeb())
+                 .ConfigureServices(ConfigureService)
+                 .Configure(builder => builder.UseAuthentication()
+                                              .UseWeb()));
 
         /// <summary>
         /// Registers dependencies for controllers.
@@ -42,6 +49,7 @@ namespace MyVendor.MyApp
         {
             HttpClient.Dispose();
             _server.Dispose();
+            _host.Dispose();
         }
     }
 }
